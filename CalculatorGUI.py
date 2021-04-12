@@ -5,7 +5,7 @@ window = Tk()
 
 window.title('Calculator')
 
-window.iconbitmap('PythonGUITestIcon.ico') 
+window.iconbitmap('CalcuatorIcon.ico') 
 
 #window.state('zoomed')     //start the program with screen maximized
 
@@ -24,22 +24,13 @@ button_mathOper_style.configure('BUTMO.TButton',height=7, width=3)
 button_0_style = Style()
 button_0_style.configure('BUT0.TButton',height=7, width=15)
 
+button_clear_style = Style()
+button_clear_style.configure('BUTAC.TButton',height=7, width=3,font= ('calibri', 15))
+
 #test button
 def my_click():
     my_label = Label(window,text="Button test succesful").pack()
     return
-
-
-mainframe = Notebook(window,width=36, height = 64)
-mainframe.place(x=327,y=432,anchor=CENTER)
-
-class MyButton(Frame):
-    def __init__(self, parent, height=None, width=None, text="", command=None, style=None):
-        Frame.__init__(self, parent, height=height, width=width, style="MyButton.TFrame")
-
-        self.pack_propagate(0)
-        self._btn = Button(window, text=text, command=command, style=style)
-        self._btn.pack(fill=BOTH, expand=1)
 
 
 
@@ -61,8 +52,7 @@ button_mult = Button(window, text = "×", command = my_click, style = 'BUTMO.TBu
 button_div = Button(window, text = "÷", command = my_click, style = 'BUTMO.TButton')
 button_openpar = Button(window, text = "(", command = my_click, style = 'BUTMO.TButton')
 button_closepar = Button(window, text = ")", command = my_click, style = 'BUTMO.TButton')
-
-
+button_clear = Button(window, text = "AC", command = my_click, style = 'BUTAC.TButton')
 
 
 button_0.place(x= 100,y=450, anchor=CENTER)
@@ -75,13 +65,14 @@ button_6.place(x=222,y=380, anchor=CENTER)
 button_7.place(x=60,y=345, anchor=CENTER)
 button_8.place(x=141,y=345, anchor=CENTER)
 button_9.place(x=222,y=345, anchor=CENTER)
-button_equals.place(x=326,y=430, anchor=CENTER)
+button_equals.place(x=326,y=450, anchor=CENTER)
 button_dot.place(x=222,y=450, anchor=CENTER)
 button_plus.place(x=284,y=380, anchor=CENTER)
 button_minus.place(x=326,y=380, anchor=CENTER)
 button_mult.place(x=284,y=415, anchor=CENTER)
-button_div.place(x=284,y=450, anchor=CENTER)
+button_div.place(x=326,y=415, anchor=CENTER)
 button_openpar.place(x=284,y=345, anchor=CENTER)
 button_closepar.place(x=326,y=345, anchor=CENTER)
+button_clear.place(x=284,y=450, anchor=CENTER)
 
 window.mainloop()
