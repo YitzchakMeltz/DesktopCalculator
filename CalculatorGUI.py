@@ -15,11 +15,8 @@ window.geometry("400x500")
 style = Style()
 style.configure('TButton', font= ('calibri', 15), height=7, width=7)
 
-button_equals_style = Style()
-button_equals_style.configure('BUTEQ.TButton',height=7, width=3)
-
 button_mathOper_style = Style()
-button_mathOper_style.configure('BUTMO.TButton',height=7, width=3)
+button_mathOper_style.configure('BUTMO.TButton',height=7, width=3, bg='black')
 
 button_0_style = Style()
 button_0_style.configure('BUT0.TButton',height=7, width=15)
@@ -44,7 +41,7 @@ button_6 = Button(window, text = "6", command = my_click)
 button_7 = Button(window, text = "7", command = my_click)
 button_8 = Button(window, text = "8", command = my_click)
 button_9 = Button(window, text = "9", command = my_click)
-button_equals = Button(window, text = "=", command = my_click, style ='BUTEQ.TButton')
+button_equals = Button(window, text = "=", command = my_click, style ='BUTMO.TButton')
 button_dot = Button(window, text = ".", command = my_click)
 button_plus = Button(window, text = "+", command = my_click, style = 'BUTMO.TButton')
 button_minus = Button(window, text = "-", command = my_click, style = 'BUTMO.TButton')
@@ -74,5 +71,7 @@ button_div.place(x=326,y=415, anchor=CENTER)
 button_openpar.place(x=284,y=345, anchor=CENTER)
 button_closepar.place(x=326,y=345, anchor=CENTER)
 button_clear.place(x=284,y=450, anchor=CENTER)
+
+
 
 window.mainloop()
