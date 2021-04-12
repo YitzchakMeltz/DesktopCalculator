@@ -1,5 +1,6 @@
 from tkinter import*
 from tkinter.ttk import*
+from mainBackend import*
 
 window = Tk()
 
@@ -29,26 +30,24 @@ def my_click():
     my_label = Label(window,text="Button test succesful").pack()
     return
 
-
-
-button_0 = Button(window, text = "0", command = my_click, style ='BUT0.TButton')
-button_1 = Button(window, text = "1", command = my_click)
-button_2 = Button(window, text = "2", command = my_click)
-button_3 = Button(window, text = "3", command = my_click)
-button_4 = Button(window, text = "4", command = my_click)
-button_5 = Button(window, text = "5", command = my_click)
-button_6 = Button(window, text = "6", command = my_click)
-button_7 = Button(window, text = "7", command = my_click)
-button_8 = Button(window, text = "8", command = my_click)
-button_9 = Button(window, text = "9", command = my_click)
-button_equals = Button(window, text = "=", command = my_click, style ='BUTMO.TButton')
-button_dot = Button(window, text = ".", command = my_click)
-button_plus = Button(window, text = "+", command = my_click, style = 'BUTMO.TButton')
-button_minus = Button(window, text = "-", command = my_click, style = 'BUTMO.TButton')
-button_mult = Button(window, text = "×", command = my_click, style = 'BUTMO.TButton')
-button_div = Button(window, text = "÷", command = my_click, style = 'BUTMO.TButton')
-button_openpar = Button(window, text = "(", command = my_click, style = 'BUTMO.TButton')
-button_closepar = Button(window, text = ")", command = my_click, style = 'BUTMO.TButton')
+button_0 = Button(window, text = "0", command = lambda:button_click("0"), style ='BUT0.TButton')
+button_1 = Button(window, text = "1", command = lambda:button_click("0"))
+button_2 = Button(window, text = "2", command = lambda:button_click("0"))
+button_3 = Button(window, text = "3", command = lambda:button_click("0"))
+button_4 = Button(window, text = "4", command = lambda:button_click("0"))
+button_5 = Button(window, text = "5", command = lambda:button_click("0"))
+button_6 = Button(window, text = "6", command = lambda:button_click("0"))
+button_7 = Button(window, text = "7", command = lambda:button_click("0"))
+button_8 = Button(window, text = "8", command = lambda:button_click("0"))
+button_9 = Button(window, text = "9", command = lambda:button_click("0"))
+button_equals = Button(window, text = "=", command = lambda:button_click("0"), style ='BUTMO.TButton')
+button_dot = Button(window, text = ".", command = lambda:button_click("0"))
+button_plus = Button(window, text = "+", command = lambda:button_click("0"), style = 'BUTMO.TButton')
+button_minus = Button(window, text = "-", command = lambda:button_click("0"), style = 'BUTMO.TButton')
+button_mult = Button(window, text = "×", command = lambda:button_click("0"), style = 'BUTMO.TButton')
+button_div = Button(window, text = "÷", command = lambda:button_click("0"), style = 'BUTMO.TButton')
+button_openpar = Button(window, text = "(", command = lambda:button_click("0"), style = 'BUTMO.TButton')
+button_closepar = Button(window, text = ")", command = lambda:button_click("0"), style = 'BUTMO.TButton')
 button_clear = Button(window, text = "AC", command = my_click, style = 'BUTAC.TButton')
 
 
