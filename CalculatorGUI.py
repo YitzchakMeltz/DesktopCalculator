@@ -10,7 +10,7 @@ window.iconbitmap('CalcuatorIcon.ico')
 
 #window.state('zoomed')     //start the program with screen maximized
 
-window.geometry("400x500")
+window.geometry("368x320")
 
 #create a style object
 style = Style()
@@ -20,7 +20,7 @@ screen_output_style = Style()
 screen_output_style.configure("SCREEN.TLabel", font="calibri", fontsize=55)
 
 result_output_style = Style()
-result_output_style.configure("RESULT.TLabel", font="calibri", fontsize=70)
+result_output_style.configure("RESULT.TLabel", font= ('calibri', 30,'bold'), foreground="#017ad7")
 
 
 button_mathOper_style = Style()
@@ -34,11 +34,11 @@ button_clear_style.configure('BUTAC.TButton',height=7, width=3,font= ('calibri',
 
 calculatorPlaceolder = "Enter your equation"
 calculatorOutput = Label(window, text= calculatorPlaceolder, style="SCREEN.TLabel")
-calculatorOutput.place(x=200,y=50,anchor=CENTER)
+calculatorOutput.place(x=184,y=50,anchor=CENTER)
 
 resultPlaceolder = ""
 resultOutput = Label(window, text= resultPlaceolder, style="RESULT.TLabel")
-resultOutput.place(x=196,y=100,anchor=CENTER)
+resultOutput.place(x=178,y=100,anchor=CENTER)
 
 #test button
 def my_click():
@@ -93,25 +93,25 @@ button_closepar = Button(window, text = ")", command = lambda:click_and_update("
 button_clear = Button(window, text = "AC", command = click_and_clear, style = 'BUTAC.TButton')
 
 
-button_0.place(x= 100,y=450, anchor=CENTER)
-button_1.place(x=60,y=415, anchor=CENTER)
-button_2.place(x=141,y=415, anchor=CENTER)
-button_3.place(x=222,y=415, anchor=CENTER)
-button_4.place(x=60,y=380, anchor=CENTER)
-button_5.place(x=141,y=380, anchor=CENTER)
-button_6.place(x=222,y=380, anchor=CENTER)
-button_7.place(x=60,y=345, anchor=CENTER)
-button_8.place(x=141,y=345, anchor=CENTER)
-button_9.place(x=222,y=345, anchor=CENTER)
-button_equals.place(x=326,y=450, anchor=CENTER)
-button_dot.place(x=222,y=450, anchor=CENTER)
-button_plus.place(x=284,y=380, anchor=CENTER)
-button_minus.place(x=326,y=380, anchor=CENTER)
-button_mult.place(x=284,y=415, anchor=CENTER)
-button_div.place(x=326,y=415, anchor=CENTER)
-button_openpar.place(x=284,y=345, anchor=CENTER)
-button_closepar.place(x=326,y=345, anchor=CENTER)
-button_clear.place(x=284,y=450, anchor=CENTER)
+button_0.place(x= 100,y=280, anchor=CENTER)
+button_1.place(x=60,y=245, anchor=CENTER)
+button_2.place(x=141,y=245, anchor=CENTER)
+button_3.place(x=222,y=245, anchor=CENTER)
+button_4.place(x=60,y=210, anchor=CENTER)
+button_5.place(x=141,y=210, anchor=CENTER)
+button_6.place(x=222,y=210, anchor=CENTER)
+button_7.place(x=60,y=175, anchor=CENTER)
+button_8.place(x=141,y=175, anchor=CENTER)
+button_9.place(x=222,y=175, anchor=CENTER)
+button_equals.place(x=326,y=280, anchor=CENTER)
+button_dot.place(x=222,y=280, anchor=CENTER)
+button_plus.place(x=284,y=210, anchor=CENTER)
+button_minus.place(x=326,y=210, anchor=CENTER)
+button_mult.place(x=284,y=245, anchor=CENTER)
+button_div.place(x=326,y=245, anchor=CENTER)
+button_openpar.place(x=284,y=175, anchor=CENTER)
+button_closepar.place(x=326,y=175, anchor=CENTER)
+button_clear.place(x=284,y=280, anchor=CENTER)
 
 
 window.mainloop()
