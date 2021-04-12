@@ -29,6 +29,20 @@ def my_click():
     my_label = Label(window,text="Button test succesful").pack()
     return
 
+
+mainframe = Notebook(window,width=36, height = 64)
+mainframe.place(x=327,y=432,anchor=CENTER)
+
+class MyButton(Frame):
+    def __init__(self, parent, height=None, width=None, text="", command=None, style=None):
+        Frame.__init__(self, parent, height=height, width=width, style="MyButton.TFrame")
+
+        self.pack_propagate(0)
+        self._btn = Button(window, text=text, command=command, style=style)
+        self._btn.pack(fill=BOTH, expand=1)
+
+
+
 button_0 = Button(window, text = "0", command = my_click, style ='BUT0.TButton')
 button_1 = Button(window, text = "1", command = my_click)
 button_2 = Button(window, text = "2", command = my_click)
