@@ -1,6 +1,6 @@
 from tkinter import*
 from tkinter.ttk import*
-
+import math
 
 mathEq=""
 sum=0
@@ -18,6 +18,8 @@ def button_equals_click():
     sum=sum.replace('÷','/')
     sum=eval(sum)
     print(mathEq)
+    if sum.is_integer():
+        sum = int(sum)
     print('=',sum)
     return
 
