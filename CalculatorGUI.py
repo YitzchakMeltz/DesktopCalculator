@@ -2,6 +2,10 @@ from tkinter import*
 from tkinter.ttk import*
 from mainBackend import*
 
+# -----------------------------------------------------------
+# Create main program window
+# -----------------------------------------------------------
+
 window = Tk()
 
 window.title('Calculator')
@@ -12,6 +16,13 @@ window.iconbitmap('CalcuatorIcon.ico')
 
 window.geometry("368x320")
 
+# -----------------------------------------------------------
+# -----------------------------------------------------------
+
+
+# -----------------------------------------------------------
+# Create styles
+# -----------------------------------------------------------
 #create a style object
 style = Style()
 style.configure('TButton', font= ('calibri', 15), height=7, width=7)
@@ -32,6 +43,14 @@ button_0_style.configure('BUT0.TButton',height=7, width=15)
 button_clear_style = Style()
 button_clear_style.configure('BUTAC.TButton',height=7, width=3,font= ('calibri', 15))
 
+# -----------------------------------------------------------
+# -----------------------------------------------------------
+
+
+# -----------------------------------------------------------
+# Create Calculator Screen Outputs
+# -----------------------------------------------------------
+
 calculatorPlaceolder = "Enter your equation"
 calculatorOutput = Label(window, text= calculatorPlaceolder, style="SCREEN.TLabel")
 calculatorOutput.place(x=184,y=50,anchor=CENTER)
@@ -40,6 +59,13 @@ resultPlaceolder = ""
 resultOutput = Label(window, text= resultPlaceolder, style="RESULT.TLabel")
 resultOutput.place(x=178,y=100,anchor=CENTER)
 
+# -----------------------------------------------------------
+# -----------------------------------------------------------
+
+
+# -----------------------------------------------------------
+# Create Functions
+# -----------------------------------------------------------
 #test button
 def my_click():
     my_label = Label(window,text="Button test succesful").pack()
@@ -72,6 +98,14 @@ def update_result_screen():
     resultOutput.configure(text="= " + str(mainBackend.sum))
     return
 
+# -----------------------------------------------------------
+# -----------------------------------------------------------
+
+
+# -----------------------------------------------------------
+# Create Calculator Buttons
+# -----------------------------------------------------------
+
 button_0 = Button(window, text = "0", command = lambda:click_and_update("0"), style ='BUT0.TButton')
 button_1 = Button(window, text = "1", command = lambda:click_and_update("1"))
 button_2 = Button(window, text = "2", command = lambda:click_and_update("2"))
@@ -92,7 +126,13 @@ button_openpar = Button(window, text = "(", command = lambda:click_and_update("(
 button_closepar = Button(window, text = ")", command = lambda:click_and_update(")"), style = 'BUTMO.TButton')
 button_clear = Button(window, text = "AC", command = click_and_clear, style = 'BUTAC.TButton')
 
+# -----------------------------------------------------------
+# -----------------------------------------------------------
 
+
+# -----------------------------------------------------------
+# Place Calculator Buttons
+# -----------------------------------------------------------
 button_0.place(x= 100,y=280, anchor=CENTER)
 button_1.place(x=60,y=245, anchor=CENTER)
 button_2.place(x=141,y=245, anchor=CENTER)
@@ -113,5 +153,7 @@ button_openpar.place(x=284,y=175, anchor=CENTER)
 button_closepar.place(x=326,y=175, anchor=CENTER)
 button_clear.place(x=284,y=280, anchor=CENTER)
 
+# -----------------------------------------------------------
+# -----------------------------------------------------------
 
 window.mainloop()
