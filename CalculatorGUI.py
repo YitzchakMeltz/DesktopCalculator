@@ -8,9 +8,9 @@ from mainBackend import*
 
 window = Tk()
 
-window.title('Calculator')
+window.title(' Calculator')
 
-window.iconbitmap('CalcuatorIcon.ico') 
+window.iconbitmap('CalculatorLogo_1.0.0.ico') 
 
 #window.state('zoomed')     //start the program with screen maximized
 
@@ -29,6 +29,7 @@ style.configure('TButton', font= ('calibri', 15), height=7, width=7)
 
 screen_output_style = Style()
 screen_output_style.configure("SCREEN.TLabel", font="calibri", fontsize=55)
+
 
 result_output_style = Style()
 result_output_style.configure("RESULT.TLabel", font= ('calibri', 30,'bold'), foreground="#017ad7")
@@ -100,6 +101,9 @@ def update_screen():
 def update_result_screen():
     import mainBackend
     button_equals_click()
+
+    #find a way to make text smaller if the string is more than 16 chars
+    
     resultOutput.configure(text="= " + str(mainBackend.sum))
     return
 

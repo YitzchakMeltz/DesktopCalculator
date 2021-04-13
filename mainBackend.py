@@ -17,12 +17,18 @@ def button_equals_click():
     global sum
     sum=mathEq.replace('×','*')
     sum=sum.replace('÷','/')
-    sum=eval(sum)
+    
+    try:
+        sum=eval(sum)
+    except (SyntaxError):
+        sum="Equation was not entered correctly"
+        return
+
     print(mathEq)
     if isinstance(sum, int):
-        sum = int(sum)
+        sum = str(int(sum))
     else:
-        sum=Fraction(str(sum)).limit_denominator()
+        sum=str(Fraction(str(sum)).limit_denominator())
     print('=',sum)
     return
 
