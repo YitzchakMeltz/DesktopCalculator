@@ -33,6 +33,8 @@ screen_output_style.configure("SCREEN.TLabel", font="calibri", fontsize=55)
 result_output_style = Style()
 result_output_style.configure("RESULT.TLabel", font= ('calibri', 30,'bold'), foreground="#017ad7")
 
+release_output_style = Style()
+release_output_style.configure("RELEASE.TLabel", font= ('calibri', 7), foreground="#969b9f")
 
 button_mathOper_style = Style()
 button_mathOper_style.configure('BUTMO.TButton',height=7, width=3, bg='black')
@@ -58,6 +60,9 @@ calculatorOutput.place(x=184,y=50,anchor=CENTER)
 resultPlaceolder = ""
 resultOutput = Label(window, text= resultPlaceolder, style="RESULT.TLabel")
 resultOutput.place(x=178,y=100,anchor=CENTER)
+
+releaseOutput = Label(window, text= "YitzchakMeltz          Release_1.00.00", style="RELEASE.TLabel")
+releaseOutput.place(x=178,y=312,anchor=CENTER)
 
 # -----------------------------------------------------------
 # -----------------------------------------------------------
