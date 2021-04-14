@@ -1,6 +1,7 @@
 from tkinter import*
 from tkinter.ttk import*
 from mainBackend import*
+from fractions import*
 
 # -----------------------------------------------------------
 # Create main program window
@@ -24,6 +25,9 @@ window.geometry("368x320")
 # Create styles
 # -----------------------------------------------------------
 #create a style object
+
+styleChanged = False
+
 style = Style()
 style.configure('TButton', font= ('calibri', 15), height=7, width=7)
 
@@ -31,8 +35,11 @@ screen_output_style = Style()
 screen_output_style.configure("SCREEN.TLabel", font="calibri", fontsize=55)
 
 
-result_output_style = Style()
-result_output_style.configure("RESULT.TLabel", font= ('calibri', 30,'bold'), foreground="#017ad7")
+result_output_large_style = Style()
+result_output_large_style.configure("RESULTL.TLabel", font= ('calibri', 30,'bold'), foreground="#017ad7")
+
+result_output_medium_style = Style()
+result_output_medium_style.configure("RESULTM.TLabel", font= ('calibri', 15,'bold'), foreground="#017ad7")
 
 release_output_style = Style()
 release_output_style.configure("RELEASE.TLabel", font= ('calibri', 7), foreground="#969b9f")
@@ -59,7 +66,7 @@ calculatorOutput = Label(window, text= calculatorPlaceolder, style="SCREEN.TLabe
 calculatorOutput.place(x=184,y=50,anchor=CENTER)
 
 resultPlaceolder = ""
-resultOutput = Label(window, text= resultPlaceolder, style="RESULT.TLabel")
+resultOutput = Label(window, text= resultPlaceolder, style="RESULTL.TLabel")
 resultOutput.place(x=178,y=100,anchor=CENTER)
 
 releaseOutput = Label(window, text= "YitzchakMeltz          Release_1.00.00", style="RELEASE.TLabel")
@@ -100,11 +107,20 @@ def update_screen():
 
 def update_result_screen():
     import mainBackend
+    global styleChanged
+   
     button_equals_click()
 
-    #find a way to make text smaller if the string is more than 16 chars
-    
-    resultOutput.configure(text="= " + str(mainBackend.sum))
+    if styleChanged:
+        resultOutput.configure(style="RESULTL.TLabel")          # reset the style to large
+        
+    if len(str((mainBackend.sum)))>15:
+        resultOutput.configure(style="RESULTM.TLabel")
+        styleChanged = True
+    if isinstance(mainBackend.sum,int) or isinstance(mainBackend.sum,Fraction):
+        resultOutput.configure(text="= " + str(mainBackend.sum))
+    else:
+        resultOutput.configure(text=mainBackend.sum)
     return
 
 # -----------------------------------------------------------

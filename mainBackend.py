@@ -26,9 +26,11 @@ def button_equals_click():
 
     print(mathEq)
     if isinstance(sum, int):
-        sum = str(int(sum))
+        sum = int(sum)
     else:
-        sum=str(Fraction(str(sum)).limit_denominator())
+        sum=Fraction(str(sum)).limit_denominator()
+
+
     print('=',sum)
     return
 
