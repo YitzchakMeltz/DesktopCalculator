@@ -2,6 +2,7 @@ from tkinter import*
 from tkinter.ttk import*
 from mainBackend import*
 from fractions import*
+from ctypes import windll
 
 # -----------------------------------------------------------
 # Create main program window
@@ -17,6 +18,9 @@ window.iconbitmap('CalculatorLogo_1.0.0.ico')
 
 window.geometry("368x320")
 
+window.attributes('-alpha', 0.97)       # make window slightly transparent (does not blur)
+
+windll.shcore.SetProcessDpiAwareness(1)
 # -----------------------------------------------------------
 # -----------------------------------------------------------
 
