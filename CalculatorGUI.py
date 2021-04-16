@@ -20,6 +20,8 @@ window.geometry("368x320")
 
 window.resizable(0,0)   #remove maximize button
 
+window.resizable(False, False)  #make window not resizable
+
 window.attributes('-alpha', 0.97)       # make window slightly transparent (does not blur)
 
 
