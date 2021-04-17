@@ -42,6 +42,8 @@ style.configure('TButton', font= ('calibri', 15), height=7, width=7)
 screen_output_style = Style()
 screen_output_style.configure("SCREEN.TLabel", font="calibri", fontsize=55)
 
+screen_placeholder_style = Style()
+screen_placeholder_style.configure("SCREENPH.TLabel", font="calibri", fontsize=55,foreground="#8a9599")
 
 result_output_large_style = Style()
 result_output_large_style.configure("RESULTL.TLabel", font= ('calibri', 30,'bold'), foreground="#017ad7")
@@ -70,7 +72,7 @@ button_clear_style.configure('BUTAC.TButton',height=7, width=3,font= ('calibri',
 # -----------------------------------------------------------
 
 calculatorPlaceolder = "Enter your equation"
-calculatorOutput = Label(window, text= calculatorPlaceolder, style="SCREEN.TLabel")
+calculatorOutput = Label(window, text= calculatorPlaceolder, style="SCREENPH.TLabel")
 calculatorOutput.place(x=184,y=50,anchor=CENTER)
 
 resultPlaceolder = ""
@@ -110,7 +112,7 @@ def equal_click():
 
 def update_screen():
     import mainBackend
-    calculatorOutput.configure(text=mainBackend.mathEq)
+    calculatorOutput.configure(text=mainBackend.mathEq,style="SCREEN.TLabel")
     return
 
 def update_result_screen():
