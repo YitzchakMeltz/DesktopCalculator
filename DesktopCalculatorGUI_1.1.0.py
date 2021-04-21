@@ -9,12 +9,21 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from mainBackend import*
 
+# Handle high resolution displays:
+if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
+    QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
+if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
+    QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(331, 411)
+       
+        # set fixed size and disable resizing and maximizing window
+        MainWindow.setFixedSize(331, 411)
+       
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.button_7 = QtWidgets.QPushButton(self.centralwidget)
