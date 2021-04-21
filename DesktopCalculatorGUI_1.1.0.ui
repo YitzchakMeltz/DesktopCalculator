@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>332</width>
+    <width>331</width>
     <height>411</height>
    </rect>
   </property>
@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="button_7">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -53,7 +53,7 @@ background-color: rgb(212, 212, 212);
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="button_8">
     <property name="geometry">
      <rect>
       <x>100</x>
@@ -92,7 +92,7 @@ background-color: rgb(212, 212, 212);
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="button_9">
     <property name="geometry">
      <rect>
       <x>180</x>
@@ -131,7 +131,7 @@ background-color: rgb(212, 212, 212);
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="button_4">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -170,7 +170,7 @@ background-color: rgb(212, 212, 212);
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_5">
+   <widget class="QPushButton" name="button_5">
     <property name="geometry">
      <rect>
       <x>100</x>
@@ -209,7 +209,7 @@ background-color: rgb(212, 212, 212);
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_6">
+   <widget class="QPushButton" name="button_6">
     <property name="geometry">
      <rect>
       <x>180</x>
@@ -248,7 +248,7 @@ background-color: rgb(212, 212, 212);
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_7">
+   <widget class="QPushButton" name="button_1">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -287,7 +287,7 @@ background-color: rgb(212, 212, 212);
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_8">
+   <widget class="QPushButton" name="button_2">
     <property name="geometry">
      <rect>
       <x>100</x>
@@ -326,7 +326,7 @@ background-color: rgb(212, 212, 212);
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_9">
+   <widget class="QPushButton" name="button_3">
     <property name="geometry">
      <rect>
       <x>180</x>
@@ -365,7 +365,7 @@ background-color: rgb(212, 212, 212);
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_10">
+   <widget class="QPushButton" name="button_clear">
     <property name="geometry">
      <rect>
       <x>180</x>
@@ -404,7 +404,7 @@ background-color: rgb(212, 212, 212);
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_11">
+   <widget class="QPushButton" name="button_0">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -443,7 +443,7 @@ background-color: rgb(212, 212, 212);
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_12">
+   <widget class="QPushButton" name="button_dot">
     <property name="geometry">
      <rect>
       <x>100</x>
@@ -482,7 +482,7 @@ background-color: rgb(212, 212, 212);
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_13">
+   <widget class="QPushButton" name="button_minus">
     <property name="geometry">
      <rect>
       <x>260</x>
@@ -521,7 +521,7 @@ background-color: rgb(187, 199, 211);
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_14">
+   <widget class="QPushButton" name="button_plus">
     <property name="geometry">
      <rect>
       <x>260</x>
@@ -560,7 +560,7 @@ background-color: rgb(187, 199, 211);
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_15">
+   <widget class="QPushButton" name="button_openPar">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -597,7 +597,7 @@ background-color: rgb(211, 211, 211);
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_16">
+   <widget class="QPushButton" name="button_closePar">
     <property name="geometry">
      <rect>
       <x>100</x>
@@ -634,7 +634,7 @@ background-color: rgb(211, 211, 211);
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_17">
+   <widget class="QPushButton" name="button_backspace">
     <property name="geometry">
      <rect>
       <x>180</x>
@@ -673,7 +673,7 @@ background-color: rgb(211, 211, 211);
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_18">
+   <widget class="QPushButton" name="button_div">
     <property name="geometry">
      <rect>
       <x>260</x>
@@ -712,7 +712,7 @@ background-color: rgb(187, 199, 211);
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_19">
+   <widget class="QPushButton" name="button_mult">
     <property name="geometry">
      <rect>
       <x>260</x>
@@ -751,7 +751,7 @@ background-color: rgb(187, 199, 211);
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_20">
+   <widget class="QPushButton" name="button_equals">
     <property name="geometry">
      <rect>
       <x>260</x>
@@ -790,7 +790,7 @@ background-color: rgb(217, 118, 72);
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="releaseLabel">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -813,7 +813,7 @@ color: rgb(197, 197, 197);</string>
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="mathEq">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -833,13 +833,33 @@ color: rgb(190, 190, 190);</string>
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <widget class="QLabel" name="resultOutput">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>70</y>
+      <width>271</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 23pt &quot;calibri&quot;;
+color: rgb(94, 94, 94);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>332</width>
+     <width>331</width>
      <height>22</height>
     </rect>
    </property>
