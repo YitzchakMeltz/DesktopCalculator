@@ -631,6 +631,7 @@ class Ui_MainWindow(object):
         import mainBackend110
         button_backspace_click()
         self.update_screen()
+        self.resultOutput.setText("")
 
 
 

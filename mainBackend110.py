@@ -28,10 +28,15 @@ def button_equals_click():
         return
 
     print(mathEq)
+
     if isinstance(sum, int):
         sum = int(sum)
     else:
-        sum=Fraction(str(sum)).limit_denominator()
+        try:
+            sum=Fraction(str(sum)).limit_denominator()
+        except (ValueError):
+            sum="    Equation was not entered correctly"
+        return
 
 
     print('=',sum)
