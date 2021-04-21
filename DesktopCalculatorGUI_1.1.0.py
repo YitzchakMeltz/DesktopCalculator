@@ -9,7 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from mainBackend import*
+from mainBackend110 import*
 
 # Handle high resolution displays:
 if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
@@ -47,6 +47,9 @@ class Ui_MainWindow(object):
         self.button_7.setDefault(False)
         self.button_7.setFlat(True)
         self.button_7.setObjectName("button_7")
+        self.button_7.clicked.connect(lambda:self.click_and_update("7"))
+
+
         self.button_8 = QtWidgets.QPushButton(self.centralwidget)
         self.button_8.setGeometry(QtCore.QRect(100, 190, 71, 41))
         self.button_8.setStyleSheet("QPushButton\n"
@@ -68,6 +71,9 @@ class Ui_MainWindow(object):
         self.button_8.setDefault(False)
         self.button_8.setFlat(True)
         self.button_8.setObjectName("button_8")
+        self.button_8.clicked.connect(lambda:self.click_and_update("8"))
+
+
         self.button_9 = QtWidgets.QPushButton(self.centralwidget)
         self.button_9.setGeometry(QtCore.QRect(180, 190, 71, 41))
         self.button_9.setStyleSheet("QPushButton\n"
@@ -89,6 +95,9 @@ class Ui_MainWindow(object):
         self.button_9.setDefault(False)
         self.button_9.setFlat(True)
         self.button_9.setObjectName("button_9")
+        self.button_9.clicked.connect(lambda:self.click_and_update("9"))
+
+
         self.button_4 = QtWidgets.QPushButton(self.centralwidget)
         self.button_4.setGeometry(QtCore.QRect(20, 240, 71, 41))
         self.button_4.setStyleSheet("QPushButton\n"
@@ -110,6 +119,9 @@ class Ui_MainWindow(object):
         self.button_4.setDefault(False)
         self.button_4.setFlat(True)
         self.button_4.setObjectName("button_4")
+        self.button_4.clicked.connect(lambda:self.click_and_update("4"))
+
+
         self.button_5 = QtWidgets.QPushButton(self.centralwidget)
         self.button_5.setGeometry(QtCore.QRect(100, 240, 71, 41))
         self.button_5.setStyleSheet("QPushButton\n"
@@ -131,6 +143,9 @@ class Ui_MainWindow(object):
         self.button_5.setDefault(False)
         self.button_5.setFlat(True)
         self.button_5.setObjectName("button_5")
+        self.button_5.clicked.connect(lambda:self.click_and_update("5"))
+
+
         self.button_6 = QtWidgets.QPushButton(self.centralwidget)
         self.button_6.setGeometry(QtCore.QRect(180, 240, 71, 41))
         self.button_6.setStyleSheet("QPushButton\n"
@@ -152,6 +167,9 @@ class Ui_MainWindow(object):
         self.button_6.setDefault(False)
         self.button_6.setFlat(True)
         self.button_6.setObjectName("button_6")
+        self.button_6.clicked.connect(lambda:self.click_and_update("6"))
+
+
         self.button_1 = QtWidgets.QPushButton(self.centralwidget)
         self.button_1.setGeometry(QtCore.QRect(20, 290, 71, 41))
         self.button_1.setStyleSheet("QPushButton\n"
@@ -173,6 +191,9 @@ class Ui_MainWindow(object):
         self.button_1.setDefault(False)
         self.button_1.setFlat(True)
         self.button_1.setObjectName("button_1")
+        self.button_1.clicked.connect(lambda:self.click_and_update("1"))
+
+
         self.button_2 = QtWidgets.QPushButton(self.centralwidget)
         self.button_2.setGeometry(QtCore.QRect(100, 290, 71, 41))
         self.button_2.setStyleSheet("QPushButton\n"
@@ -194,6 +215,9 @@ class Ui_MainWindow(object):
         self.button_2.setDefault(False)
         self.button_2.setFlat(True)
         self.button_2.setObjectName("button_2")
+        self.button_2.clicked.connect(lambda:self.click_and_update("2"))
+
+
         self.button_3 = QtWidgets.QPushButton(self.centralwidget)
         self.button_3.setGeometry(QtCore.QRect(180, 290, 71, 41))
         self.button_3.setStyleSheet("QPushButton\n"
@@ -215,6 +239,9 @@ class Ui_MainWindow(object):
         self.button_3.setDefault(False)
         self.button_3.setFlat(True)
         self.button_3.setObjectName("button_3")
+        self.button_3.clicked.connect(lambda:self.click_and_update("3"))
+
+
         self.button_clear = QtWidgets.QPushButton(self.centralwidget)
         self.button_clear.setGeometry(QtCore.QRect(180, 340, 71, 41))
         self.button_clear.setStyleSheet("QPushButton\n"
@@ -236,6 +263,9 @@ class Ui_MainWindow(object):
         self.button_clear.setDefault(False)
         self.button_clear.setFlat(True)
         self.button_clear.setObjectName("button_clear")
+        self.button_clear.clicked.connect(lambda:self.click_and_update("7"))
+
+
         self.button_0 = QtWidgets.QPushButton(self.centralwidget)
         self.button_0.setGeometry(QtCore.QRect(20, 340, 71, 41))
         self.button_0.setStyleSheet("QPushButton\n"
@@ -257,6 +287,9 @@ class Ui_MainWindow(object):
         self.button_0.setDefault(False)
         self.button_0.setFlat(True)
         self.button_0.setObjectName("button_0")
+        self.button_0.clicked.connect(lambda:self.click_and_update("0"))
+
+
         self.button_dot = QtWidgets.QPushButton(self.centralwidget)
         self.button_dot.setGeometry(QtCore.QRect(100, 340, 71, 41))
         self.button_dot.setStyleSheet("QPushButton\n"
@@ -278,6 +311,9 @@ class Ui_MainWindow(object):
         self.button_dot.setDefault(False)
         self.button_dot.setFlat(True)
         self.button_dot.setObjectName("button_dot")
+        self.button_dot.clicked.connect(lambda:self.click_and_update("."))
+
+
         self.button_minus = QtWidgets.QPushButton(self.centralwidget)
         self.button_minus.setGeometry(QtCore.QRect(260, 240, 51, 41))
         self.button_minus.setStyleSheet("QPushButton\n"
@@ -299,6 +335,9 @@ class Ui_MainWindow(object):
         self.button_minus.setDefault(False)
         self.button_minus.setFlat(True)
         self.button_minus.setObjectName("button_minus")
+        self.button_minus.clicked.connect(lambda:self.click_and_update(" - "))
+
+
         self.button_plus = QtWidgets.QPushButton(self.centralwidget)
         self.button_plus.setGeometry(QtCore.QRect(260, 290, 51, 41))
         self.button_plus.setStyleSheet("QPushButton\n"
@@ -320,6 +359,9 @@ class Ui_MainWindow(object):
         self.button_plus.setDefault(False)
         self.button_plus.setFlat(True)
         self.button_plus.setObjectName("button_plus")
+        self.button_plus.clicked.connect(lambda:self.click_and_update(" + "))
+
+
         self.button_openPar = QtWidgets.QPushButton(self.centralwidget)
         self.button_openPar.setGeometry(QtCore.QRect(20, 140, 71, 41))
         self.button_openPar.setStyleSheet("QPushButton\n"
@@ -339,6 +381,9 @@ class Ui_MainWindow(object):
         self.button_openPar.setDefault(False)
         self.button_openPar.setFlat(True)
         self.button_openPar.setObjectName("button_openPar")
+        self.button_openPar.clicked.connect(lambda:self.click_and_update("("))
+
+
         self.button_closePar = QtWidgets.QPushButton(self.centralwidget)
         self.button_closePar.setGeometry(QtCore.QRect(100, 140, 71, 41))
         self.button_closePar.setStyleSheet("QPushButton\n"
@@ -358,6 +403,9 @@ class Ui_MainWindow(object):
         self.button_closePar.setDefault(False)
         self.button_closePar.setFlat(True)
         self.button_closePar.setObjectName("button_closePar")
+        self.button_closePar.clicked.connect(lambda:self.click_and_update(")"))
+
+
         self.button_backspace = QtWidgets.QPushButton(self.centralwidget)
         self.button_backspace.setGeometry(QtCore.QRect(180, 140, 71, 41))
         self.button_backspace.setStyleSheet("QPushButton\n"
@@ -379,6 +427,9 @@ class Ui_MainWindow(object):
         self.button_backspace.setDefault(False)
         self.button_backspace.setFlat(True)
         self.button_backspace.setObjectName("button_backspace")
+        self.button_backspace.clicked.connect(lambda:self.click_and_update("7"))
+
+
         self.button_div = QtWidgets.QPushButton(self.centralwidget)
         self.button_div.setGeometry(QtCore.QRect(260, 140, 51, 41))
         self.button_div.setStyleSheet("QPushButton\n"
@@ -400,6 +451,9 @@ class Ui_MainWindow(object):
         self.button_div.setDefault(False)
         self.button_div.setFlat(True)
         self.button_div.setObjectName("button_div")
+        self.button_div.clicked.connect(lambda:self.click_and_update(" ÷ "))
+
+
         self.button_mult = QtWidgets.QPushButton(self.centralwidget)
         self.button_mult.setGeometry(QtCore.QRect(260, 190, 51, 41))
         self.button_mult.setStyleSheet("QPushButton\n"
@@ -421,6 +475,9 @@ class Ui_MainWindow(object):
         self.button_mult.setDefault(False)
         self.button_mult.setFlat(True)
         self.button_mult.setObjectName("button_mult")
+        self.button_mult.clicked.connect(lambda:self.click_and_update(" × "))
+
+
         self.button_equals = QtWidgets.QPushButton(self.centralwidget)
         self.button_equals.setGeometry(QtCore.QRect(260, 340, 51, 41))
         self.button_equals.setStyleSheet("QPushButton\n"
@@ -442,6 +499,9 @@ class Ui_MainWindow(object):
         self.button_equals.setDefault(False)
         self.button_equals.setFlat(True)
         self.button_equals.setObjectName("button_equals")
+        self.button_equals.clicked.connect(lambda:self.click_and_update(" × "))
+
+
         self.releaseLabel = QtWidgets.QLabel(self.centralwidget)
         self.releaseLabel.setGeometry(QtCore.QRect(20, 380, 161, 16))
         self.releaseLabel.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -449,12 +509,16 @@ class Ui_MainWindow(object):
 "color: rgb(197, 197, 197);")
         self.releaseLabel.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.releaseLabel.setObjectName("releaseLabel")
+
+
         self.mathEq = QtWidgets.QLabel(self.centralwidget)
         self.mathEq.setGeometry(QtCore.QRect(20, 30, 291, 20))
         self.mathEq.setStyleSheet("font: 12pt \"MS Shell Dlg 2\";\n"
 "color: rgb(190, 190, 190);")
         self.mathEq.setAlignment(QtCore.Qt.AlignCenter)
         self.mathEq.setObjectName("mathEq")
+
+
         self.resultOutput = QtWidgets.QLabel(self.centralwidget)
         self.resultOutput.setGeometry(QtCore.QRect(20, 70, 271, 31))
         self.resultOutput.setStyleSheet("font: 23pt \"calibri\";\n"
@@ -500,6 +564,11 @@ class Ui_MainWindow(object):
         self.releaseLabel.setText(_translate("MainWindow", "  YitzchakMeltz   Release_1.1.0"))
         self.mathEq.setText(_translate("MainWindow", "Enter Your Equation"))
 
+    def click_and_update(self,userClick):
+        button_click(userClick)
+        #update_screen()
+        return
+
 
 if __name__ == "__main__":
     import sys
@@ -509,3 +578,4 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
+

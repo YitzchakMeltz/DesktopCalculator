@@ -9,7 +9,7 @@ sum=0
 def button_click(userClick):
     global mathEq
     mathEq += userClick
-    #update_screen()
+    print(mathEq)
     return
 
 def button_equals_click():
