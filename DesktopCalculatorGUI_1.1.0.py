@@ -17,11 +17,13 @@ if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
 if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
     QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
 
+resultStyleChanged = False
+placeholderThere = True
+
 class Ui_MainWindow(object):
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-
-        resultStyleChanged = False
 
         icon = QtGui.QIcon("CalculatorLogo(50)_1.0.0.ico")
         MainWindow.setWindowIcon(icon)
@@ -432,7 +434,7 @@ class Ui_MainWindow(object):
         self.button_backspace.setDefault(False)
         self.button_backspace.setFlat(True)
         self.button_backspace.setObjectName("button_backspace")
-        self.button_backspace.clicked.connect(lambda:self.click_and_update("7"))
+        self.button_backspace.clicked.connect(self.backspace_click)
 
 
         self.button_div = QtWidgets.QPushButton(self.centralwidget)
@@ -527,7 +529,7 @@ class Ui_MainWindow(object):
         self.resultOutput = QtWidgets.QLabel(self.centralwidget)
         self.resultOutput.setGeometry(QtCore.QRect(20, 70, 271, 31))
         self.resultOutput.setStyleSheet("font: 23pt \"calibri\";\n"
-"color: rgb(94, 94, 94);")
+"color: rgb(70, 70, 70);")
         self.resultOutput.setText("")
         self.resultOutput.setAlignment(QtCore.Qt.AlignCenter)
         self.resultOutput.setObjectName("resultOutput")
@@ -569,44 +571,67 @@ class Ui_MainWindow(object):
         self.releaseLabel.setText(_translate("MainWindow", "  YitzchakMeltz   Release_1.1.0"))
         self.screenOutput.setText(_translate("MainWindow", "Enter Your Equation"))
 
+
+
     def click_and_update(self,userClick):
+        global placeholderThere
         button_click(userClick)
+        placeholderThere = False
         self.update_screen()
         return
 
     def update_screen(self):
         import mainBackend110
-        print("printed equation: ",mainBackend110.mathEq)
+        global placeholderThere
+        import mainBackend110
         self.screenOutput.setText(mainBackend110.mathEq)
+        if mainBackend110.mathEq == "":
+                self.screenOutput.setText("Enter Your Equation")
+                placeholderThere = True
+
+        if placeholderThere:
+                self.screenOutput.setStyleSheet("font: 12pt \"MS Shell Dlg 2\";\n""color: rgb(190, 190, 190);")
+        else:
+               self.screenOutput.setStyleSheet("font: 12pt \"MS Shell Dlg 2\";\n""color: rgb(110, 110, 110);") 
         return
 
     def click_and_clear(self):
         button_clear_click()
         self.update_screen()
+        self.update_result_screen()
+        self.resultOutput.setText("")
         return
 
     def equal_click(self):
         button_equals_click()
         self.update_screen()
+        self.update_result_screen()
         return
 
     def update_result_screen(self):
-        import mainBackend
-        self.resultStyleChanged
+        import mainBackend110
+        global resultStyleChanged
    
         button_equals_click()
 
-        if self.resultStyleChanged:
-               resultOutput.configure(style="RESULTL.TLabel")          # reset the style to large
+        if resultStyleChanged:
+               self.resultOutput.setStyleSheet("font: 23pt \"calibri\";\n""color: rgb(70, 70, 70);")          # reset the style to large
         
-        if len(str((mainBackend.sum)))>15:
-                resultOutput.configure(style="RESULTM.TLabel")
-                self.resultStyleChanged = True
-        if isinstance(mainBackend.sum,int) or isinstance(mainBackend.sum,Fraction):
-                resultOutput.configure(text="= " + str(mainBackend.sum))
+        if len(str((mainBackend110.sum)))>15:
+                self.resultOutput.setStyleSheet("font: 13pt \"calibri\";\n""color: rgb(70, 70, 70);")
+                resultStyleChanged = True
+
+        if isinstance(mainBackend110.sum,int) or isinstance(mainBackend110.sum,Fraction):
+                self.resultOutput.setText("= " + str(mainBackend110.sum))
         else:
-                resultOutput.configure(text=mainBackend.sum)
+                self.resultOutput.setText(mainBackend110.sum)
         return
+
+    def backspace_click(self):
+        import mainBackend110
+        button_backspace_click()
+        self.update_screen()
+
 
 
 if __name__ == "__main__":

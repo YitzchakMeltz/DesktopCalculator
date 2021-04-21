@@ -18,10 +18,13 @@ def button_equals_click():
     sum=mathEq.replace('×','*')
     sum=sum.replace('÷','/')
     
+    if sum == "":
+        return
+
     try:
         sum=eval(sum)
     except (SyntaxError):
-        sum="Equation was not entered correctly"
+        sum="    Equation was not entered correctly"
         return
 
     print(mathEq)
@@ -37,4 +40,11 @@ def button_equals_click():
 def button_clear_click():
     global mathEq
     mathEq=""
+    return
+
+def button_backspace_click():
+    global mathEq
+    if len(mathEq) == 0:
+        return
+    mathEq = mathEq[:-1]
     return
