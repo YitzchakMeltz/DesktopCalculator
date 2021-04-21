@@ -21,6 +21,8 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
 
+        resultStyleChanged = False
+
         icon = QtGui.QIcon("CalculatorLogo(50)_1.0.0.ico")
         MainWindow.setWindowIcon(icon)
         
@@ -573,19 +575,37 @@ class Ui_MainWindow(object):
         return
 
     def update_screen(self):
-        import mainBackend
-        self.screenOutput.setText(mainBackend.mathEq)
+        import mainBackend110
+        print("printed equation: ",mainBackend110.mathEq)
+        self.screenOutput.setText(mainBackend110.mathEq)
         return
 
     def click_and_clear(self):
         button_clear_click()
         self.update_screen()
-        
         return
 
     def equal_click(self):
         button_equals_click()
         self.update_screen()
+        return
+
+    def update_result_screen(self):
+        import mainBackend
+        self.resultStyleChanged
+   
+        button_equals_click()
+
+        if self.resultStyleChanged:
+               resultOutput.configure(style="RESULTL.TLabel")          # reset the style to large
+        
+        if len(str((mainBackend.sum)))>15:
+                resultOutput.configure(style="RESULTM.TLabel")
+                self.resultStyleChanged = True
+        if isinstance(mainBackend.sum,int) or isinstance(mainBackend.sum,Fraction):
+                resultOutput.configure(text="= " + str(mainBackend.sum))
+        else:
+                resultOutput.configure(text=mainBackend.sum)
         return
 
 
