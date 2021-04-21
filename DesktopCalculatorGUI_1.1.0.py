@@ -20,7 +20,10 @@ if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-       
+
+        icon = QtGui.QIcon("CalculatorLogo(50)_1.0.0.ico")
+        MainWindow.setWindowIcon(icon)
+        
         # set fixed size and disable resizing and maximizing window
         MainWindow.setFixedSize(331, 411)
        
@@ -263,7 +266,7 @@ class Ui_MainWindow(object):
         self.button_clear.setDefault(False)
         self.button_clear.setFlat(True)
         self.button_clear.setObjectName("button_clear")
-        self.button_clear.clicked.connect(lambda:self.click_and_update("7"))
+        self.button_clear.clicked.connect(self.click_and_clear)
 
 
         self.button_0 = QtWidgets.QPushButton(self.centralwidget)
@@ -499,7 +502,7 @@ class Ui_MainWindow(object):
         self.button_equals.setDefault(False)
         self.button_equals.setFlat(True)
         self.button_equals.setObjectName("button_equals")
-        self.button_equals.clicked.connect(lambda:self.click_and_update(" × "))
+        self.button_equals.clicked.connect(self.equal_click)
 
 
         self.releaseLabel = QtWidgets.QLabel(self.centralwidget)
@@ -511,12 +514,12 @@ class Ui_MainWindow(object):
         self.releaseLabel.setObjectName("releaseLabel")
 
 
-        self.mathEq = QtWidgets.QLabel(self.centralwidget)
-        self.mathEq.setGeometry(QtCore.QRect(20, 30, 291, 20))
-        self.mathEq.setStyleSheet("font: 12pt \"MS Shell Dlg 2\";\n"
+        self.screenOutput = QtWidgets.QLabel(self.centralwidget)
+        self.screenOutput.setGeometry(QtCore.QRect(20, 30, 291, 20))
+        self.screenOutput.setStyleSheet("font: 12pt \"MS Shell Dlg 2\";\n"
 "color: rgb(190, 190, 190);")
-        self.mathEq.setAlignment(QtCore.Qt.AlignCenter)
-        self.mathEq.setObjectName("mathEq")
+        self.screenOutput.setAlignment(QtCore.Qt.AlignCenter)
+        self.screenOutput.setObjectName("mathEq")
 
 
         self.resultOutput = QtWidgets.QLabel(self.centralwidget)
@@ -540,7 +543,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", " Calculator"))
         self.button_7.setText(_translate("MainWindow", "7"))
         self.button_8.setText(_translate("MainWindow", "8"))
         self.button_9.setText(_translate("MainWindow", "9"))
@@ -562,11 +565,27 @@ class Ui_MainWindow(object):
         self.button_mult.setText(_translate("MainWindow", "×"))
         self.button_equals.setText(_translate("MainWindow", "="))
         self.releaseLabel.setText(_translate("MainWindow", "  YitzchakMeltz   Release_1.1.0"))
-        self.mathEq.setText(_translate("MainWindow", "Enter Your Equation"))
+        self.screenOutput.setText(_translate("MainWindow", "Enter Your Equation"))
 
     def click_and_update(self,userClick):
         button_click(userClick)
-        #update_screen()
+        self.update_screen()
+        return
+
+    def update_screen(self):
+        import mainBackend
+        self.screenOutput.setText(mainBackend.mathEq)
+        return
+
+    def click_and_clear(self):
+        button_clear_click()
+        self.update_screen()
+        
+        return
+
+    def equal_click(self):
+        button_equals_click()
+        self.update_screen()
         return
 
 
