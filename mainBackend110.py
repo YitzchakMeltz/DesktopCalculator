@@ -3,14 +3,23 @@ from tkinter.ttk import*
 import math
 from fractions import*
 
-mathEq=""
-sum=0
+mathEq=""      # initialize the equation string
+sum=0          # initialize the numerical sum
+
+#--------------------------------------------------------------------
+# function that is activated when user inputs a char that builds the equation
 
 def button_click(userClick):
     global mathEq
+
+    # add what the user clicked to the equation string
     mathEq += userClick
+
+    # print current equation string for debugging purposes
     print(mathEq)
     return
+
+#--------------------------------------------------------------------
 
 def button_equals_click():
     global mathEq
@@ -42,10 +51,18 @@ def button_equals_click():
     print('=',sum)
     return
 
+#--------------------------------------------------------------------
+# function that is activated when the AC button is clicked
+# Resets the math equation string to an empty string
+
 def button_clear_click():
     global mathEq
     mathEq=""
     return
+
+#--------------------------------------------------------------------
+# function that is activated when the backspace button is clicked
+# removes the last character that's in the equation (FILO)
 
 def button_backspace_click():
     global mathEq
@@ -63,3 +80,5 @@ def button_backspace_click():
     # remove last character entered
     mathEq = mathEq[:-1]
     return
+
+#--------------------------------------------------------------------
