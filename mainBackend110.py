@@ -20,6 +20,7 @@ def button_click(userClick):
     return
 
 #--------------------------------------------------------------------
+# function that is activated when equals button is clicked
 
 def button_equals_click():
     global mathEq
