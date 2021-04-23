@@ -25,20 +25,26 @@ def button_click(userClick):
 def button_equals_click():
     global mathEq
     global sum
+
+    # replace user math operator symbols with programing operating operators
     sum=mathEq.replace('×','*')
     sum=sum.replace('÷','/')
     
+    # if the string with the equation is empty, the function is finished
     if sum == "":
         return
 
+    # evaluate the equation
     try:
         sum=eval(sum)
     except (SyntaxError):
         sum="    Equation was not entered correctly"
         return
 
+    # print the math equation to the console for debugging purposes
     print(mathEq)
 
+    # check if result is an integer or a fraction
     if isinstance(sum, int):
         sum = int(sum)
     else:
@@ -48,7 +54,7 @@ def button_equals_click():
             sum="    Equation was not entered correctly"
         return
 
-
+    # print the solution to the console for debugging purposes
     print('=',sum)
     return
 

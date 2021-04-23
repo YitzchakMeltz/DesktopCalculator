@@ -25,7 +25,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
 
-        icon = QtGui.QIcon("CalculatorLogo(50)_1.0.0.ico")
+        icon = QtGui.QIcon("CalculatorLogo(150p)_1.0.0.ico")
         MainWindow.setWindowIcon(icon)
         
         # set fixed size and disable resizing and maximizing window

@@ -1,1 +1,1 @@
-pyinstaller --onefile -w --icon=C:\Users\hmeltz\Documents\GitHub\DesktopCalculator\CalculatorLogo_1.0.0.ico C:\Users\hmeltz\Documents\GitHub\DesktopCalculator\CalculatorGUI.py
+pyinstaller --onefile -w --icon=C:\Users\hmeltz\Documents\GitHub\DesktopCalculator\Logos\CalculatorLogo(150p)_1.0.0.ico C:\Users\hmeltz\Documents\GitHub\DesktopCalculator\DesktopCalculatorGUI_1.1.0.py
