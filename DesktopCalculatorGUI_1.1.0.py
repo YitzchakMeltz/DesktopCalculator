@@ -530,6 +530,15 @@ class Ui_MainWindow(object):
         self.screenOutput.setObjectName("mathEq")
 
 
+        self.decimalResultOutput = QtWidgets.QLabel(self.centralwidget)
+        self.decimalResultOutput.setGeometry(QtCore.QRect(20, 100, 271, 31))
+        self.decimalResultOutput.setStyleSheet("font: 11pt \"calibri\";\n"
+"color: rgb(150, 150, 150);")
+        self.decimalResultOutput.setText("")
+        self.decimalResultOutput.setAlignment(QtCore.Qt.AlignCenter)
+        self.decimalResultOutput.setObjectName("decimalResultOutput")
+
+
         self.resultOutput = QtWidgets.QLabel(self.centralwidget)
         self.resultOutput.setGeometry(QtCore.QRect(20, 70, 271, 31))
         self.resultOutput.setStyleSheet("font: 23pt \"calibri\";\n"
@@ -537,6 +546,8 @@ class Ui_MainWindow(object):
         self.resultOutput.setText("")
         self.resultOutput.setAlignment(QtCore.Qt.AlignCenter)
         self.resultOutput.setObjectName("resultOutput")
+
+
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 331, 22))
@@ -589,6 +600,7 @@ class Ui_MainWindow(object):
         global placeholderThere
         import mainBackend110
         self.screenOutput.setText(mainBackend110.mathEq)
+        self.decimalResultOutput.setText(mainBackend110.decimalSum)
         if mainBackend110.mathEq == "":
                 self.screenOutput.setText("Enter Your Equation")
                 placeholderThere = True
@@ -636,6 +648,7 @@ class Ui_MainWindow(object):
         button_backspace_click()
         self.update_screen()
         self.resultOutput.setText("")
+        self.decimalResultOutput.setText("")
 
 
 

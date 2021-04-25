@@ -5,6 +5,7 @@ from fractions import*
 
 mathEq=""      # initialize the equation string
 sum=0          # initialize the numerical sum
+decimalSum=""
 
 #--------------------------------------------------------------------
 # function that is activated when user inputs a char that builds the equation
@@ -25,6 +26,7 @@ def button_click(userClick):
 def button_equals_click():
     global mathEq
     global sum
+    global decimalSum
 
     # replace user math operator symbols with programing operating operators
     sum=mathEq.replace('×','*')
@@ -47,8 +49,10 @@ def button_equals_click():
     # check if result is an integer or a fraction
     if isinstance(sum, int):
         sum = int(sum)
+        decimalSum=""
     else:
         try:
+            decimalSum="   or   " + str(sum)
             sum=Fraction(str(sum)).limit_denominator()
         except (ValueError):
             sum="    Equation was not entered correctly"
@@ -63,8 +67,9 @@ def button_equals_click():
 # Resets the math equation string to an empty string
 
 def button_clear_click():
-    global mathEq
+    global mathEq, decimalSum
     mathEq=""
+    decimalSum=""
     return
 
 #--------------------------------------------------------------------
