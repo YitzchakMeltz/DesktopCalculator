@@ -9,7 +9,11 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import QDialog, QPushButton, QVBoxLayout, QApplication, QSplashScreen 
 from mainBackend110 import*
+from PyQt5.QtCore import QTimer
+
 
 # Handle high resolution displays:
 if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
@@ -635,12 +639,21 @@ class Ui_MainWindow(object):
 
 
 
+
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
+
+    splash = QtWidgets.QSplashScreen(QtGui.QPixmap('Logos\SassyOwlSplashScreen_1.0.0.png'))
+    splash.show()
+    splash.showMessage("Loading...")
+
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
+    
     MainWindow.show()
+    splash.close()
     sys.exit(app.exec_())
+    
 
