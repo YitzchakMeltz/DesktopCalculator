@@ -644,16 +644,16 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
 
-    splash = QtWidgets.QSplashScreen(QtGui.QPixmap('Logos\SassyOwlSplashScreen_1.0.0.png'))
-    splash.show()
-    splash.showMessage("Loading...")
+    #splash = QtWidgets.QSplashScreen(QtGui.QPixmap('Logos\SassyOwlSplashScreen_1.0.0.png'))
+    #splash.show()
+    #splash.showMessage("Loading...")
 
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
     
     MainWindow.show()
-    splash.close()
+    #splash.close()
     sys.exit(app.exec_())
     
 
