@@ -45,7 +45,7 @@ def button_equals_click():
         decimalSum=""
         return
 
-    #check if it is a float of type 2.0 etc. if it is - convert to float
+    #check if it is a float of type 2.0 etc. if it is - convert to integer
     if isinstance(sum, float):
         if sum.is_integer():
             sum = int(sum)
@@ -74,6 +74,7 @@ def button_equals_click():
 #--------------------------------------------------------------------
 # function that is activated when the AC button is clicked
 # Resets the math equation string to an empty string
+# Resets the decimal sum string to an empty string
 
 def button_clear_click():
     global mathEq, decimalSum
