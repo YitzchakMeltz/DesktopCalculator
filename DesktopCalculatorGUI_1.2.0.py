@@ -24,6 +24,8 @@ if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
 resultStyleChanged = False
 placeholderThere = True
 
+
+
 class Ui_MainWindow(object):
 
     def setupUi(self, MainWindow):
@@ -529,29 +531,18 @@ class Ui_MainWindow(object):
         self.screenOutput.setAlignment(QtCore.Qt.AlignCenter)
         self.screenOutput.setObjectName("mathEq")
 
-        self.screenOutputNew = QtWidgets.QTextEdit(self.centralwidget)
+        self.screenOutputNew = QtWidgets.QLineEdit(self.centralwidget)
         self.screenOutputNew.setGeometry(QtCore.QRect(20, 30, 291, 20))
         self.screenOutputNew.setStyleSheet("border: none; background: transparent;"
         "font: 12pt \"MS Shell Dlg 2\";\n""color: rgb(190, 190, 190);")
         self.screenOutputNew.setAlignment(QtCore.Qt.AlignCenter)
         self.screenOutputNew.setObjectName("eqInput")
-        self.screenOutputNew.allowedKeys = (
-        QtCore.Qt.Key_0, 
-        QtCore.Qt.Key_1, 
-        QtCore.Qt.Key_2, 
-        QtCore.Qt.Key_3, 
-        QtCore.Qt.Key_4, 
-        QtCore.Qt.Key_5, 
-        QtCore.Qt.Key_6, 
-        QtCore.Qt.Key_7, 
-        QtCore.Qt.Key_8, 
-        QtCore.Qt.Key_9, 
-        )
+        
        
 
         def keyPressEvent(self, event):
-                if event.key() in self.allowedKeys:
-                 super().keyPressEvent(event)
+                 #super().keyPressEvent(event)
+                 return
 
         self.decimalResultOutput = QtWidgets.QLabel(self.centralwidget)
         self.decimalResultOutput.setGeometry(QtCore.QRect(20, 100, 271, 31))
@@ -608,32 +599,8 @@ class Ui_MainWindow(object):
         self.button_equals.setText(_translate("MainWindow", "="))
         self.releaseLabel.setText(_translate("MainWindow", "  YitzchakMeltz   Release_1.1.0"))
         self.screenOutput.setText(_translate("MainWindow", "Enter Your Equation"))
+        self.screenOutputNew.setText(_translate("MainWindow", "Enter Your Equation"))
 
-        class CommandLineEdit(QtWidgets.QLineEdit):
-                allowedKeys = (
-                QtCore.Qt.Key_0, 
-                QtCore.Qt.Key_1, 
-                QtCore.Qt.Key_2, 
-                QtCore.Qt.Key_3, 
-                QtCore.Qt.Key_4, 
-                QtCore.Qt.Key_5, 
-                QtCore.Qt.Key_6, 
-                QtCore.Qt.Key_7, 
-                QtCore.Qt.Key_8, 
-                QtCore.Qt.Key_9, 
-        )
-        def __init__(self):
-                super().__init__()
-                self.setStyleSheet('''
-            CommandLineEdit {
-                border: none;
-                background: transparent;
-            }
-        ''')
-
-        def keyPressEvent(self, event):
-                if event.key() in self.allowedKeys:
-                        super().keyPressEvent(event)
 
 
 
@@ -649,9 +616,11 @@ class Ui_MainWindow(object):
         global placeholderThere
         import mainBackend110
         self.screenOutput.setText(mainBackend110.mathEq)
+        self.screenOutputNew.setText(mainBackend110.mathEq)
         self.decimalResultOutput.setText(mainBackend110.decimalSum)
         if mainBackend110.mathEq == "":
                 self.screenOutput.setText("Enter Your Equation")
+                self.screenOutputNew.setText("Enter Your Equation")
                 placeholderThere = True
 
         if placeholderThere:
