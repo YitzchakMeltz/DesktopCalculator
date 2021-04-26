@@ -13,6 +13,9 @@ from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QDialog, QPushButton, QVBoxLayout, QApplication, QSplashScreen 
 from mainBackend110 import*
 from PyQt5.QtCore import QTimer
+from PyQt5.QtGui import*
+from PyQt5.QtCore import*
+from PyQt5.QtWidgets import*
 
 
 # Handle high resolution displays:
@@ -538,11 +541,6 @@ class Ui_MainWindow(object):
         self.screenOutputNew.setAlignment(QtCore.Qt.AlignCenter)
         self.screenOutputNew.setObjectName("eqInput")
         
-       
-
-        def keyPressEvent(self, event):
-                 #super().keyPressEvent(event)
-                 return
 
         self.decimalResultOutput = QtWidgets.QLabel(self.centralwidget)
         self.decimalResultOutput.setGeometry(QtCore.QRect(20, 100, 271, 31))
@@ -601,7 +599,14 @@ class Ui_MainWindow(object):
         self.screenOutput.setText(_translate("MainWindow", "Enter Your Equation"))
         self.screenOutputNew.setText(_translate("MainWindow", "Enter Your Equation"))
 
+        # set keyPressEvent to current widgets that we'd like it to be overridden
+        self.centralwidget.keyPressEvent = self.keyPressEvent
+        self.screenOutputNew.keyPressEvent = self.keyPressEvent
 
+        # override when 0 key is pressed
+    def keyPressEvent(self,e):
+        if e.key() == Qt.Key_0:
+                print(type(e))
 
 
     def click_and_update(self,userClick):
