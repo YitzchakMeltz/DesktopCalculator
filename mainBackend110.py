@@ -28,6 +28,7 @@ def button_equals_click():
     global sum
     global decimalSum
 
+
     # replace user math operator symbols with programing operating operators
     sum=mathEq.replace('×','*')
     sum=sum.replace('÷','/')
@@ -41,7 +42,14 @@ def button_equals_click():
         sum=eval(sum)
     except (SyntaxError):
         sum="    Equation was not entered correctly"
+        decimalSum=""
         return
+
+    #check if it is a float of type 2.0 etc. if it is - convert to float
+    if isinstance(sum, float):
+        if sum.is_integer():
+            sum = int(sum)
+
 
     # print the math equation to the console for debugging purposes
     print(mathEq)
@@ -56,6 +64,7 @@ def button_equals_click():
             sum=Fraction(str(sum)).limit_denominator()
         except (ValueError):
             sum="    Equation was not entered correctly"
+            decimalSum=""
         return
 
     # print the solution to the console for debugging purposes
