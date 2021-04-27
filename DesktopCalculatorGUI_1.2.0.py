@@ -603,11 +603,61 @@ class Ui_MainWindow(object):
         self.centralwidget.keyPressEvent = self.keyPressEvent
         self.screenOutputNew.keyPressEvent = self.keyPressEvent
 
-        # override when 0 key is pressed
+        # override when key is pressed and treat key like on-screen pushbutton
     def keyPressEvent(self,e):
         if e.key() == Qt.Key_0:
-                print(type(e))
+                self.click_and_update("0")
 
+        if e.key() == Qt.Key_1:
+                self.click_and_update("1")
+
+        if e.key() == Qt.Key_2:
+                self.click_and_update("2")
+
+        if e.key() == Qt.Key_3:
+                self.click_and_update("3")
+
+        if e.key() == Qt.Key_4:
+                self.click_and_update("4")
+
+        if e.key() == Qt.Key_5:
+                self.click_and_update("5")
+
+        if e.key() == Qt.Key_6:
+                self.click_and_update("6")
+
+        if e.key() == Qt.Key_7:
+                self.click_and_update("7")
+
+        if e.key() == Qt.Key_8:
+                self.click_and_update("8")
+
+        if e.key() == Qt.Key_9:
+                self.click_and_update("9")
+
+        if e.key() == Qt.Key_Plus:
+                self.click_and_update(" + ")
+
+        if e.key() == Qt.Key_Minus:
+                self.click_and_update(" - ")
+
+        if e.key() == Qt.Key_Asterisk:
+                self.click_and_update(" × ")
+
+        if e.key() == Qt.Key_Slash:
+                self.click_and_update(" ÷ ")
+
+        if e.key() == Qt.Key_Enter:
+                self.equal_click()
+
+        if e.key() == Qt.Key_Equal:
+                self.equal_click()
+
+        if e.key() == Qt.Key_Delete:
+                self.backspace_click()
+        
+        if e.key() == Qt.Key_Backspace:
+                self.backspace_click()
 
     def click_and_update(self,userClick):
         global placeholderThere
