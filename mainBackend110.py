@@ -86,11 +86,11 @@ def button_clear_click():
 # function that is activated when the backspace button is clicked
 # removes the last character that's in the equation (FILO)
 
-def button_backspace_click():
+def button_backspace_click(cursorPos):
     global mathEq
 
-    # check that string of equation isn't empty
-    if len(mathEq) == 0:
+    # check that string of equation isn't empty and that cursor isn't at beginning of equation
+    if len(mathEq) == 0 or cursorPos == 0:
         return
     
     # remove white space before and after math operators

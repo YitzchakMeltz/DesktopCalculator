@@ -527,19 +527,14 @@ class Ui_MainWindow(object):
         self.releaseLabel.setObjectName("releaseLabel")
 
 
-        self.screenOutput = QtWidgets.QLabel(self.centralwidget)
-        self.screenOutput.setGeometry(QtCore.QRect(20, 30, 291, 20))
-        self.screenOutput.setStyleSheet("font: 12pt \"MS Shell Dlg 2\";\n"
-"color: rgb(190, 190, 190);")
-        self.screenOutput.setAlignment(QtCore.Qt.AlignCenter)
-        self.screenOutput.setObjectName("mathEq")
+        
 
-        self.screenOutputNew = QtWidgets.QLineEdit(self.centralwidget)
-        self.screenOutputNew.setGeometry(QtCore.QRect(20, 30, 291, 20))
-        self.screenOutputNew.setStyleSheet("border: none; background: transparent;"
+        self.screenOutput = QtWidgets.QLineEdit(self.centralwidget)
+        self.screenOutput.setGeometry(QtCore.QRect(20, 30, 291, 20))
+        self.screenOutput.setStyleSheet("border: none; background: transparent;"
         "font: 12pt \"MS Shell Dlg 2\";\n""color: rgb(190, 190, 190);")
-        self.screenOutputNew.setAlignment(QtCore.Qt.AlignCenter)
-        self.screenOutputNew.setObjectName("eqInput")
+        self.screenOutput.setAlignment(QtCore.Qt.AlignCenter)
+        self.screenOutput.setObjectName("eqInput")
         
 
         self.decimalResultOutput = QtWidgets.QLabel(self.centralwidget)
@@ -597,11 +592,10 @@ class Ui_MainWindow(object):
         self.button_equals.setText(_translate("MainWindow", "="))
         self.releaseLabel.setText(_translate("MainWindow", "  YitzchakMeltz   Release_1.1.0"))
         self.screenOutput.setText(_translate("MainWindow", "Enter Your Equation"))
-        self.screenOutputNew.setText(_translate("MainWindow", "Enter Your Equation"))
 
         # set keyPressEvent to current widgets that we'd like it to be overridden
         self.centralwidget.keyPressEvent = self.keyPressEvent
-        self.screenOutputNew.keyPressEvent = self.keyPressEvent
+        self.screenOutput.keyPressEvent = self.keyPressEvent
 
         # override when key is pressed and treat key like on-screen pushbutton
     def keyPressEvent(self,e):
@@ -669,19 +663,16 @@ class Ui_MainWindow(object):
     def update_screen(self):
         import mainBackend110
         global placeholderThere
-        import mainBackend110
         self.screenOutput.setText(mainBackend110.mathEq)
-        self.screenOutputNew.setText(mainBackend110.mathEq)
         self.decimalResultOutput.setText(mainBackend110.decimalSum)
         if mainBackend110.mathEq == "":
                 self.screenOutput.setText("Enter Your Equation")
-                self.screenOutputNew.setText("Enter Your Equation")
                 placeholderThere = True
 
         if placeholderThere:
-                self.screenOutput.setStyleSheet("font: 12pt \"MS Shell Dlg 2\";\n""color: rgb(190, 190, 190);")
+                self.screenOutput.setStyleSheet("border: none; background: transparent;""font: 12pt \"MS Shell Dlg 2\";\n""color: rgb(190, 190, 190);")
         else:
-               self.screenOutput.setStyleSheet("font: 12pt \"MS Shell Dlg 2\";\n""color: rgb(110, 110, 110);") 
+               self.screenOutput.setStyleSheet("border: none; background: transparent;""font: 12pt \"MS Shell Dlg 2\";\n""color: rgb(110, 110, 110);") 
         return
 
     def click_and_clear(self):
@@ -718,7 +709,7 @@ class Ui_MainWindow(object):
 
     def backspace_click(self):
         import mainBackend110
-        button_backspace_click()
+        button_backspace_click(self.screenOutput.cursorPosition())
         self.update_screen()
         self.resultOutput.setText("")
         self.decimalResultOutput.setText("")
