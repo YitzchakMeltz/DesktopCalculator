@@ -7,6 +7,8 @@ mathEq=""      # initialize the equation string
 sum=0          # initialize the numerical sum
 decimalSum=""
 
+mathOperationSymbols = ["+","-","×","÷"]
+
 #--------------------------------------------------------------------
 # function that is activated when user inputs a char that builds the equation
 
@@ -91,16 +93,39 @@ def button_backspace_click(cursorPos):
 
     # check that string of equation isn't empty and that cursor isn't at beginning of equation
     if len(mathEq) == 0 or cursorPos == 0:
-        return
+        return cursorPos
     
     # remove white space before and after math operators
     # assume that white space can only be entered before and after a math operator
-    if mathEq[-1] == " ":
-        mathEq = mathEq[:-3]
-        return
+    if mathEq[(cursorPos - 1)] == " ":
 
-    # remove last character entered
-    mathEq = mathEq[:-1]
-    return
+        # invalid space was entered (theres no character before this space)
+        if cursorPos < 2:
+            return cursorPos
+
+        # if cursor is in front of operator's space (such as " + ") then then remove operator and spaces
+        if mathEq[(cursorPos - 2)] in mathOperationSymbols:
+            mathEq = mathEq[:(cursorPos - 3)] + mathEq[cursorPos:]
+            
+            if cursorPos > 3 and mathEq[cursorPos - 4] == " ":
+                return (cursorPos - 4)
+            return (cursorPos - 3)
+
+        mathEq = mathEq[:(cursorPos - 2)] + mathEq[(cursorPos - 1):]
+
+        if mathEq[cursorPos - 2] == " ":
+                return (cursorPos - 3)
+        return (cursorPos - 2)
+
+    if mathEq[(cursorPos - 1)] in mathOperationSymbols:
+        mathEq = mathEq[:(cursorPos - 2)] + mathEq[(cursorPos + 1):]
+        return (cursorPos - 2)
+
+    # remove number at Cursor Position
+    mathEq = mathEq[:(cursorPos - 1)] + mathEq[cursorPos:]
+
+    if cursorPos > 1 and mathEq[cursorPos - 2] == " ":
+            return (cursorPos - 2)
+    return (cursorPos - 1)
 
 #--------------------------------------------------------------------

@@ -709,10 +709,11 @@ class Ui_MainWindow(object):
 
     def backspace_click(self):
         import mainBackend110
-        button_backspace_click(self.screenOutput.cursorPosition())
+        newCursorPos = button_backspace_click(self.screenOutput.cursorPosition())
         self.update_screen()
         self.resultOutput.setText("")
         self.decimalResultOutput.setText("")
+        self.screenOutput.setCursorPosition(newCursorPos)
 
 
 
