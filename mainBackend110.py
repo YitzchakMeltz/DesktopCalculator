@@ -12,15 +12,39 @@ mathOperationSymbols = ["+","-","×","÷"]
 #--------------------------------------------------------------------
 # function that is activated when user inputs a char that builds the equation
 
-def button_click(userClick):
+def button_click(userClick, cursorPos):
     global mathEq
 
-    # add what the user clicked to the equation string
-    mathEq += userClick
+    # initialize cursor position if the QLineEdit has the placeholder
+    if mathEq == "":
+        cursorPos = 0
 
-    # print current equation string for debugging purposes
-    print(mathEq)
-    return
+    # add what the user clicked to the equation string based on cursor position
+
+    # user adds to the equation from the end
+    if len(mathEq) == cursorPos:
+        mathEq += userClick
+        # print current equation string for debugging purposes
+        print(mathEq)
+        return cursorPos + len(userClick)
+    
+    # user adds to equation with cursor before math operation symbol 
+    # e.g. " |+ "
+    if cursorPos > 1:
+        if mathEq[cursorPos - 1] == " " and (mathEq[cursorPos - 2] not in mathOperationSymbols):
+            mathEq = mathEq[:cursorPos - 1] + userClick + mathEq[cursorPos - 1:]
+            return (cursorPos - 1) + len(userClick)
+
+        if mathEq[cursorPos - 1] in mathOperationSymbols:
+            mathEq = mathEq[:cursorPos + 1] + userClick + mathEq[cursorPos + 1:]
+            return (cursorPos + 1) + len(userClick)
+
+    if cursorPos == 1 and mathEq[cursorPos] in mathOperationSymbols:
+        mathEq = mathEq[:0] + userClick + mathEq[0:]
+        return len(userClick)
+
+    mathEq = mathEq[:cursorPos] + userClick + mathEq[cursorPos:]
+    return cursorPos + len(userClick)
 
 #--------------------------------------------------------------------
 # function that is activated when equals button is clicked

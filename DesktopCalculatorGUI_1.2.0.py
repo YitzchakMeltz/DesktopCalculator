@@ -655,9 +655,10 @@ class Ui_MainWindow(object):
 
     def click_and_update(self,userClick):
         global placeholderThere
-        button_click(userClick)
+        newCursorPos = button_click(userClick,self.screenOutput.cursorPosition())
         placeholderThere = False
         self.update_screen()
+        self.screenOutput.setCursorPosition(newCursorPos)
         return
 
     def update_screen(self):
