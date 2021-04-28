@@ -735,4 +735,3 @@ if __name__ == "__main__":
     #splash.close()
     sys.exit(app.exec_())
     
-
