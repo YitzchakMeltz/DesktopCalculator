@@ -597,6 +597,9 @@ class Ui_MainWindow(object):
         self.centralwidget.keyPressEvent = self.keyPressEvent
         self.screenOutput.keyPressEvent = self.keyPressEvent
 
+#--------------------------------------------------------------------------------------
+#---------------------------------- Key Press -----------------------------------------
+
         # override when key is pressed and treat key like on-screen pushbutton
     def keyPressEvent(self,e):
         if e.key() == Qt.Key_0:
@@ -652,7 +655,10 @@ class Ui_MainWindow(object):
         
         if e.key() == Qt.Key_Backspace:
                 self.backspace_click()
+#--------------------------------------------------------------------------------------
 
+#--------------------------------------------------------------------------------------
+#----------------------------------- Functions ----------------------------------------
     def click_and_update(self,userClick):
         global placeholderThere
         newCursorPos = button_click(userClick,self.screenOutput.cursorPosition())
@@ -715,10 +721,11 @@ class Ui_MainWindow(object):
         self.resultOutput.setText("")
         self.decimalResultOutput.setText("")
         self.screenOutput.setCursorPosition(newCursorPos)
+#--------------------------------------------------------------------------------------
 
 
-
-
+#--------------------------------------------------------------------------------------
+#--------------------------------- Main Program ---------------------------------------
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
@@ -735,4 +742,4 @@ if __name__ == "__main__":
 
     #splash.close()
     sys.exit(app.exec_())
-    
+    #--------------------------------------------------------------------------------------
