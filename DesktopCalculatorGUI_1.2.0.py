@@ -569,7 +569,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", " Calculator"))
+        MainWindow.setWindowTitle(_translate("MainWindow", " Sagy Calculator"))
         self.button_7.setText(_translate("MainWindow", "7"))
         self.button_8.setText(_translate("MainWindow", "8"))
         self.button_9.setText(_translate("MainWindow", "9"))
@@ -678,8 +678,10 @@ class Ui_MainWindow(object):
 
         if placeholderThere:
                 self.screenOutput.setStyleSheet("border: none; background: transparent;""font: 12pt \"MS Shell Dlg 2\";\n""color: rgb(190, 190, 190);")
+                self.screenOutput.setReadOnly(True)
         else:
                self.screenOutput.setStyleSheet("border: none; background: transparent;""font: 12pt \"MS Shell Dlg 2\";\n""color: rgb(110, 110, 110);") 
+               self.screenOutput.setReadOnly(False)
         return
 
     def click_and_clear(self):
