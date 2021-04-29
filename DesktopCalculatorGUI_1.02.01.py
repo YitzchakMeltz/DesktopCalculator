@@ -489,7 +489,7 @@ class Ui_MainWindow(object):
         self.button_equals.setText(_translate("MainWindow", "="))
         self.releaseLabel.setText(_translate("MainWindow", "  YitzchakMeltz   Release_1.1.0"))
         self.mathEq.setText(_translate("MainWindow", "Enter Your Equation"))
-from mypkg.widgets import mainwidget2
+from QtWidgets import mainwidget2
 
 
 if __name__ == "__main__":
