@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget">
+  <widget class="mainwidget" name="centralwidget">
    <widget class="QPushButton" name="button_7">
     <property name="geometry">
      <rect>
@@ -866,6 +866,14 @@ color: rgb(94, 94, 94);</string>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>mainwidget</class>
+   <extends>QWidget</extends>
+   <header>PyQt5.QtWidgets.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
