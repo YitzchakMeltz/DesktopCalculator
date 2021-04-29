@@ -1,5 +1,3 @@
-from tkinter import*
-from tkinter.ttk import*
 import math
 from fractions import*
 

@@ -19,7 +19,7 @@ class Ui_MainWindow(object):
         
         MainWindow.setFixedSize(331, 411)
        
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget = mainwidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.button_7 = QtWidgets.QPushButton(self.centralwidget)
         self.button_7.setGeometry(QtCore.QRect(20, 190, 71, 41))
@@ -70,18 +70,6 @@ class Ui_MainWindow(object):
         self.button_7.setText(_translate("MainWindow", "7"))
         self.screenOutput.setText(_translate("MainWindow", "Do Something"))
 
-        # set keyPressEvent to current widgets that we'd like it to be overridden
-        self.centralwidget.keyPressEvent = self.keyPressEvent
-        self.screenOutput.keyPressEvent = self.keyPressEvent
-   
-    def keyPressEvent(self,e):
-        if e.key() in (Qt.Key_Return, Qt.Key_Enter):
-                self.equal_click()
-
-        if e.key() == Qt.Key_Equal:
-                self.equal_click()
-   
-
     def update_screen(self):
         self.screenOutput.setText(outputText)
         return
@@ -98,6 +86,8 @@ class Ui_MainWindow(object):
         outputText+=" 7"
         self.update_screen()
         return
+
+    from mainwidget import CommandLineEdit,mainwidget
 
 if __name__ == "__main__":
     import sys

@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="mainwidget2" name="centralwidget">
+  <widget class="mainwidget3" name="centralwidget">
    <widget class="QPushButton" name="button_7">
     <property name="geometry">
      <rect>
@@ -868,9 +868,9 @@ color: rgb(94, 94, 94);</string>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>mainwidget2</class>
+   <class>mainwidget3</class>
    <extends>QWidget</extends>
-   <header>mypkg.widgets.h</header>
+   <header>QWidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
