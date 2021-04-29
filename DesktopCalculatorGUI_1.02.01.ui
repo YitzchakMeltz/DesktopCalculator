@@ -870,7 +870,7 @@ color: rgb(94, 94, 94);</string>
   <customwidget>
    <class>mainwidget</class>
    <extends>QWidget</extends>
-   <header>PyQt5.QtWidgets.h</header>
+   <header>mypkg.widgets.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
