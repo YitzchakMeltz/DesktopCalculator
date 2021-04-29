@@ -15,7 +15,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(331, 411)
-        self.centralwidget = mainwidget(MainWindow)
+        self.centralwidget = mainwidget2(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.button_7 = QtWidgets.QPushButton(self.centralwidget)
         self.button_7.setGeometry(QtCore.QRect(20, 190, 71, 41))
@@ -489,7 +489,7 @@ class Ui_MainWindow(object):
         self.button_equals.setText(_translate("MainWindow", "="))
         self.releaseLabel.setText(_translate("MainWindow", "  YitzchakMeltz   Release_1.1.0"))
         self.mathEq.setText(_translate("MainWindow", "Enter Your Equation"))
-from PyQt5.QtWidgets import mainwidget
+from mypkg.widgets import mainwidget2
 
 
 if __name__ == "__main__":
