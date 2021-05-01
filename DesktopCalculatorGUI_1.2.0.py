@@ -644,6 +644,9 @@ class Ui_MainWindow(object):
         if e.key() == Qt.Key_Slash:
                 self.click_and_update(" ÷ ")
 
+        if e.key() == Qt.Key_Period:
+                self.click_and_update(".")
+
         if e.key() in (Qt.Key_Return,Qt.Key_Enter):
                 self.equal_click()
 
