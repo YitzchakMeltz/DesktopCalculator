@@ -4,6 +4,8 @@ from fractions import*
 mathEq=""      # initialize the equation string
 sum=0          # initialize the numerical sum
 decimalSum=""
+lastEqual = False
+ans = 0
 
 mathOperationSymbols = ["+","-","×","÷"]
 
@@ -11,7 +13,11 @@ mathOperationSymbols = ["+","-","×","÷"]
 # function that is activated when user inputs a char that builds the equation
 
 def button_click(userClick, cursorPos):
-    global mathEq
+    global mathEq, lastEqual, ans
+
+    # clear screen if previous entry was equals operator
+    if(lastEqual):
+        button_clear_click()
 
     # initialize cursor position if the QLineEdit has the placeholder
     if mathEq == "":
@@ -21,9 +27,15 @@ def button_click(userClick, cursorPos):
 
     # user adds to the equation from the end
     if len(mathEq) == cursorPos:
+        
+        # add previous answer to equation if equal button was just pressed
+        if(lastEqual and userClick in mathOperationSymbols):
+            mathEq = str(ans) + userClick
+
         mathEq += userClick
         # print current equation string for debugging purposes
         print(mathEq)
+        lastEqual = False
         return cursorPos + len(userClick)
     
     # user adds to equation with cursor before math operation symbol 
@@ -48,10 +60,9 @@ def button_click(userClick, cursorPos):
 # function that is activated when equals button is clicked
 
 def button_equals_click():
-    global mathEq
-    global sum
-    global decimalSum
+    global mathEq, sum, decimalSum, lastEqual, ans
 
+    lastEqual = True
 
     # replace user math operator symbols with programing operating operators
     sum=mathEq.replace('×','*')
@@ -74,6 +85,8 @@ def button_equals_click():
         if sum.is_integer():
             sum = int(sum)
 
+    # store answer for future use
+    ans = sum
 
     # print the math equation to the console for debugging purposes
     print(mathEq)
@@ -101,9 +114,10 @@ def button_equals_click():
 # Resets the decimal sum string to an empty string
 
 def button_clear_click():
-    global mathEq, decimalSum
+    global mathEq, decimalSum, lastEqual
     mathEq=""
     decimalSum=""
+    lastEqual = False
     return
 
 #--------------------------------------------------------------------
@@ -111,7 +125,9 @@ def button_clear_click():
 # removes the last character that's in the equation (FILO)
 
 def button_backspace_click(cursorPos):
-    global mathEq
+    global mathEq, lastEqual
+
+    lastEqual = False
 
     # check that string of equation isn't empty and that cursor isn't at beginning of equation
     if len(mathEq) == 0 or cursorPos == 0:
