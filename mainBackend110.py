@@ -1,5 +1,6 @@
 import math
 from fractions import*
+from PyQt5.QtWidgets import QApplication
 
 mathEq=""      # initialize the equation string
 sum=0          # initialize the numerical sum
@@ -14,7 +15,7 @@ mathOperationSymbols = ["+","-","×","÷"]
 
 def button_click(userClick, cursorPos):
     global mathEq, lastEqual, ans
-
+    
     # clear screen if previous entry was equals operator
     if(lastEqual):
         button_clear_click()
@@ -29,8 +30,11 @@ def button_click(userClick, cursorPos):
     if len(mathEq) == cursorPos:
         
         # add previous answer to equation if equal button was just pressed
-        if(lastEqual and userClick in mathOperationSymbols):
-            mathEq = str(ans) + userClick
+        if(lastEqual):
+            if(len(userClick) == 3 and userClick[1] in mathOperationSymbols):
+                mathEq = str(ans) + userClick
+                lastEqual = False
+                return cursorPos + len(userClick) + len(str(ans))
 
         mathEq += userClick
         # print current equation string for debugging purposes
@@ -85,8 +89,9 @@ def button_equals_click():
         if sum.is_integer():
             sum = int(sum)
 
-    # store answer for future use
+    # store answer for future use and copy to clipboard
     ans = sum
+    QApplication.clipboard().setText(str(sum))
 
     # print the math equation to the console for debugging purposes
     print(mathEq)

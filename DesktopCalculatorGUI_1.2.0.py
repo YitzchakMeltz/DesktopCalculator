@@ -669,7 +669,10 @@ class Ui_MainWindow(object):
 #--------------------------------------------------------------------------------------
 #----------------------------------- Functions ----------------------------------------
     def click_and_update(self,userClick):
+        import mainBackend110
         global placeholderThere
+        if(mainBackend110.lastEqual):
+                self.clear_results()
         newCursorPos = button_click(userClick,self.screenOutput.cursorPosition())
         placeholderThere = False
         self.update_screen()
@@ -699,6 +702,11 @@ class Ui_MainWindow(object):
         self.update_screen()
         self.update_result_screen()
         self.resultOutput.setText("")
+        return
+
+    def clear_results(self):
+        self.resultOutput.setText("")
+        self.decimalResultOutput.setText("")
         return
 
     def equal_click(self):
