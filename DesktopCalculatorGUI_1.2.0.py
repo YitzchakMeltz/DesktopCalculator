@@ -92,6 +92,7 @@ class Ui_MainWindow(object):
         self.button_7.clicked.connect(lambda:self.click_and_update("7"))
 
 
+
         self.button_8 = QtWidgets.QPushButton(self.centralwidget)
         self.button_8.setGeometry(QtCore.QRect(100, 190, 71, 41))
         self.button_8.setStyleSheet("QPushButton\n"
@@ -673,6 +674,7 @@ class Ui_MainWindow(object):
         placeholderThere = False
         self.update_screen()
         self.screenOutput.setCursorPosition(newCursorPos)
+        self.button_equals.setFocus()
         return
 
     def update_screen(self):
