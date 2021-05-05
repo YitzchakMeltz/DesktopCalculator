@@ -91,7 +91,7 @@ def button_equals_click():
 
     # store answer for future use and copy to clipboard
     ans = sum
-    QApplication.clipboard().setText(str(sum))
+    QApplication.clipboard().setText(str(round(sum,6)))
 
     # print the math equation to the console for debugging purposes
     print(mathEq)

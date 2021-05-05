@@ -660,7 +660,7 @@ class Ui_MainWindow(object):
                 self.equal_click()
 
         if e.key() == Qt.Key_Delete:
-                self.backspace_click()
+                self.click_and_clear()
         
         if e.key() == Qt.Key_Backspace:
                 self.backspace_click()
@@ -704,6 +704,7 @@ class Ui_MainWindow(object):
         self.resultOutput.setText("")
         return
 
+        # clear the results screens
     def clear_results(self):
         self.resultOutput.setText("")
         self.decimalResultOutput.setText("")
