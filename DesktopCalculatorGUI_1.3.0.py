@@ -16,6 +16,7 @@ from PyQt5.QtCore import QTimer
 from PyQt5.QtGui import*
 from PyQt5.QtCore import*
 from PyQt5.QtWidgets import*
+from Controller100 import*
 
 
 # Handle high resolution displays:
@@ -748,6 +749,8 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     
     MainWindow.show()
+
+    calcCtrl(MainWindow = MainWindow)
 
     #splash.close()
     sys.exit(app.exec_())
