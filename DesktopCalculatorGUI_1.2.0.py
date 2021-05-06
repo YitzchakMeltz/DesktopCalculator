@@ -540,6 +540,7 @@ class Ui_MainWindow(object):
         "font: 12pt \"MS Shell Dlg 2\";\n""color: rgb(190, 190, 190);")
         self.screenOutput.setAlignment(QtCore.Qt.AlignCenter)
         self.screenOutput.setObjectName("eqInput")
+        self.screenOutput.setContextMenuPolicy(Qt.NoContextMenu)        #disable menu pop up for cut/copy/paste
         
 
         self.decimalResultOutput = QtWidgets.QLabel(self.centralwidget)
