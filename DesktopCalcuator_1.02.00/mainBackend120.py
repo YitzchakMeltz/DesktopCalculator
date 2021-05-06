@@ -16,6 +16,10 @@ mathOperationSymbols = ["+","-","×","÷"]
 def button_click(userClick, cursorPos, cursorNotActive):
     global mathEq, lastEqual, ans
     
+    # if cursor is active then disable lastEqual so that enables editing equation
+    if(not cursorNotActive):
+        lastEqual = False
+
     # clear screen if previous entry was equals operator
     if(lastEqual and cursorNotActive):
         button_clear_click()
