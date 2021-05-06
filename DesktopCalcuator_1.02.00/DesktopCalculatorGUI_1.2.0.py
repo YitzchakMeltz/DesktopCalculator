@@ -10,12 +10,11 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QDialog, QPushButton, QVBoxLayout, QApplication, QSplashScreen 
+from PyQt5.QtWidgets import QDialog, QPushButton, QVBoxLayout, QApplication
 from mainBackend120 import*
-from PyQt5.QtCore import QTimer
 from PyQt5.QtGui import*
 from PyQt5.QtCore import*
-from PyQt5.QtWidgets import*
+
 
 
 # Handle high resolution displays:
@@ -655,11 +654,11 @@ class Ui_MainWindow(object):
         if e.key() == Qt.Key_Period:
                 self.click_and_update(".")
 
-        if e.key() == Qt.Key_Openparenthesis:
+        if e.key() == Qt.Key_ParenLeft:
                 self.click_and_update("(")
 
-        if e.key() == Qt.Key_Period:
-                self.click_and_update(".")
+        if e.key() == Qt.Key_ParenRight:
+                self.click_and_update(")")
 
         if e.key() in (Qt.Key_Return,Qt.Key_Enter):
                 self.equal_click()
