@@ -680,7 +680,7 @@ class Ui_MainWindow(object):
         global placeholderThere
         if(mainBackend120.lastEqual):
                 self.clear_results()
-        newCursorPos = button_click(userClick,self.screenOutput.cursorPosition())
+        newCursorPos = button_click(userClick,self.screenOutput.cursorPosition(), not self.screenOutput.hasFocus())
         placeholderThere = False
         self.update_screen()
         self.screenOutput.setCursorPosition(newCursorPos)

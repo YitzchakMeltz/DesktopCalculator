@@ -13,11 +13,11 @@ mathOperationSymbols = ["+","-","×","÷"]
 #--------------------------------------------------------------------
 # function that is activated when user inputs a char that builds the equation
 
-def button_click(userClick, cursorPos):
+def button_click(userClick, cursorPos, cursorNotActive):
     global mathEq, lastEqual, ans
     
     # clear screen if previous entry was equals operator
-    if(lastEqual):
+    if(lastEqual and cursorNotActive):
         button_clear_click()
 
     # initialize cursor position if the QLineEdit has the placeholder
@@ -30,7 +30,7 @@ def button_click(userClick, cursorPos):
     if len(mathEq) == cursorPos:
         
         # add previous answer to equation if equal button was just pressed
-        if(lastEqual):
+        if(lastEqual and cursorNotActive):
             if(len(userClick) == 3 and userClick[1] in mathOperationSymbols):
                 mathEq = str(ans) + userClick
                 lastEqual = False
