@@ -770,6 +770,9 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     
     MainWindow.show()
+    
+    if have_internet():
+            print("check for updates")
 
     #splash.close()
     sys.exit(app.exec_())

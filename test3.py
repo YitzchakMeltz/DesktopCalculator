@@ -1,11 +1,20 @@
-equation = "3 + 4"
+try:
+    import httplib
+except:
+    import http.client as httplib
 
-cur = 2
 
-# cursor position  i-1             i
-if equation[cur - 1] == " " and equation[cur - 2] != "+":
-    equation = equation[:cur-1] + "5" + equation[cur-1:]
 
-print(equation)
+def have_internet():
+    conn = httplib.HTTPConnection("www.google.com", timeout=5)
+    try:
+        conn.request("HEAD", "/")
+        conn.close()
+        print("Internet Connection Availible")
+        return True
+    except:
+        conn.close()
+        print("No Internet Connection Found")
+        return False
 
-#print(equation[0])
+have_internet()

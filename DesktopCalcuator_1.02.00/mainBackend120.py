@@ -2,6 +2,12 @@ import math
 from fractions import*
 from PyQt5.QtWidgets import QApplication
 
+# try import for internet access test
+try:
+    import httplib
+except:
+    import http.client as httplib
+
 mathEq=""      # initialize the equation string
 sum=0          # initialize the numerical sum
 decimalSum=""
@@ -175,3 +181,16 @@ def button_backspace_click(cursorPos):
     return (cursorPos - 1)
 
 #--------------------------------------------------------------------
+# Function that checks for internet connection
+def have_internet():
+    conn = httplib.HTTPConnection("www.google.com", timeout=5)
+    try:
+        conn.request("HEAD", "/")
+        conn.close()
+        print("Internet Connection Availible")
+        return True
+    except:
+        conn.close()
+        print("No Internet Connection Found")
+        return False
+#--------------------------------------------------------------------  
