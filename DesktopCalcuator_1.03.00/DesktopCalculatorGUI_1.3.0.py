@@ -753,6 +753,8 @@ class Ui_MainWindow(object):
         self.msg = QMessageBox(self.centralwidget)
         self.msg.setWindowTitle("  Software Update")
         self.msg.setText("A software update is available. \nDo you want to update now?")
+        self.msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        self.msg.setStyleSheet("QLabel{min-width: 200px;}")
         self.msg.exec_()
         
 
