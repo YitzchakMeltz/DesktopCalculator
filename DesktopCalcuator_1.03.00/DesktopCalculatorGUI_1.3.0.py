@@ -10,8 +10,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QDialog, QPushButton, QVBoxLayout, QApplication
-from mainBackend130 import*
+from PyQt5.QtWidgets import QDialog, QPushButton, QVBoxLayout, QApplication, QMessageBox
 from PyQt5.QtGui import*
 from PyQt5.QtCore import*
 
@@ -561,6 +560,12 @@ class Ui_MainWindow(object):
         self.resultOutput.setObjectName("resultOutput")
 
 
+        self.msg = QMessageBox(self.centralwidget)
+        self.msg.setWindowTitle("  Software Update")
+        self.msg.setText("A software update is available. \nDo you want to update now?")
+        self.msg.exec_()
+
+
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 331, 22))
@@ -750,6 +755,13 @@ class Ui_MainWindow(object):
         self.decimalResultOutput.setText("")
         self.screenOutput.setCursorPosition(newCursorPos)
 
+    def check_for_updates():
+        if have_internet():
+                print("check for updates")
+                from updateProgramCode130 import checkForUpdates, updateCalc
+                if checkForUpdates():
+                        updateCalc()
+
 
 
 #--------------------------------------------------------------------------------------
@@ -770,11 +782,10 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     
     MainWindow.show()
+
+    from mainBackend130 import*
     
-    if have_internet():
-            print("check for updates")
-            from updateProgramCode130 import*
-            programUpdate()
+    Ui_MainWindow.check_for_updates()
 
     #splash.close()
     sys.exit(app.exec_())

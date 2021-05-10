@@ -17,8 +17,16 @@ def checkForUpdates():
         decoded_line = line.decode("utf-8")
         
     decoded_line = decoded_line.replace(".","")
-    print(decoded_line)
+
     if CurrentProgramVersion < int(decoded_line):
         print("Update Availible")
+        return True
     else:
         print("Program is up to date")
+        return False
+
+    return False
+
+
+def updateCalc():
+    return
