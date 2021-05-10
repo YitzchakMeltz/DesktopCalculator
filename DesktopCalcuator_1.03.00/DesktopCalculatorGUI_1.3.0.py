@@ -750,11 +750,30 @@ class Ui_MainWindow(object):
         self.screenOutput.setCursorPosition(newCursorPos)
 
     def update_msgbox(self):
-        self.msg = QMessageBox(self.centralwidget)
+        from PyQt5.QtWidgets import QLabel, QDialogButtonBox
+        self.msg = QMessageBox()
+        self.grid_layout = self.msg.layout()
+
+        self.qt_msgboxex_icon_label = self.msg.findChild(QLabel, "qt_msgboxex_icon_label")
+        self.qt_msgboxex_icon_label.deleteLater()
+
+        self.qt_msgbox_label = self.msg.findChild(QLabel, "qt_msgbox_label")
+        self.qt_msgbox_label.setAlignment(Qt.AlignCenter)
+        self.grid_layout.removeWidget(self.qt_msgbox_label)
+
+        self.qt_msgbox_buttonbox = self.msg.findChild(QDialogButtonBox, "qt_msgbox_buttonbox")
+        self.grid_layout.removeWidget(self.qt_msgbox_buttonbox)
+
+        self.grid_layout.addWidget(self.qt_msgbox_label, 0, 0, alignment=Qt.AlignCenter)
+        self.grid_layout.addWidget(self.qt_msgbox_buttonbox, 1, 0, alignment=Qt.AlignCenter)
+
+
         self.msg.setWindowTitle("  Software Update")
-        self.msg.setText("A software update is available. \nDo you want to update now?")
-        self.msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        self.msg.setText("A software update is available.<br>Do you want to update now?<br>")
+        self.msg.setStandardButtons(QMessageBox.Ok)
         self.msg.setStyleSheet("QLabel{min-width: 200px;}")
+        self.msg.setWindowIcon(QtGui.QIcon("CalculatorLogo(150p)_1.0.0.ico"))
+
         self.msg.exec_()
         
 
