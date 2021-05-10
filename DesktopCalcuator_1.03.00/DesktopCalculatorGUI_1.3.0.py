@@ -560,12 +560,6 @@ class Ui_MainWindow(object):
         self.resultOutput.setObjectName("resultOutput")
 
 
-        self.msg = QMessageBox(self.centralwidget)
-        self.msg.setWindowTitle("  Software Update")
-        self.msg.setText("A software update is available. \nDo you want to update now?")
-        self.msg.exec_()
-
-
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 331, 22))
@@ -755,12 +749,21 @@ class Ui_MainWindow(object):
         self.decimalResultOutput.setText("")
         self.screenOutput.setCursorPosition(newCursorPos)
 
+    def update_msgbox():
+        self.msg = QMessageBox(self.centralwidget)
+        self.msg.setWindowTitle("  Software Update")
+        self.msg.setText("A software update is available. \nDo you want to update now?")
+        self.msg.exec_()
+        
+
     def check_for_updates():
         if have_internet():
                 print("check for updates")
                 from updateProgramCode130 import checkForUpdates, updateCalc
                 if checkForUpdates():
+                        update_msgbox()
                         updateCalc()
+
 
 
 
