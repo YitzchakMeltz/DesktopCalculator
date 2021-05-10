@@ -11,7 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QDialog, QPushButton, QVBoxLayout, QApplication
-from mainBackend120 import*
+from mainBackend130 import*
 from PyQt5.QtGui import*
 from PyQt5.QtCore import*
 
@@ -676,9 +676,9 @@ class Ui_MainWindow(object):
 #--------------------------------------------------------------------------------------
 #----------------------------------- Functions ----------------------------------------
     def click_and_update(self,userClick):
-        import mainBackend120
+        import mainBackend130
         global placeholderThere
-        if(mainBackend120.lastEqual):
+        if(mainBackend130.lastEqual):
                 self.clear_results()
         newCursorPos = button_click(userClick,self.screenOutput.cursorPosition(), not self.screenOutput.hasFocus())
         placeholderThere = False
@@ -688,11 +688,11 @@ class Ui_MainWindow(object):
         return
 
     def update_screen(self):
-        import mainBackend120
+        import mainBackend130
         global placeholderThere
-        self.screenOutput.setText(mainBackend120.mathEq)
-        self.decimalResultOutput.setText(mainBackend120.decimalSum)
-        if mainBackend120.mathEq == "":
+        self.screenOutput.setText(mainBackend130.mathEq)
+        self.decimalResultOutput.setText(mainBackend130.decimalSum)
+        if mainBackend130.mathEq == "":
                 self.screenOutput.setText("Enter Your Equation")
                 placeholderThere = True
 
@@ -724,7 +724,7 @@ class Ui_MainWindow(object):
         return
 
     def update_result_screen(self):
-        import mainBackend120
+        import mainBackend130
         global resultStyleChanged
    
         button_equals_click()
@@ -732,18 +732,18 @@ class Ui_MainWindow(object):
         if resultStyleChanged:
                self.resultOutput.setStyleSheet("font: 23pt \"calibri\";\n""color: rgb(70, 70, 70);")          # reset the style to large
         
-        if len(str((mainBackend120.sum)))>15:
+        if len(str((mainBackend130.sum)))>15:
                 self.resultOutput.setStyleSheet("font: 13pt \"calibri\";\n""color: rgb(70, 70, 70);")
                 resultStyleChanged = True
 
-        if isinstance(mainBackend120.sum,int) or isinstance(mainBackend120.sum,Fraction):
-                self.resultOutput.setText("= " + str(mainBackend120.sum))
+        if isinstance(mainBackend130.sum,int) or isinstance(mainBackend130.sum,Fraction):
+                self.resultOutput.setText("= " + str(mainBackend130.sum))
         else:
-                self.resultOutput.setText(mainBackend120.sum)
+                self.resultOutput.setText(mainBackend130.sum)
         return
 
     def backspace_click(self):
-        import mainBackend120
+        import mainBackend130
         newCursorPos = button_backspace_click(self.screenOutput.cursorPosition())
         self.update_screen()
         self.resultOutput.setText("")
@@ -770,6 +770,9 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     
     MainWindow.show()
+    
+    if have_internet():
+            print("check for updates")
 
     #splash.close()
     sys.exit(app.exec_())
