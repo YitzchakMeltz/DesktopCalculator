@@ -749,19 +749,19 @@ class Ui_MainWindow(object):
         self.decimalResultOutput.setText("")
         self.screenOutput.setCursorPosition(newCursorPos)
 
-    def update_msgbox():
+    def update_msgbox(self):
         self.msg = QMessageBox(self.centralwidget)
         self.msg.setWindowTitle("  Software Update")
         self.msg.setText("A software update is available. \nDo you want to update now?")
         self.msg.exec_()
         
 
-    def check_for_updates():
+    def check_for_updates(self):
         if have_internet():
                 print("check for updates")
                 from updateProgramCode130 import checkForUpdates, updateCalc
                 if checkForUpdates():
-                        update_msgbox()
+                        self.update_msgbox()
                         updateCalc()
 
 
@@ -788,7 +788,7 @@ if __name__ == "__main__":
 
     from mainBackend130 import*
     
-    Ui_MainWindow.check_for_updates()
+    ui.check_for_updates()
 
     #splash.close()
     sys.exit(app.exec_())
