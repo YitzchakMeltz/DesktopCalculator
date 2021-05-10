@@ -773,6 +773,8 @@ if __name__ == "__main__":
     
     if have_internet():
             print("check for updates")
+            from updateProgramCode130 import*
+            programUpdate()
 
     #splash.close()
     sys.exit(app.exec_())
