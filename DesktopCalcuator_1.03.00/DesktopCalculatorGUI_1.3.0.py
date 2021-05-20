@@ -774,7 +774,10 @@ class Ui_MainWindow(object):
         self.msg.setStyleSheet("QLabel{min-width: 200px;}")
         self.msg.setWindowIcon(QtGui.QIcon("CalculatorLogo(150p)_1.0.0.ico"))
 
-        self.msg.exec_()
+        if self.msg.exec_() == QMessageBox.Ok:
+                return True
+
+        return False
         
 
     def check_for_updates(self):
@@ -782,8 +785,8 @@ class Ui_MainWindow(object):
                 print("check for updates")
                 from updateProgramCode130 import checkForUpdates, updateCalc
                 if checkForUpdates():
-                        self.update_msgbox()
-                        updateCalc()
+                        if self.update_msgbox():
+                                updateCalc()
 
 
 

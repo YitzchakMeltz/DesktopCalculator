@@ -1,6 +1,5 @@
 def programUpdate():
 
-    checkForUpdates()
     return
 
 def checkForUpdates():
@@ -27,6 +26,21 @@ def checkForUpdates():
 
     return False
 
+def makeUpdateFolder():
+    import os
+
+    dir = os.path.dirname(__file__)
+    pathname = os.path.join(dir, 'Updates')
+
+    if not os.path.isdir(pathname):
+        os.makedirs(pathname)
+
+    else:
+        dir = os.path.dirname(__file__)
+        filename = os.path.join(dir, 'Updates','Sagy Calculator Setup.exe')
+        if os.path.exists(filename):
+            os.remove(filename)
 
 def updateCalc():
+    makeUpdateFolder()
     return
