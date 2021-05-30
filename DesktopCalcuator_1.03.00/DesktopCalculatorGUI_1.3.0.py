@@ -595,7 +595,7 @@ class Ui_MainWindow(object):
         self.button_div.setText(_translate("MainWindow", "÷"))
         self.button_mult.setText(_translate("MainWindow", "×"))
         self.button_equals.setText(_translate("MainWindow", "="))
-        self.releaseLabel.setText(_translate("MainWindow", " YitzchakMeltz Release_1.02.01"))
+        self.releaseLabel.setText(_translate("MainWindow", " YitzchakMeltz Release_1.03.01"))
         self.screenOutput.setText(_translate("MainWindow", "Enter Your Equation"))
 
         # set keyPressEvent to current widgets that we'd like it to be overridden
@@ -770,14 +770,15 @@ class Ui_MainWindow(object):
 
         self.msg.setWindowTitle("  Software Update")
         self.msg.setText("A software update is available.<br>Do you want to update now?<br>")
-        self.msg.setStandardButtons(QMessageBox.Ok)
+        self.msg.setStandardButtons(QMessageBox.Ok|QMessageBox.Cancel)
         self.msg.setStyleSheet("QLabel{min-width: 200px;}")
         self.msg.setWindowIcon(QtGui.QIcon("CalculatorLogo(150p)_1.0.0.ico"))
 
         if self.msg.exec_() == QMessageBox.Ok:
                 return True
 
-        return False
+        else: 
+                return False
         
 
     def check_for_updates(self):
@@ -786,7 +787,13 @@ class Ui_MainWindow(object):
                 from updateProgramCode130 import checkForUpdates, updateCalc
                 if checkForUpdates():
                         if self.update_msgbox():
-                                updateCalc()
+                                if updateCalc():
+                                        MainWindow.close()
+
+                                
+                                
+
+
 
 
 
@@ -815,5 +822,6 @@ if __name__ == "__main__":
     ui.check_for_updates()
 
     #splash.close()
+    
     sys.exit(app.exec_())
     #--------------------------------------------------------------------------------------

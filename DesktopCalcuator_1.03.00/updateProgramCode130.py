@@ -37,7 +37,7 @@ def makeUpdateFolder():
 
     else:
         dir = os.path.dirname(__file__)
-        filename = os.path.join(dir, 'Updates','Sagy Calculator Setup.exe')
+        filename = os.path.join(dir, 'Updates','SagyCalculatorSetup.exe')
         if os.path.exists(filename):
             os.remove(filename)
 
@@ -46,26 +46,24 @@ def makeUpdateFolder():
 def downloadUpdate(downloadPath):
     import urllib.request
 
-    filename = downloadPath + '\Sagy Calculator Setup.exe'
+    filename = downloadPath + '\SagyCalculatorSetup.exe'
 
     print("Starting update download")
 
-    url = "https://github.com/YitzchakMeltz/SassyOwl/blob/main/Sagy%20Calculator/Desktop%20Program/Sagy%20Calculator%20Setup.exe?raw=true"
+    url = "https://github.com/YitzchakMeltz/SassyOwl/blob/main/Sagy%20Calculator/Desktop%20Program/SagyCalculatorSetup.exe?raw=true"
     urllib.request.urlretrieve(url, filename)
 
     print("Update download complete")
 
-def runUpdateInstaller():
-    import os,atexit
-    dir = os.path.dirname(__file__)
-    filename = os.path.join(dir, 'Updates','Sagy Calculator Setup.exe')
-
-    atexit.register(os.execl, filename, filename)
-
-    os.exec*()
+def runUpdateInstaller(filename):
+    import os
+    os.startfile(filename)
+    return True
 
 def updateCalc():
     downloadPath = makeUpdateFolder()
     downloadUpdate(downloadPath)
-    runUpdateInstaller()
-    return
+    import os
+    filename = os.path.join(downloadPath,'SagyCalculatorSetup.exe')
+    return runUpdateInstaller(filename)
+    

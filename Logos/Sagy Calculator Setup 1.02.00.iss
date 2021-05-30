@@ -2,10 +2,10 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Sagy Calculator"
-#define MyAppVersion "1.02.00"
+#define MyAppVersion "1.03.00"
 #define MyAppPublisher "SassyOwl, Inc."
 #define MyAppURL "https://www.meltzphotography.com/"
-#define MyAppExeName "DesktopCalculatorGUI_1.2.0.exe"
+#define MyAppExeName "DesktopCalculatorGUI_1.3.0.exe"
 #define MyAppAssocName MyAppName + " File"
 #define MyAppAssocExt ".myp"
 #define MyAppAssocKey StringChange(MyAppAssocName, " ", "") + MyAppAssocExt
@@ -26,8 +26,8 @@ ChangesAssociations=yes
 DisableProgramGroupPage=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
-OutputDir=C:\Users\hmeltz\Documents\GitHub\DesktopCalculator\Program Setups\Release_1.02.00
-OutputBaseFilename=Sagy Calculator Setup
+OutputDir=C:\Users\hmeltz\Documents\GitHub\DesktopCalculator\Program Setups\Release_1.03.00
+OutputBaseFilename=SagyCalculatorSetup
 SetupIconFile=C:\Users\hmeltz\Documents\GitHub\DesktopCalculator\Logos\SagiInstallLogo(150)_1.0.0.ico
 Compression=lzma
 SolidCompression=yes
@@ -63,8 +63,8 @@ Name: "ukrainian"; MessagesFile: "compiler:Languages\Ukrainian.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\Users\hmeltz\Documents\GitHub\DesktopCalculator\exe Releases\Release_1.02.00\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\hmeltz\Documents\GitHub\DesktopCalculator\exe Releases\Release_1.02.00\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Users\hmeltz\Documents\GitHub\DesktopCalculator\exe Releases\Release_1.03.00\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\hmeltz\Documents\GitHub\DesktopCalculator\exe Releases\Release_1.03.00\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]
