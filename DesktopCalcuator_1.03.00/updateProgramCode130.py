@@ -70,6 +70,10 @@ def updateCalc():
 
 def openUpdateInstaller():
     import os,sys, subprocess
-    dire = os.path.dirname(__file__)
+    dire = os.path.dirname(os.path.realpath(__file__))
     pathname = os.path.join(dire, 'Updates')
-    subprocess.Popen('SagyCalculatorSetup.exe', cwd=pathname)
+    print("Pathname for debugging: ", os.path.exists(pathname))
+    os.path.chdir(pathname)
+    subprocess.call('SagyCalculatorSetup.exe')
+
+openUpdateInstaller()
