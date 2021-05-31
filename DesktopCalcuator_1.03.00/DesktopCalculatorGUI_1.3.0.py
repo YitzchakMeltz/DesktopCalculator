@@ -784,10 +784,12 @@ class Ui_MainWindow(object):
     def check_for_updates(self):
         if have_internet():
                 print("check for updates")
-                from updateProgramCode130 import checkForUpdates, updateCalc
+                from updateProgramCode130 import checkForUpdates, updateCalc, openUpdateInstaller
                 if checkForUpdates():
                         if self.update_msgbox():
                                 if updateCalc():
+                                        import atexit
+                                        atexit.register(openUpdateInstaller)
                                         MainWindow.close()
 
                                 

@@ -53,13 +53,12 @@ if __name__ == "__main__":
     
     MainWindow.show()
 
-    import os, time ,string
+    import subprocess, time ,string
 
     dir = os.path.dirname(__file__)
     pathname = os.path.join(dir, 'Updates')
     filename = os.path.join(dir, 'Updates','SagyCalculatorSetup.exe')
     time.sleep(0.5) 
     os.chdir(pathname)
-    os.system(filename)
-    
+    subprocess.Popen(['SagyCalculatorSetup.exe', fileName])
     sys.exit(app.exec_())

@@ -65,5 +65,11 @@ def updateCalc():
     downloadUpdate(downloadPath)
     import os
     filename = os.path.join(downloadPath,'SagyCalculatorSetup.exe')
-    return runUpdateInstaller(filename)
-    
+    openUpdateInstaller()
+    return True
+
+def openUpdateInstaller():
+    import os,sys, subprocess
+    dire = os.path.dirname(__file__)
+    pathname = os.path.join(dire, 'Updates')
+    subprocess.Popen('SagyCalculatorSetup.exe', cwd=pathname)
