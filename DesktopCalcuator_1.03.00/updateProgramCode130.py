@@ -25,15 +25,14 @@ def checkForUpdates():
 def makeUpdateFolder():
     import os
 
-    dir = os.path.dirname(__file__)
-    pathname = os.path.join(dir, 'Updates')
+    pathname = os.path.join('C:\ProgramData\SasyOwl\SagyCalculator','Updates')
+    print("Pathname for debugging: ",pathname)
 
     if not os.path.isdir(pathname):
         os.makedirs(pathname)
 
     else:
-        dir = os.path.dirname(__file__)
-        filename = os.path.join(dir, 'Updates','SagyCalculatorSetup.exe')
+        filename = os.path.join('C:\ProgramData\SasyOwl\SagyCalculator','Updates','SagyCalculatorSetup.exe')
         if os.path.exists(filename):
             os.remove(filename)
 
@@ -51,6 +50,7 @@ def downloadUpdate(downloadPath):
 
     print("Update download complete")
 
+# is this neccesarry???
 def runUpdateInstaller(filename):
     import os
     os.startfile(filename)
@@ -60,15 +60,11 @@ def updateCalc():
     downloadPath = makeUpdateFolder()
     downloadUpdate(downloadPath)
     import os
-    filename = os.path.join(downloadPath,'SagyCalculatorSetup.exe')
+    filename = os.path.join('C:\ProgramData\SasyOwl\SagyCalculator','Updates','SagyCalculatorSetup.exe')
     openUpdateInstaller()
     return True
 
 def openUpdateInstaller():
     import os,sys, subprocess
-    dire = os.path.dirname(os.path.realpath(__file__))
-    pathname = join(dire, 'Updates', 'SagyCalculatorSetup.exe')
-    print("Pathname for debugging: ", os.path.exists(pathname)
-    subprocess.call(pathname)
-
-openUpdateInstaller()
+    filename = os.path.join('C:\ProgramData\SasyOwl\SagyCalculator','Updates','SagyCalculatorSetup.exe')
+    subprocess.call(filename)
