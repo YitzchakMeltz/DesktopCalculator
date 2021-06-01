@@ -1,7 +1,3 @@
-def programUpdate():
-
-    return
-
 def checkForUpdates():
 
     CurrentProgramVersion = 10201
@@ -71,9 +67,8 @@ def updateCalc():
 def openUpdateInstaller():
     import os,sys, subprocess
     dire = os.path.dirname(os.path.realpath(__file__))
-    pathname = os.path.join(dire, 'Updates')
-    print("Pathname for debugging: ", os.path.exists(pathname))
-    os.path.chdir(pathname)
-    subprocess.call('SagyCalculatorSetup.exe')
+    pathname = join(dire, 'Updates', 'SagyCalculatorSetup.exe')
+    print("Pathname for debugging: ", os.path.exists(pathname)
+    subprocess.call(pathname)
 
 openUpdateInstaller()
