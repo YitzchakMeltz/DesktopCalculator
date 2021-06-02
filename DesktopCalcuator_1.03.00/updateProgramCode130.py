@@ -61,7 +61,6 @@ def updateCalc():
     downloadUpdate(downloadPath)
     import os
     filename = os.path.join('C:\ProgramData\SasyOwl\SagyCalculator','Updates','SagyCalculatorSetup.exe')
-    openUpdateInstaller()
     return True
 
 def openUpdateInstaller():

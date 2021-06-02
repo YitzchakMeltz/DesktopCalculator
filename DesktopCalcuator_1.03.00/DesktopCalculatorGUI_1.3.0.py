@@ -788,9 +788,10 @@ class Ui_MainWindow(object):
                 if checkForUpdates():
                         if self.update_msgbox():
                                 if updateCalc():
-                                        import atexit
+                                        import atexit, sys
                                         atexit.register(openUpdateInstaller)
                                         MainWindow.close()
+                                        sys.exit()
 
                                 
                                 
