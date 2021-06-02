@@ -26,7 +26,6 @@ resultStyleChanged = False
 placeholderThere = True
 
 
-
 class Ui_MainWindow(object):
 
     def setupUi(self, MainWindow):
@@ -779,6 +778,20 @@ class Ui_MainWindow(object):
 
         else: 
                 return False
+
+
+    def updating_dlgbox(self):
+        from PyQt5.QtWidgets import QLabel, QDialog
+        self.dlg = QDialog()
+        self.dlg.setWindowTitle(" Updating")
+        self.dlg.setWindowIcon(QtGui.QIcon("CalculatorLogo(150p)_1.0.0.ico"))
+        self.dlg.setModal(True)
+        label = QLabel(self.dlg)
+        label.setText("Program is updating.\nPlease do not turn off your computer.")
+        label.setAlignment(QtCore.Qt.AlignCenter)
+        label.setGeometry(QtCore.QRect(20, 30, 200, 27))
+        self.dlg.show()
+
         
 
     def check_for_updates(self):
@@ -787,6 +800,7 @@ class Ui_MainWindow(object):
                 from updateProgramCode130 import checkForUpdates, updateCalc, openUpdateInstaller
                 if checkForUpdates():
                         if self.update_msgbox():
+                                self.updating_dlgbox()
                                 if updateCalc():
                                         import atexit, sys
                                         atexit.register(openUpdateInstaller)
