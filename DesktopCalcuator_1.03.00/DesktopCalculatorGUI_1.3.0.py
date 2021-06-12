@@ -13,6 +13,7 @@ from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QDialog, QPushButton, QVBoxLayout, QApplication, QMessageBox
 from PyQt5.QtGui import*
 from PyQt5.QtCore import*
+from mainBackend130 import*
 
 
 
@@ -804,8 +805,10 @@ class Ui_MainWindow(object):
                                 if updateCalc():
                                         import atexit, sys
                                         atexit.register(openUpdateInstaller)
+                                        self.dlg.close()
                                         MainWindow.close()
-                                        sys.exit()
+                                        return True
+        return False
 
                                 
                                 
@@ -822,11 +825,9 @@ class Ui_MainWindow(object):
 #--------------------------------- Main Program ---------------------------------------
 if __name__ == "__main__":
     import sys
-    app = QtWidgets.QApplication(sys.argv)
+    
 
-    #splash = QtWidgets.QSplashScreen(QtGui.QPixmap('Logos\SassyOwlSplashScreen_1.0.0.png'))
-    #splash.show()
-    #splash.showMessage("Loading...")
+    app = QtWidgets.QApplication(sys.argv)
 
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
@@ -834,11 +835,9 @@ if __name__ == "__main__":
     
     MainWindow.show()
 
-    from mainBackend130 import*
-    
     ui.check_for_updates()
-
-    #splash.close()
-    
     sys.exit(app.exec_())
+
+   
+    
     #--------------------------------------------------------------------------------------

@@ -26,5 +26,18 @@ class Ui_updating_msgbox(object):
     def retranslateUi(self, updating_msgbox):
         _translate = QtCore.QCoreApplication.translate
         updating_msgbox.setWindowTitle(_translate("updating_msgbox", "Updating"))
-        self.label.setText(_translate("updating_msgbox", "Program is Updating.\n"
+        self.label.setText(_translate("updating_msgbox", "Program is preparing yo install updates.\n"
 "Please do not turn off your computer."))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+
+    Dlg = QtWidgets.QDialog()
+    ui = Ui_updating_msgbox
+    ui.setupUi(Dlg)
+    
+    Dlg.show()
+    
+    sys.exit(app.exec_())

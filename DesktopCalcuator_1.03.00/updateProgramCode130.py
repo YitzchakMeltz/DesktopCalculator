@@ -65,5 +65,9 @@ def updateCalc():
 
 def openUpdateInstaller():
     import os,sys, subprocess
+    #dir_path = os.path.dirname(os.path.realpath(__file__))
+    #filename = os.path.join(dir_path,'ExternalUpdater1.3.0.exe')
+    #print("Yitzchak: ",filename)
+    #subprocess.call(filename)
     filename = os.path.join('C:\ProgramData\SasyOwl\SagyCalculator','Updates','SagyCalculatorSetup.exe')
     subprocess.call(filename)
