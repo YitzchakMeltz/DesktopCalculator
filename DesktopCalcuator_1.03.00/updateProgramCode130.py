@@ -71,3 +71,4 @@ def openUpdateInstaller():
     #subprocess.call(filename)
     filename = os.path.join('C:\ProgramData\SasyOwl\SagyCalculator','Updates','SagyCalculatorSetup.exe')
     subprocess.call(filename)
+    print("Hello, How are you?")

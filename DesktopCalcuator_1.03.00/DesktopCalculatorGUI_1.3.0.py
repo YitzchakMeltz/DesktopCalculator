@@ -803,8 +803,10 @@ class Ui_MainWindow(object):
                         if self.update_msgbox():
                                 self.updating_dlgbox()
                                 if updateCalc():
-                                        import atexit, sys
-                                        atexit.register(openUpdateInstaller)
+                                        import atexit, sys, os
+                                        installer = os.path.join('C:\ProgramData\SasyOwl\SagyCalculator','Updates',
+                                                                'SagyCalculatorSetup.exe')
+                                        atexit.register(os.execl, installer, installer)
                                         self.dlg.close()
                                         MainWindow.close()
                                         return True
@@ -835,8 +837,8 @@ if __name__ == "__main__":
     
     MainWindow.show()
 
-    ui.check_for_updates()
-    sys.exit(app.exec_())
+    if not ui.check_for_updates():
+        sys.exit(app.exec_())
 
    
     
