@@ -595,7 +595,7 @@ class Ui_MainWindow(object):
         self.button_div.setText(_translate("MainWindow", "÷"))
         self.button_mult.setText(_translate("MainWindow", "×"))
         self.button_equals.setText(_translate("MainWindow", "="))
-        self.releaseLabel.setText(_translate("MainWindow", " YitzchakMeltz Release_1.03.01"))
+        self.releaseLabel.setText(_translate("MainWindow", " YitzchakMeltz Release_1.03.05"))
         self.screenOutput.setText(_translate("MainWindow", "Enter Your Equation"))
 
         # set keyPressEvent to current widgets that we'd like it to be overridden
