@@ -26,7 +26,7 @@ ChangesAssociations=yes
 DisableProgramGroupPage=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
-OutputDir=C:\Users\hmeltz\Documents\GitHub\DesktopCalculator\Program Setups\Release_1.03.03
+OutputDir=C:\Users\hmeltz\Documents\GitHub\SassyOwl\Sagy Calculator\Desktop Program\Archive\Program Setups\Release_1.03.04
 OutputBaseFilename=SagyCalculatorSetup
 SetupIconFile=C:\Users\hmeltz\Documents\GitHub\DesktopCalculator\Logos\SagiInstallLogo(150)_1.0.0.ico
 Compression=lzma
@@ -63,8 +63,8 @@ Name: "ukrainian"; MessagesFile: "compiler:Languages\Ukrainian.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\Users\hmeltz\Documents\GitHub\DesktopCalculator\exe Releases\Release_1.03.03\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\hmeltz\Documents\GitHub\DesktopCalculator\exe Releases\Release_1.03.03\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Users\hmeltz\Documents\GitHub\SassyOwl\Sagy Calculator\Desktop Program\Archive\exe Releases\Release_1.03.04\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\hmeltz\Documents\GitHub\SassyOwl\Sagy Calculator\Desktop Program\Archive\exe Releases\Release_1.03.04\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]
