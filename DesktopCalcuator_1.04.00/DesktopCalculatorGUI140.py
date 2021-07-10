@@ -87,7 +87,7 @@ class Ui_MainWindow(object):
         self.button_7.setDefault(False)
         self.button_7.setFlat(True)
         self.button_7.setObjectName("button_7")
-        self.button_7.clicked.connect(lambda:self.click_and_update("7"))
+        
 
 
 
@@ -674,17 +674,7 @@ class Ui_MainWindow(object):
 
 #--------------------------------------------------------------------------------------
 #----------------------------------- Functions ----------------------------------------
-    def click_and_update(self,userClick):
-        import mainBackend140
-        global placeholderThere
-        if(mainBackend140.lastEqual):
-                self.clear_results()
-        newCursorPos = button_click(userClick,self.screenOutput.cursorPosition(), not self.screenOutput.hasFocus())
-        placeholderThere = False
-        self.update_screen()
-        self.screenOutput.setCursorPosition(newCursorPos)
-        self.button_equals.setFocus()
-        return
+    
 
     def update_screen(self):
         import mainBackend140
@@ -793,34 +783,5 @@ class Ui_MainWindow(object):
         label.setGeometry(QtCore.QRect(20, 30, 200, 27))
         self.dlg.show()
 
-        
-
-    def check_for_updates(self):
-        if have_internet():
-                print("check for updates")
-                from updateProgramCode140 import checkForUpdates, updateCalc, openUpdateInstaller
-                if checkForUpdates():
-                        if self.update_msgbox():
-                                self.updating_dlgbox()
-                                if updateCalc():
-                                        import atexit, sys, os
-                                        installer = os.path.join('C:\ProgramData\SasyOwl\SagyCalculator','Updates',
-                                                                'SagyCalculatorSetup.exe')
-                                        atexit.register(os.execl, installer, installer)
-                                        self.dlg.close()
-                                        MainWindow.close()
-                                        return True
-        return False
-
-                                
-                                
-
-
-
-
-
-
 #--------------------------------------------------------------------------------------
-
-
 #--------------------------------------------------------------------------------------
