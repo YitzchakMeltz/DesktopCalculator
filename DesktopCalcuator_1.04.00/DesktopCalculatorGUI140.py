@@ -112,7 +112,6 @@ class Ui_MainWindow(object):
         self.button_8.setDefault(False)
         self.button_8.setFlat(True)
         self.button_8.setObjectName("button_8")
-        self.button_8.clicked.connect(lambda:self.click_and_update("8"))
 
 
         self.button_9 = QtWidgets.QPushButton(self.centralwidget)
@@ -136,7 +135,6 @@ class Ui_MainWindow(object):
         self.button_9.setDefault(False)
         self.button_9.setFlat(True)
         self.button_9.setObjectName("button_9")
-        self.button_9.clicked.connect(lambda:self.click_and_update("9"))
 
 
         self.button_4 = QtWidgets.QPushButton(self.centralwidget)
@@ -160,7 +158,6 @@ class Ui_MainWindow(object):
         self.button_4.setDefault(False)
         self.button_4.setFlat(True)
         self.button_4.setObjectName("button_4")
-        self.button_4.clicked.connect(lambda:self.click_and_update("4"))
 
 
         self.button_5 = QtWidgets.QPushButton(self.centralwidget)
@@ -184,7 +181,6 @@ class Ui_MainWindow(object):
         self.button_5.setDefault(False)
         self.button_5.setFlat(True)
         self.button_5.setObjectName("button_5")
-        self.button_5.clicked.connect(lambda:self.click_and_update("5"))
 
 
         self.button_6 = QtWidgets.QPushButton(self.centralwidget)
@@ -208,7 +204,6 @@ class Ui_MainWindow(object):
         self.button_6.setDefault(False)
         self.button_6.setFlat(True)
         self.button_6.setObjectName("button_6")
-        self.button_6.clicked.connect(lambda:self.click_and_update("6"))
 
 
         self.button_1 = QtWidgets.QPushButton(self.centralwidget)
@@ -232,7 +227,6 @@ class Ui_MainWindow(object):
         self.button_1.setDefault(False)
         self.button_1.setFlat(True)
         self.button_1.setObjectName("button_1")
-        self.button_1.clicked.connect(lambda:self.click_and_update("1"))
 
 
         self.button_2 = QtWidgets.QPushButton(self.centralwidget)
@@ -256,7 +250,6 @@ class Ui_MainWindow(object):
         self.button_2.setDefault(False)
         self.button_2.setFlat(True)
         self.button_2.setObjectName("button_2")
-        self.button_2.clicked.connect(lambda:self.click_and_update("2"))
 
 
         self.button_3 = QtWidgets.QPushButton(self.centralwidget)
@@ -280,7 +273,6 @@ class Ui_MainWindow(object):
         self.button_3.setDefault(False)
         self.button_3.setFlat(True)
         self.button_3.setObjectName("button_3")
-        self.button_3.clicked.connect(lambda:self.click_and_update("3"))
 
 
         self.button_clear = QtWidgets.QPushButton(self.centralwidget)
@@ -304,7 +296,7 @@ class Ui_MainWindow(object):
         self.button_clear.setDefault(False)
         self.button_clear.setFlat(True)
         self.button_clear.setObjectName("button_clear")
-        self.button_clear.clicked.connect(self.click_and_clear)
+        
 
 
         self.button_0 = QtWidgets.QPushButton(self.centralwidget)
@@ -328,7 +320,6 @@ class Ui_MainWindow(object):
         self.button_0.setDefault(False)
         self.button_0.setFlat(True)
         self.button_0.setObjectName("button_0")
-        self.button_0.clicked.connect(lambda:self.click_and_update("0"))
 
 
         self.button_dot = QtWidgets.QPushButton(self.centralwidget)
@@ -352,7 +343,6 @@ class Ui_MainWindow(object):
         self.button_dot.setDefault(False)
         self.button_dot.setFlat(True)
         self.button_dot.setObjectName("button_dot")
-        self.button_dot.clicked.connect(lambda:self.click_and_update("."))
 
 
         self.button_minus = QtWidgets.QPushButton(self.centralwidget)
@@ -376,7 +366,6 @@ class Ui_MainWindow(object):
         self.button_minus.setDefault(False)
         self.button_minus.setFlat(True)
         self.button_minus.setObjectName("button_minus")
-        self.button_minus.clicked.connect(lambda:self.click_and_update(" - "))
 
 
         self.button_plus = QtWidgets.QPushButton(self.centralwidget)
@@ -400,7 +389,6 @@ class Ui_MainWindow(object):
         self.button_plus.setDefault(False)
         self.button_plus.setFlat(True)
         self.button_plus.setObjectName("button_plus")
-        self.button_plus.clicked.connect(lambda:self.click_and_update(" + "))
 
 
         self.button_openPar = QtWidgets.QPushButton(self.centralwidget)
@@ -422,7 +410,6 @@ class Ui_MainWindow(object):
         self.button_openPar.setDefault(False)
         self.button_openPar.setFlat(True)
         self.button_openPar.setObjectName("button_openPar")
-        self.button_openPar.clicked.connect(lambda:self.click_and_update("("))
 
 
         self.button_closePar = QtWidgets.QPushButton(self.centralwidget)
@@ -444,7 +431,6 @@ class Ui_MainWindow(object):
         self.button_closePar.setDefault(False)
         self.button_closePar.setFlat(True)
         self.button_closePar.setObjectName("button_closePar")
-        self.button_closePar.clicked.connect(lambda:self.click_and_update(")"))
 
 
         self.button_backspace = QtWidgets.QPushButton(self.centralwidget)
@@ -468,7 +454,6 @@ class Ui_MainWindow(object):
         self.button_backspace.setDefault(False)
         self.button_backspace.setFlat(True)
         self.button_backspace.setObjectName("button_backspace")
-        self.button_backspace.clicked.connect(self.backspace_click)
 
 
         self.button_div = QtWidgets.QPushButton(self.centralwidget)
@@ -492,7 +477,6 @@ class Ui_MainWindow(object):
         self.button_div.setDefault(False)
         self.button_div.setFlat(True)
         self.button_div.setObjectName("button_div")
-        self.button_div.clicked.connect(lambda:self.click_and_update(" ÷ "))
 
 
         self.button_mult = QtWidgets.QPushButton(self.centralwidget)
@@ -516,7 +500,6 @@ class Ui_MainWindow(object):
         self.button_mult.setDefault(False)
         self.button_mult.setFlat(True)
         self.button_mult.setObjectName("button_mult")
-        self.button_mult.clicked.connect(lambda:self.click_and_update(" × "))
 
 
 
