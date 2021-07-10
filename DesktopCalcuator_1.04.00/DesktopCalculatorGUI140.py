@@ -13,7 +13,7 @@ from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QDialog, QPushButton, QVBoxLayout, QApplication, QMessageBox
 from PyQt5.QtGui import*
 from PyQt5.QtCore import*
-from mainBackend130 import*
+from mainBackend140 import*
 
 
 
@@ -675,9 +675,9 @@ class Ui_MainWindow(object):
 #--------------------------------------------------------------------------------------
 #----------------------------------- Functions ----------------------------------------
     def click_and_update(self,userClick):
-        import mainBackend130
+        import mainBackend140
         global placeholderThere
-        if(mainBackend130.lastEqual):
+        if(mainBackend140.lastEqual):
                 self.clear_results()
         newCursorPos = button_click(userClick,self.screenOutput.cursorPosition(), not self.screenOutput.hasFocus())
         placeholderThere = False
@@ -687,11 +687,11 @@ class Ui_MainWindow(object):
         return
 
     def update_screen(self):
-        import mainBackend130
+        import mainBackend140
         global placeholderThere
-        self.screenOutput.setText(mainBackend130.mathEq)
-        self.decimalResultOutput.setText(mainBackend130.decimalSum)
-        if mainBackend130.mathEq == "":
+        self.screenOutput.setText(mainBackend140.mathEq)
+        self.decimalResultOutput.setText(mainBackend140.decimalSum)
+        if mainBackend140.mathEq == "":
                 self.screenOutput.setText("Enter Your Equation")
                 placeholderThere = True
 
@@ -723,7 +723,7 @@ class Ui_MainWindow(object):
         return
 
     def update_result_screen(self):
-        import mainBackend130
+        import mainBackend140
         global resultStyleChanged
    
         button_equals_click()
@@ -731,18 +731,18 @@ class Ui_MainWindow(object):
         if resultStyleChanged:
                self.resultOutput.setStyleSheet("font: 23pt \"calibri\";\n""color: rgb(70, 70, 70);")          # reset the style to large
         
-        if len(str((mainBackend130.sum)))>15:
+        if len(str((mainBackend140.sum)))>15:
                 self.resultOutput.setStyleSheet("font: 13pt \"calibri\";\n""color: rgb(70, 70, 70);")
                 resultStyleChanged = True
 
-        if isinstance(mainBackend130.sum,int) or isinstance(mainBackend130.sum,Fraction):
-                self.resultOutput.setText("= " + str(mainBackend130.sum))
+        if isinstance(mainBackend140.sum,int) or isinstance(mainBackend140.sum,Fraction):
+                self.resultOutput.setText("= " + str(mainBackend140.sum))
         else:
-                self.resultOutput.setText(mainBackend130.sum)
+                self.resultOutput.setText(mainBackend140.sum)
         return
 
     def backspace_click(self):
-        import mainBackend130
+        import mainBackend140
         newCursorPos = button_backspace_click(self.screenOutput.cursorPosition())
         self.update_screen()
         self.resultOutput.setText("")
@@ -798,7 +798,7 @@ class Ui_MainWindow(object):
     def check_for_updates(self):
         if have_internet():
                 print("check for updates")
-                from updateProgramCode130 import checkForUpdates, updateCalc, openUpdateInstaller
+                from updateProgramCode140 import checkForUpdates, updateCalc, openUpdateInstaller
                 if checkForUpdates():
                         if self.update_msgbox():
                                 self.updating_dlgbox()
@@ -824,22 +824,3 @@ class Ui_MainWindow(object):
 
 
 #--------------------------------------------------------------------------------------
-#--------------------------------- Main Program ---------------------------------------
-if __name__ == "__main__":
-    import sys
-    
-
-    app = QtWidgets.QApplication(sys.argv)
-
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    
-    MainWindow.show()
-
-    if not ui.check_for_updates():
-        sys.exit(app.exec_())
-
-   
-    
-    #--------------------------------------------------------------------------------------
