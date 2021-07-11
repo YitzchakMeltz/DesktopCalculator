@@ -220,6 +220,7 @@ class mainControl(Ui_MainWindow):
         self.update_screen()
         self.update_result_screen()
         self.resultOutput.setText("")
+        
         return
 
         # clear the results screens

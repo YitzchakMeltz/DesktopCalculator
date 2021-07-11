@@ -132,6 +132,7 @@ def button_clear_click():
     global mathEq, decimalSum, lastEqual
     mathEq=""
     decimalSum=""
+    lastEqual = False
     return
 
 #--------------------------------------------------------------------
