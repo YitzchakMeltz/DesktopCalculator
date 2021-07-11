@@ -86,6 +86,9 @@ def button_equals_click():
     if sum == "":
         return
 
+    # remove unnecessary zeros: i.e. '05090 + 0004' => '5090 + 4'
+    sum = removeExtraZeros(sum)
+
     # evaluate the equation
     try:
         sum=eval(sum)
@@ -184,6 +187,29 @@ def button_backspace_click(cursorPos):
     if cursorPos > 1 and mathEq[cursorPos - 2] == " ":
             return (cursorPos - 2)
     return (cursorPos - 1)
+
+#--------------------------------------------------------------------
+# Function that takes in a string and removes any zeros that are a 
+# prefix to a number
+# i.e. 004 => 4
+# Uses tail recursion
+def removeExtraZeros(str):
+    def removeExtraZerosInner(str,afterNumber):
+        if len(str) == 1:
+            return str[0]
+
+        if len(str) == 0:
+            return ""
+
+        if str[0]=='0' and str[1].isnumeric() and not afterNumber:
+            return  removeExtraZerosInner(str[1:],afterNumber)
+
+        if str[0].isnumeric():
+            return str[0] + removeExtraZerosInner(str[1:],True)
+
+        return str[0] + removeExtraZerosInner(str[1:],False)
+
+    return removeExtraZerosInner(str,False)
 
 #--------------------------------------------------------------------
 # Function that checks for internet connection
