@@ -19,12 +19,6 @@ class Ui_MainWindow(object):
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-
-        icon = QtGui.QIcon("CalculatorLogo(150p)_1.0.0.ico")
-        MainWindow.setWindowIcon(icon)
-        
-        # set fixed size and disable resizing and maximizing window
-        MainWindow.setFixedSize(331, 411)
        
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -509,8 +503,7 @@ class Ui_MainWindow(object):
         "font: 12pt \"MS Shell Dlg 2\";\n""color: rgb(190, 190, 190);")
         self.screenOutput.setAlignment(QtCore.Qt.AlignCenter)
         self.screenOutput.setObjectName("eqInput")
-        self.screenOutput.setContextMenuPolicy(Qt.NoContextMenu)        #disable menu pop up for cut/copy/paste
-        self.screenOutput.selectionChanged.connect(lambda:self.screenOutput.deselect())  # disable selecting text
+
 
 
         self.decimalResultOutput = QtWidgets.QLabel(self.centralwidget)

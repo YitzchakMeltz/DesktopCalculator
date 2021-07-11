@@ -16,6 +16,15 @@ class mainControl(Ui_MainWindow):
     def __init__(self, Window):
         self.setupUi(Window)
     
+        icon = QtGui.QIcon("CalculatorLogo(150p)_1.0.0.ico")
+        Window.setWindowIcon(icon)
+
+        # set fixed size and disable resizing and maximizing window
+        Window.setFixedSize(331, 411)
+
+        self.screenOutput.setContextMenuPolicy(Qt.NoContextMenu)        #disable menu pop up for cut/copy/paste
+        self.screenOutput.selectionChanged.connect(lambda:self.screenOutput.deselect())  # disable selecting text
+
     #-------------------------------- Connect Buttons -------------------------------------
         self.button_0.clicked.connect(lambda:self.click_and_update("0"))
         self.button_1.clicked.connect(lambda:self.click_and_update("1"))
@@ -129,7 +138,7 @@ class mainControl(Ui_MainWindow):
         import mainBackend140
         global placeholderThere
         self.screenOutput.setText(mainBackend140.mathEq)
-        self.decimalResultOutput.setText(mainBackend140.decimalSum)
+        
         if mainBackend140.mathEq == "":
                 self.screenOutput.setText("Enter Your Equation")
                 placeholderThere = True
@@ -176,6 +185,7 @@ class mainControl(Ui_MainWindow):
 
         if isinstance(mainBackend140.sum,int) or isinstance(mainBackend140.sum,Fraction):
                 self.resultOutput.setText("= " + str(mainBackend140.sum))
+                self.decimalResultOutput.setText(mainBackend140.decimalSum)
         else:
                 self.resultOutput.setText(mainBackend140.sum)
         return
@@ -192,7 +202,7 @@ class mainControl(Ui_MainWindow):
         import mainBackend140
         global placeholderThere
         self.screenOutput.setText(mainBackend140.mathEq)
-        self.decimalResultOutput.setText(mainBackend140.decimalSum)
+        #self.decimalResultOutput.setText(mainBackend140.decimalSum)
         if mainBackend140.mathEq == "":
                 self.screenOutput.setText("Enter Your Equation")
                 placeholderThere = True
@@ -239,6 +249,7 @@ class mainControl(Ui_MainWindow):
 
         if isinstance(mainBackend140.sum,int) or isinstance(mainBackend140.sum,Fraction):
                 self.resultOutput.setText("= " + str(mainBackend140.sum))
+                self.decimalResultOutput.setText(mainBackend140.decimalSum)
         else:
                 self.resultOutput.setText(mainBackend140.sum)
         return
@@ -295,22 +306,22 @@ class mainControl(Ui_MainWindow):
         label.setGeometry(QtCore.QRect(20, 30, 200, 27))
         self.dlg.show()
 
-def check_for_updates():
-    if have_internet():
-            print("check for updates")
-            from updateProgramCode140 import checkForUpdates, updateCalc, openUpdateInstaller
-            if checkForUpdates():
-                    if update_msgbox():
-                            updating_dlgbox()
-                            if updateCalc():
-                                    import atexit, sys, os
-                                    installer = os.path.join('C:\ProgramData\SasyOwl\SagyCalculator','Updates',
-                                                            'SagyCalculatorSetup.exe')
-                                    atexit.register(os.execl, installer, installer)
-                                    dlg.close()
-                                    MainWindow.close()
-                                    return True
-    return False
+    def check_for_updates(self):
+        if have_internet():
+                print("check for updates")
+                from updateProgramCode140 import checkForUpdates, updateCalc, openUpdateInstaller
+                if checkForUpdates():
+                        if self.update_msgbox():
+                                self.updating_dlgbox()
+                                if updateCalc():
+                                        import atexit, sys, os
+                                        installer = os.path.join('C:\ProgramData\SasyOwl\SagyCalculator','Updates',
+                                                                 'SagyCalculatorSetup.exe')
+                                        atexit.register(os.execl, installer, installer)
+                                        self.dlg.close()
+                                        MainWindow.close()
+                                        return True
+        return False
 #--------------------------------------------------------------------------------------
 
 #--------------------------------- Main Program ---------------------------------------
@@ -324,6 +335,6 @@ if __name__ == "__main__":
     
     MainWindow.show()
 
-    if not check_for_updates():
+    if not ui.check_for_updates():
         sys.exit(app.exec_())
 #--------------------------------------------------------------------------------------
