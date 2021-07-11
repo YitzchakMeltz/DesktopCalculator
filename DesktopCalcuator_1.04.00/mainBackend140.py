@@ -93,6 +93,10 @@ def button_equals_click():
         sum="    Equation was not entered correctly"
         decimalSum=""
         return
+    except ZeroDivisionError:
+        sum="    Cannot divide a number by zero"
+        decimalSum=""
+        return
 
     #check if it is a float of type 2.0 etc. if it is - convert to integer
     if isinstance(sum, float):
