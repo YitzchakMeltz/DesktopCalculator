@@ -120,10 +120,10 @@ class mainControl(Ui_MainWindow):
                 self.backspace_click()
 
         if e.key() == Qt.Key_Right:
-                self.click_and_update("7")
+                self.arrow_click('R')
 
         if e.key() == Qt.Key_Left:
-                self.click_and_update("8")
+                self.arrow_click('L')
 #--------------------------------------------------------------------------------------
 
 #--------------------------------------------------------------------------------------
@@ -203,6 +203,10 @@ class mainControl(Ui_MainWindow):
         self.resultOutput.setText("")
         self.decimalResultOutput.setText("")
         self.screenOutput.setCursorPosition(newCursorPos)
+
+    def arrow_click(self,direction):
+        newCursorPos = button_arrow_click(self.screenOutput.cursorPosition(),direction)
+        self.screenOutput.setCursorPosition(newCursorPos)    
 
     def update_screen(self):
         import mainBackend140

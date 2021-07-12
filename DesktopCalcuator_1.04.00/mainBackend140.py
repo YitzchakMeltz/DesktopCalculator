@@ -189,6 +189,24 @@ def button_backspace_click(cursorPos):
     return (cursorPos - 1)
 
 #--------------------------------------------------------------------
+# function that is activated when the cursor arrow button is clicked
+def button_arrow_click(cursorPos,direction):
+    if (direction == 'R' and cursorPos == len(mathEq)) or (direction == 'L' and cursorPos == 0):
+        return cursorPos
+
+    if(direction == 'R'):
+        if mathEq[(cursorPos)] == " ":
+            return (cursorPos + 3)
+        if len(mathEq) == (cursorPos + 1) or mathEq[(cursorPos)].isnumeric():
+            return (cursorPos + 1)
+
+    if(direction == 'L'):
+        if mathEq[(cursorPos - 1)] == " ":
+            return (cursorPos - 3)
+        if mathEq[(cursorPos - 1)].isnumeric():
+            return (cursorPos - 1)
+
+#--------------------------------------------------------------------
 # Function that takes in a string and removes any zeros that are a 
 # prefix to a number
 # i.e. 004 => 4
