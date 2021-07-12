@@ -558,6 +558,6 @@ class Ui_MainWindow(object):
         self.button_div.setText(_translate("MainWindow", "÷"))
         self.button_mult.setText(_translate("MainWindow", "×"))
         self.button_equals.setText(_translate("MainWindow", "="))
-        self.releaseLabel.setText(_translate("MainWindow", " YitzchakMeltz Release_1.04.00"))
+        self.releaseLabel.setText(_translate("MainWindow", " YitzchakMeltz Release_1.04.01"))
         self.screenOutput.setText(_translate("MainWindow", "Enter Your Equation"))
 #--------------------------------------------------------------------------------------
