@@ -46,6 +46,7 @@ class mainControl(Ui_MainWindow):
         self.button_openPar.clicked.connect(lambda:self.click_and_update("("))
         self.button_closePar.clicked.connect(lambda:self.click_and_update(")"))
         self.button_backspace.clicked.connect(self.backspace_click)
+        self.button_equals.clicked.connect(self.equal_click)
 
         # set keyPressEvent to current widgets that we'd like it to be overridden
         self.centralwidget.keyPressEvent = self.keyPressEvent
@@ -250,7 +251,7 @@ class mainControl(Ui_MainWindow):
         import mainBackend140
         global resultStyleChanged
    
-        button_equals_click()
+        #button_equals_click()  ??? Why is this line here ???
 
         if resultStyleChanged:
                self.resultOutput.setStyleSheet("font: 23pt \"calibri\";\n""color: rgb(70, 70, 70);")          # reset the style to large

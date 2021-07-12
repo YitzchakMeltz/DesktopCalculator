@@ -28,7 +28,7 @@ def button_click(userClick, cursorPos, cursorNotActive):
 
     # clear screen if previous entry was equals operator
     if(lastEqual and cursorNotActive):
-        button_clear_click()
+        clear()
 
     # initialize cursor position if the QLineEdit has the placeholder
     if mathEq == "":
@@ -140,6 +140,17 @@ def button_clear_click():
     mathEq=""
     decimalSum=""
     lastEqual = False
+    return
+
+#--------------------------------------------------------------------
+# function that is activated by program when need to clear
+# Resets the math equation string to an empty string
+# Resets the decimal sum string to an empty string
+
+def clear():
+    global mathEq, decimalSum
+    mathEq=""
+    decimalSum=""
     return
 
 #--------------------------------------------------------------------

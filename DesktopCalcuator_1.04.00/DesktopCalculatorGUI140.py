@@ -44,7 +44,6 @@ class Ui_MainWindow(object):
         self.button_equals.setDefault(False)
         self.button_equals.setFlat(True)
         self.button_equals.setObjectName("button_equals")
-        self.button_equals.clicked.connect(self.equal_click)
 
 
 
