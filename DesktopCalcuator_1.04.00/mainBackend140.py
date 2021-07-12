@@ -197,12 +197,16 @@ def button_arrow_click(cursorPos,direction):
     if(direction == 'R'):
         if mathEq[(cursorPos)] == " ":
             return (cursorPos + 3)
+        if mathEq[(cursorPos)] in mathOperationSymbols:
+            return (cursorPos + 2)
         if len(mathEq) == (cursorPos + 1) or mathEq[(cursorPos)].isnumeric():
             return (cursorPos + 1)
 
     if(direction == 'L'):
         if mathEq[(cursorPos - 1)] == " ":
             return (cursorPos - 3)
+        if mathEq[(cursorPos - 1)] in mathOperationSymbols:
+            return (cursorPos - 2)
         if mathEq[(cursorPos - 1)].isnumeric():
             return (cursorPos - 1)
 
