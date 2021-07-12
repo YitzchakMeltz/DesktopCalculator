@@ -118,6 +118,12 @@ class mainControl(Ui_MainWindow):
         
         if e.key() == Qt.Key_Backspace:
                 self.backspace_click()
+
+        if e.key() == Qt.Key_Right:
+                self.click_and_update("7")
+
+        if e.key() == Qt.Key_Left:
+                self.click_and_update("8")
 #--------------------------------------------------------------------------------------
 
 #--------------------------------------------------------------------------------------
