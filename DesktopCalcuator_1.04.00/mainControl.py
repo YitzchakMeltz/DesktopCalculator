@@ -22,6 +22,7 @@ class mainControl(Ui_MainWindow):
         # set fixed size and disable resizing and maximizing window
         Window.setFixedSize(331, 411)
 
+        self.screenOutput.setReadOnly(True)
         self.screenOutput.setContextMenuPolicy(Qt.NoContextMenu)        #disable menu pop up for cut/copy/paste
         self.screenOutput.selectionChanged.connect(lambda:self.screenOutput.deselect())  # disable selecting text
 
