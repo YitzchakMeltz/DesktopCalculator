@@ -210,7 +210,7 @@ def button_arrow_click(cursorPos,direction):
             return (cursorPos + 3)
         if mathEq[(cursorPos)] in mathOperationSymbols:
             return (cursorPos + 2)
-        if len(mathEq) == (cursorPos + 1) or mathEq[(cursorPos)].isnumeric():
+        if len(mathEq) == (cursorPos + 1) or singleSpaceSymbol(mathEq[(cursorPos)]):
             return (cursorPos + 1)
 
     if(direction == 'L'):
@@ -218,8 +218,18 @@ def button_arrow_click(cursorPos,direction):
             return (cursorPos - 3)
         if mathEq[(cursorPos - 1)] in mathOperationSymbols:
             return (cursorPos - 2)
-        if mathEq[(cursorPos - 1)].isnumeric():
+        if singleSpaceSymbol(mathEq[(cursorPos - 1)]):
             return (cursorPos - 1)
+
+# Function that takes in a string and checks if it's a non space symbol that is not a math symbol
+def singleSpaceSymbol(str):
+    if str in mathOperationSymbols:
+        return False
+    
+    if str == " ":
+        return False
+
+    return True
 
 #--------------------------------------------------------------------
 # Function that takes in a string and removes any zeros that are a 
