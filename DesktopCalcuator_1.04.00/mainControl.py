@@ -1,3 +1,5 @@
+import DesktopCalculatorGUI140
+import mainBackend140
 from DesktopCalculatorGUI140 import*
 from mainBackend140 import*
 
@@ -131,7 +133,6 @@ class mainControl(Ui_MainWindow):
 #--------------------------------------------------------------------------------------
 #----------------------------------- Functions ----------------------------------------
     def click_and_update(self,userClick):
-        import mainBackend140
         global placeholderThere
         if(mainBackend140.lastEqual):
                 self.clear_results()
@@ -143,7 +144,6 @@ class mainControl(Ui_MainWindow):
         return
     
     def update_screen(self):
-        import mainBackend140
         global placeholderThere
         self.screenOutput.setText(mainBackend140.mathEq)
         
@@ -179,7 +179,6 @@ class mainControl(Ui_MainWindow):
         return
 
     def update_result_screen(self):
-        import mainBackend140
         global resultStyleChanged
    
         button_equals_click()
@@ -199,7 +198,6 @@ class mainControl(Ui_MainWindow):
         return
 
     def backspace_click(self):
-        import mainBackend140
         newCursorPos = button_backspace_click(self.screenOutput.cursorPosition())
         self.update_screen()
         self.resultOutput.setText("")
@@ -211,7 +209,6 @@ class mainControl(Ui_MainWindow):
         self.screenOutput.setCursorPosition(newCursorPos)    
 
     def update_screen(self):
-        import mainBackend140
         global placeholderThere
         self.screenOutput.setText(mainBackend140.mathEq)
         #self.decimalResultOutput.setText(mainBackend140.decimalSum)
@@ -248,7 +245,6 @@ class mainControl(Ui_MainWindow):
         return
 
     def update_result_screen(self):
-        import mainBackend140
         global resultStyleChanged
    
         #button_equals_click()  ??? Why is this line here ???
@@ -268,7 +264,6 @@ class mainControl(Ui_MainWindow):
         return
 
     def backspace_click(self):
-        import mainBackend140
         newCursorPos = button_backspace_click(self.screenOutput.cursorPosition())
         self.update_screen()
         self.resultOutput.setText("")
