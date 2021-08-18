@@ -2,6 +2,8 @@ import DesktopCalculatorGUI140
 import mainBackend140
 from DesktopCalculatorGUI140 import*
 from mainBackend140 import*
+from updateProgramCode140 import checkForUpdates, updateCalc, openUpdateInstaller
+import atexit, sys, os
 
 # Handle high resolution displays:
 if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
@@ -317,12 +319,10 @@ class mainControl(Ui_MainWindow):
     def check_for_updates(self):
         if have_internet():
                 print("check for updates")
-                from updateProgramCode140 import checkForUpdates, updateCalc, openUpdateInstaller
                 if checkForUpdates():
                         if self.update_msgbox():
                                 self.updating_dlgbox()
                                 if updateCalc():
-                                        import atexit, sys, os
                                         installer = os.path.join('C:\ProgramData\SasyOwl\SagyCalculator','Updates',
                                                                  'SagyCalculatorSetup.exe')
                                         atexit.register(os.execl, installer, installer)
