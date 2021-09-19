@@ -1,1 +1,1 @@
-pyinstaller --onefile -w --icon=C:\Users\hmeltz\Documents\GitHub\DesktopCalculator\Logos\CalculatorLogo(150p)_1.0.0.ico C:\Users\hmeltz\Documents\GitHub\DesktopCalculator\DesktopCalcuator_1.03.00\ExternalUpdater1.3.0.py
+pyinstaller --onefile --debug=all -w --icon=C:\Users\hmeltz\Documents\GitHub\Artificial-Intelligence-HW\HW3\Connect4Logo_1.0.0.ico C:\Users\hmeltz\Documents\GitHub\Artificial-Intelligence-HW\HW3\play.py
