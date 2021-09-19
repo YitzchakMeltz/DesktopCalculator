@@ -4,6 +4,7 @@ from DesktopCalculatorGUI140 import*
 from mainBackend140 import*
 from updateProgramCode140 import checkForUpdates, updateCalc, openUpdateInstaller
 import atexit, sys, os
+import threads
 
 # Handle high resolution displays:
 if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
@@ -318,17 +319,29 @@ class mainControl(Ui_MainWindow):
 
     def check_for_updates(self):
         if have_internet():
-                print("check for updates")
-                if checkForUpdates():
-                        if self.update_msgbox():
-                                self.updating_dlgbox()
-                                if updateCalc():
-                                        installer = os.path.join('C:\ProgramData\SasyOwl\SagyCalculator','Updates',
-                                                                 'SagyCalculatorSetup.exe')
-                                        atexit.register(os.execl, installer, installer)
-                                        self.dlg.close()
-                                        MainWindow.close()
-                                        return True
+                return self.initiate_update_proccess()    
+        return False
+
+    def initiate_update_proccess(self):
+        print("check for updates")
+        if checkForUpdates():
+                return self.request_update_permission()
+        return False
+
+    def request_update_permission(self):
+        if self.update_msgbox():
+                self.updating_dlgbox()
+                return self.start_update_proccess()
+        return False
+
+    def start_update_proccess(self):
+        if updateCalc():
+                installer = os.path.join('C:\ProgramData\SasyOwl\SagyCalculator','Updates',
+                                        'SagyCalculatorSetup.exe')
+                atexit.register(os.execl, installer, installer)
+                self.dlg.close()
+                MainWindow.close()
+                return True
         return False
 #--------------------------------------------------------------------------------------
 
