@@ -12,8 +12,10 @@ def checkForUpdates():
         decoded_line = line.decode("utf-8")
         
     decoded_line = decoded_line.replace(".","")
+    print(int(decoded_line))
 
-    if CurrentProgramVersion < int(decoded_line):
+    if CurrentProgramVersion < 19402:
+    #if CurrentProgramVersion < int(decoded_line):
         print("Update Availible")
         return True
     else:

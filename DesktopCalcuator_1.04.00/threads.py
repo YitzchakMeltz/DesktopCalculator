@@ -1,13 +1,14 @@
+from PyQt5.QtCore import QObject, QThread, pyqtSignal
+from updateProgramCode140 import updateCalc
+import updateProgramCode140
+import time
 
-# import the threading module
-import threading
- 
-class thread(threading.Thread):
-    def __init__(self, thread_name, thread_ID):
-        threading.Thread.__init__(self)
-        self.thread_name = thread_name
-        self.thread_ID = thread_ID
- 
-        # helper function to execute the threads
+# Create a worker class
+class DownloadThread(QObject):
+    finished = pyqtSignal()
+    progress = pyqtSignal(int)
+
     def run(self):
-        print(str(self.thread_name) +" "+ str(self.thread_ID))
+        """Long-running task."""
+        updateProgramCode140.updateCalc()
+        self.finished.emit()

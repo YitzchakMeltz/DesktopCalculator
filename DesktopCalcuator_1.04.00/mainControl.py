@@ -5,6 +5,7 @@ from mainBackend140 import*
 from updateProgramCode140 import checkForUpdates, updateCalc, openUpdateInstaller
 import atexit, sys, os
 import threads
+from threads import DownloadThread
 
 # Handle high resolution displays:
 if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
@@ -335,14 +336,37 @@ class mainControl(Ui_MainWindow):
         return False
 
     def start_update_proccess(self):
-        if updateCalc():
-                installer = os.path.join('C:\ProgramData\SasyOwl\SagyCalculator','Updates',
-                                        'SagyCalculatorSetup.exe')
-                atexit.register(os.execl, installer, installer)
-                self.dlg.close()
-                MainWindow.close()
-                return True
-        return False
+        # Create a QThread object
+        self.thread = QThread()
+        self.download_thread = DownloadThread()
+        # Move worker to the thread
+        self.download_thread.moveToThread(self.thread)
+        # Connect signals and slots
+        self.thread.started.connect(self.download_thread.run)
+        self.download_thread.finished.connect(self.thread.quit)
+        self.download_thread.finished.connect(self.download_thread.deleteLater)
+        self.thread.finished.connect(self.thread.deleteLater)
+        # Start the thread
+        self.thread.start()
+        
+        while not self.download_thread.isFinished():
+                pass
+
+        
+        # Final resets
+        self.thread.finished.connect(
+            self.restart_program(),
+            lambda: self.longRunningBtn.setEnabled(True)
+        )
+        return True
+
+    def restart_program(self):
+        installer = os.path.join('C:\ProgramData\SasyOwl\SagyCalculator','Updates',
+                                'SagyCalculatorSetup.exe')
+        atexit.register(os.execl, installer, installer)
+        self.dlg.close()
+        MainWindow.close()
+        
 #--------------------------------------------------------------------------------------
 
 #--------------------------------- Main Program ---------------------------------------
