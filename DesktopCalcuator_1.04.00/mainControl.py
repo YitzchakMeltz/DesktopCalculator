@@ -330,6 +330,7 @@ class mainControl(Ui_MainWindow):
         return False
 
     def request_update_permission(self):
+        global programUpdated
         if self.update_msgbox():
                 self.updating_dlgbox()
                 return self.start_update_proccess()
@@ -348,24 +349,23 @@ class mainControl(Ui_MainWindow):
         self.thread.finished.connect(self.thread.deleteLater)
         # Start the thread
         self.thread.start()
-        
-        while not self.download_thread.isFinished():
-                pass
-
-        
         # Final resets
-        self.thread.finished.connect(
-            self.restart_program(),
-            lambda: self.longRunningBtn.setEnabled(True)
-        )
+        #self.thread.finished.connect(
+            #self.restart_program(),
+            #lambda: self.longRunningBtn.setEnabled(True)
+        #)
         return True
 
-    def restart_program(self):
-        installer = os.path.join('C:\ProgramData\SasyOwl\SagyCalculator','Updates',
-                                'SagyCalculatorSetup.exe')
-        atexit.register(os.execl, installer, installer)
-        self.dlg.close()
-        MainWindow.close()
+    #def restart_program(self):
+    #    installer = os.path.join('C:\ProgramData\SasyOwl\SagyCalculator','Updates',
+    #                            'SagyCalculatorSetup.exe')
+    #    atexit.register(os.execl, installer, installer)
+    #    self.dlg.close()
+    #    MainWindow.close()
+
+    def close_program(self):
+            self.dlg.close()
+            MainWindow.close()
         
 #--------------------------------------------------------------------------------------
 
@@ -382,4 +382,6 @@ if __name__ == "__main__":
 
     if not ui.check_for_updates():
         sys.exit(app.exec_())
+
+    ui.close_program()
 #--------------------------------------------------------------------------------------
