@@ -320,21 +320,17 @@ class mainControl(Ui_MainWindow):
 
     def check_for_updates(self):
         if have_internet():
-                return self.initiate_update_proccess()    
-        return False
+                self.initiate_update_proccess()    
 
     def initiate_update_proccess(self):
         print("check for updates")
         if checkForUpdates():
-                return self.request_update_permission()
-        return False
+                self.request_update_permission()
 
     def request_update_permission(self):
-        global programUpdated
         if self.update_msgbox():
                 self.updating_dlgbox()
-                return self.start_update_proccess()
-        return False
+                self.start_update_proccess()
 
     def start_update_proccess(self):
         # Create a QThread object
@@ -344,24 +340,12 @@ class mainControl(Ui_MainWindow):
         self.download_thread.moveToThread(self.thread)
         # Connect signals and slots
         self.thread.started.connect(self.download_thread.run)
+        self.download_thread.finished.connect(self.close_program)
         self.download_thread.finished.connect(self.thread.quit)
         self.download_thread.finished.connect(self.download_thread.deleteLater)
         self.thread.finished.connect(self.thread.deleteLater)
         # Start the thread
         self.thread.start()
-        # Final resets
-        #self.thread.finished.connect(
-            #self.restart_program(),
-            #lambda: self.longRunningBtn.setEnabled(True)
-        #)
-        return True
-
-    #def restart_program(self):
-    #    installer = os.path.join('C:\ProgramData\SasyOwl\SagyCalculator','Updates',
-    #                            'SagyCalculatorSetup.exe')
-    #    atexit.register(os.execl, installer, installer)
-    #    self.dlg.close()
-    #    MainWindow.close()
 
     def close_program(self):
             self.dlg.close()
@@ -380,8 +364,9 @@ if __name__ == "__main__":
     
     MainWindow.show()
 
-    if not ui.check_for_updates():
-        sys.exit(app.exec_())
+    ui.check_for_updates()
+
+    sys.exit(app.exec_())
 
     ui.close_program()
 #--------------------------------------------------------------------------------------
