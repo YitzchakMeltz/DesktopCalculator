@@ -1,11 +1,14 @@
 import DesktopCalculatorGUI140
 import mainBackend140
 from DesktopCalculatorGUI140 import*
+import UpdatingDlgBox
+from UpdatingDlgBox import*
 from mainBackend140 import*
 from updateProgramCode140 import checkForUpdates, updateCalc, openUpdateInstaller
 import atexit, sys, os
 import threads
 from threads import DownloadThread
+from PyQt5.uic import loadUi
 
 # Handle high resolution displays:
 if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
@@ -16,10 +19,12 @@ if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
 
 resultStyleChanged = False
 placeholderThere = True
+   
+class mainControl(QMainWindow, Ui_MainWindow):
+    #def __init__(self, Window):
+    def __init__(self, Window, parent=None):
+        super(mainControl, self).__init__(parent)
 
-    
-class mainControl(Ui_MainWindow):
-    def __init__(self, Window):
         self.setupUi(Window)
     
         icon = QtGui.QIcon("CalculatorLogo(150p)_1.0.0.ico")
@@ -319,6 +324,7 @@ class mainControl(Ui_MainWindow):
         self.dlg.show()
 
     def check_for_updates(self):
+        self.showUpdatingDlgBox()
         if have_internet():
                 self.initiate_update_proccess()    
 
@@ -348,9 +354,28 @@ class mainControl(Ui_MainWindow):
         self.thread.start()
 
     def close_program(self):
-            self.dlg.close()
-            MainWindow.close()
-        
+        self.dlg.close()
+        MainWindow.close()
+
+    def showUpdatingDlgBox(self):
+        TestDlg = TestDialog(self)
+        TestDlg.exec()
+        #DlgBox = UpdatingDlgBox(self)
+        #DlgBox.show()
+           
+
+class UpdatingDlgBox(QDialog, Ui_UpdatingDlgBox):
+    def __init__(self, dlg, parent=None):
+        super(UpdatingDlgBox, self).__init__(parent)
+        self.setupUi(dlg)
+
+        icon = QtGui.QIcon("CalculatorLogo(150p)_1.0.0.ico")
+        dlg.setWindowIcon(icon)
+
+class TestDialog(QDialog):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        loadUi("UpdatingDlgBox.ui", self)
 #--------------------------------------------------------------------------------------
 
 #--------------------------------- Main Program ---------------------------------------

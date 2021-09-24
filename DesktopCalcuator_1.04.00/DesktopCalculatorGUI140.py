@@ -10,7 +10,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QDialog, QPushButton, QVBoxLayout, QApplication, QMessageBox
+from PyQt5.QtWidgets import QDialog, QPushButton, QVBoxLayout, QApplication, QMessageBox, QMainWindow
 from PyQt5.QtGui import*
 from PyQt5.QtCore import*
 
