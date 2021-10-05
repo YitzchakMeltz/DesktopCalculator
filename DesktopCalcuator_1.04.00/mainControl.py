@@ -324,7 +324,6 @@ class mainControl(QMainWindow, Ui_MainWindow):
         self.dlg.show()
 
     def check_for_updates(self):
-        self.showUpdatingDlgBox()
         if have_internet():
                 self.initiate_update_proccess()    
 
@@ -335,13 +334,16 @@ class mainControl(QMainWindow, Ui_MainWindow):
 
     def request_update_permission(self):
         if self.update_msgbox():
-                self.updating_dlgbox()
-                self.start_update_proccess()
+                #self.updating_dlgbox()
+                TestDlg = TestDialog(self)
+                TestDlg.UpdatingDlgProgressBar.setValue(0)
+                self.start_update_proccess(TestDlg)
+                TestDlg.exec()
 
-    def start_update_proccess(self):
+    def start_update_proccess(self, dlg):
         # Create a QThread object
         self.thread = QThread()
-        self.download_thread = DownloadThread()
+        self.download_thread = DownloadThread(dlg)
         # Move worker to the thread
         self.download_thread.moveToThread(self.thread)
         # Connect signals and slots
@@ -354,14 +356,23 @@ class mainControl(QMainWindow, Ui_MainWindow):
         self.thread.start()
 
     def close_program(self):
-        self.dlg.close()
+        #self.dlg.close()
         MainWindow.close()
 
     def showUpdatingDlgBox(self):
-        #TestDlg = TestDialog(self)
-        #TestDlg.exec()
-        DlgBox = UpdatingDlgBox(self)
-        DlgBox.show()
+        TestDlg = TestDialog(self)
+        TestDlg.exec()
+        #DlgBox = UpdatingDlgBox(self)
+        #DlgBox.show()
+
+    def Handle_Progress(dlg, blocknum, blocksize, totalsize):
+        ## calculate the progress
+        readed_data = blocknum * blocksize
+ 
+        if totalsize > 0:
+            download_percentage = readed_data * 100 / totalsize
+            dlg.progressBar.setValue(download_percentage)
+            QApplication.processEvents()
            
 
 class UpdatingDlgBox(QDialog, Ui_UpdatingDlgBox):
@@ -376,6 +387,10 @@ class TestDialog(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
         loadUi("UpdatingDlgBox.ui", self)
+        icon = QtGui.QIcon("CalculatorLogo(150p)_1.0.0.ico")
+        self.setWindowIcon(icon)
+
+
 #--------------------------------------------------------------------------------------
 
 #--------------------------------- Main Program ---------------------------------------

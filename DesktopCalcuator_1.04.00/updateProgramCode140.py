@@ -1,3 +1,4 @@
+
 def checkForUpdates():
 
     CurrentProgramVersion = 10402
@@ -14,7 +15,8 @@ def checkForUpdates():
     decoded_line = decoded_line.replace(".","")
     print(int(decoded_line))
 
-    if CurrentProgramVersion < int(decoded_line):
+    if CurrentProgramVersion < 99999999:
+    #if CurrentProgramVersion < int(decoded_line):
         print("Update Availible")
         return True
     else:
@@ -39,17 +41,32 @@ def makeUpdateFolder():
 
     return pathname
 
-def downloadUpdate(downloadPath):
+def downloadUpdate(downloadPath, dlg):
     import urllib.request
+    from mainControl import mainControl
 
     filename = downloadPath + '\SagyCalculatorSetup.exe'
 
     print("Starting update download")
 
     url = "https://github.com/YitzchakMeltz/SassyOwl/blob/main/Sagy%20Calculator/Desktop%20Program/SagyCalculatorSetup.exe?raw=true"
-    urllib.request.urlretrieve(url, filename)
+    urllib.request.urlretrieve(url, filename, lambda blocknum, blocksize, totalsize: Handle_Progress(dlg, blocknum, blocksize, totalsize))
 
     print("Update download complete")
+
+def Handle_Progress(dlg, blocknum, blocksize, totalsize):
+        from mainControl import mainControl
+
+        ## calculate the progress
+        readed_data = blocknum * blocksize
+ 
+        if totalsize > 0:
+            download_percentage = readed_data * 100 / totalsize
+            dlg.UpdatingDlgProgressBar.setValue(download_percentage)
+
+        if (readed_data * 100 / totalsize) >  99:
+            dlg.close()
+
 
 # is this neccesarry???
 def runUpdateInstaller(filename):
@@ -57,9 +74,9 @@ def runUpdateInstaller(filename):
     os.startfile(filename)
     return True
 
-def updateCalc():
+def updateCalc(dlg):
     downloadPath = makeUpdateFolder()
-    downloadUpdate(downloadPath)
+    downloadUpdate(downloadPath, dlg)
     import os
     filename = os.path.join('C:\ProgramData\SasyOwl\SagyCalculator','Updates','SagyCalculatorSetup.exe')
     return True
