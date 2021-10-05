@@ -358,10 +358,10 @@ class mainControl(QMainWindow, Ui_MainWindow):
         MainWindow.close()
 
     def showUpdatingDlgBox(self):
-        TestDlg = TestDialog(self)
-        TestDlg.exec()
-        #DlgBox = UpdatingDlgBox(self)
-        #DlgBox.show()
+        #TestDlg = TestDialog(self)
+        #TestDlg.exec()
+        DlgBox = UpdatingDlgBox(self)
+        DlgBox.show()
            
 
 class UpdatingDlgBox(QDialog, Ui_UpdatingDlgBox):
