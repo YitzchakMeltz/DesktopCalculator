@@ -311,18 +311,6 @@ class mainControl(QMainWindow, Ui_MainWindow):
                 return False
 
 
-    def updating_dlgbox(self):
-        from PyQt5.QtWidgets import QLabel, QDialog
-        self.dlg = QDialog()
-        self.dlg.setWindowTitle(" Updating")
-        self.dlg.setWindowIcon(QtGui.QIcon("CalculatorLogo(150p)_1.0.0.ico"))
-        self.dlg.setModal(True)
-        label = QLabel(self.dlg)
-        label.setText("Program is updating.\nPlease do not turn off your computer.")
-        label.setAlignment(QtCore.Qt.AlignCenter)
-        label.setGeometry(QtCore.QRect(20, 30, 200, 27))
-        self.dlg.show()
-
     def check_for_updates(self):
         if have_internet():
                 self.initiate_update_proccess()    
@@ -334,7 +322,6 @@ class mainControl(QMainWindow, Ui_MainWindow):
 
     def request_update_permission(self):
         if self.update_msgbox():
-                #self.updating_dlgbox()
                 TestDlg = TestDialog(self)
                 TestDlg.UpdatingDlgProgressBar.setValue(0)
                 self.start_update_proccess(TestDlg)
