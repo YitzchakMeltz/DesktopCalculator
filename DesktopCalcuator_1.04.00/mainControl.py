@@ -220,7 +220,6 @@ class mainControl(QMainWindow, Ui_MainWindow):
     def update_screen(self):
         global placeholderThere
         self.screenOutput.setText(mainBackend140.mathEq)
-        #self.decimalResultOutput.setText(mainBackend140.decimalSum)
         if mainBackend140.mathEq == "":
                 self.screenOutput.setText("Enter Your Equation")
                 placeholderThere = True
@@ -255,8 +254,6 @@ class mainControl(QMainWindow, Ui_MainWindow):
 
     def update_result_screen(self):
         global resultStyleChanged
-   
-        #button_equals_click()  ??? Why is this line here ???
 
         if resultStyleChanged:
                self.resultOutput.setStyleSheet("font: 23pt \"calibri\";\n""color: rgb(70, 70, 70);")          # reset the style to large
@@ -322,10 +319,10 @@ class mainControl(QMainWindow, Ui_MainWindow):
 
     def request_update_permission(self):
         if self.update_msgbox():
-                TestDlg = TestDialog(self)
-                TestDlg.UpdatingDlgProgressBar.setValue(0)
-                self.start_update_proccess(TestDlg)
-                TestDlg.exec()
+                Dlg = UpdatingDlgBox(self)
+                Dlg.UpdatingDlgProgressBar.setValue(0)
+                self.start_update_proccess(Dlg)
+                Dlg.exec()
 
     def start_update_proccess(self, dlg):
         # Create a QThread object
@@ -343,14 +340,11 @@ class mainControl(QMainWindow, Ui_MainWindow):
         self.thread.start()
 
     def close_program(self):
-        #self.dlg.close()
         MainWindow.close()
 
     def showUpdatingDlgBox(self):
-        TestDlg = TestDialog(self)
-        TestDlg.exec()
-        #DlgBox = UpdatingDlgBox(self)
-        #DlgBox.show()
+        Dlg = UpdatingDlgBox(self)
+        Dlg.exec()
 
     def Handle_Progress(dlg, blocknum, blocksize, totalsize):
         ## calculate the progress
@@ -362,15 +356,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
             QApplication.processEvents()
            
 
-class UpdatingDlgBox(QDialog, Ui_UpdatingDlgBox):
-    def __init__(self, dlg, parent=None):
-        super(UpdatingDlgBox, self).__init__(parent)
-        self.setupUi(dlg)
-
-        icon = QtGui.QIcon("CalculatorLogo(150p)_1.0.0.ico")
-        dlg.setWindowIcon(icon)
-
-class TestDialog(QDialog):
+class UpdatingDlgBox(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
         loadUi("UpdatingDlgBox.ui", self)
