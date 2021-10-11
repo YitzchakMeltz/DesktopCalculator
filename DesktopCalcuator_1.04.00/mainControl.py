@@ -1,8 +1,6 @@
 import DesktopCalculatorGUI140
 import mainBackend140
 from DesktopCalculatorGUI140 import*
-import UpdatingDlgBox
-from UpdatingDlgBox import*
 from mainBackend140 import*
 from updateProgramCode140 import checkForUpdates, updateCalc
 import atexit, sys, os
@@ -27,7 +25,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
 
         self.setupUi(Window)
     
-        icon = QtGui.QIcon("CalculatorLogo(150p)_1.0.0.ico")
+        icon = QtGui.QIcon("icons/CalculatorLogo(150p)_1.0.0.ico")
         Window.setWindowIcon(icon)
 
         # set fixed size and disable resizing and maximizing window
@@ -299,7 +297,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
         self.msg.setText("A software update is available.<br>Do you want to update now?<br>")
         self.msg.setStandardButtons(QMessageBox.Ok|QMessageBox.Cancel)
         self.msg.setStyleSheet("QLabel{min-width: 200px;}")
-        self.msg.setWindowIcon(QtGui.QIcon("CalculatorLogo(150p)_1.0.0.ico"))
+        self.msg.setWindowIcon(QtGui.QIcon("icons/CalculatorLogo(150p)_1.0.0.ico"))
 
         if self.msg.exec_() == QMessageBox.Ok:
                 return True
@@ -359,8 +357,8 @@ class mainControl(QMainWindow, Ui_MainWindow):
 class UpdatingDlgBox(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
-        loadUi("UpdatingDlgBox.ui", self)
-        icon = QtGui.QIcon("CalculatorLogo(150p)_1.0.0.ico")
+        loadUi("dlg/UpdatingDlgBox.ui", self)
+        icon = QtGui.QIcon("icons/CalculatorLogo(150p)_1.0.0.ico")
         self.setWindowIcon(icon)
 
 

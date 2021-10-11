@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'c:\Users\hmeltz\Documents\GitHub\DesktopCalculator\UpdatingDlgBox.ui'
+# Form implementation generated from reading ui file 'c:\Users\hmeltz\Documents\GitHub\DesktopCalculator\dlg\UpdatingDlgBox.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -16,7 +16,7 @@ class Ui_UpdatingDlgBox(object):
         UpdatingDlgBox.setObjectName("UpdatingDlgBox")
         UpdatingDlgBox.resize(291, 124)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("c:\\Users\\hmeltz\\Documents\\GitHub\\DesktopCalculator\\../Logos/CalculatorLogo(150p)_1.0.0.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("c:\\Users\\hmeltz\\Documents\\GitHub\\DesktopCalculator\\dlg\\../Logos/CalculatorLogo(150p)_1.0.0.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         UpdatingDlgBox.setWindowIcon(icon)
         self.UpdatingDlgProgressBar = QtWidgets.QProgressBar(UpdatingDlgBox)
         self.UpdatingDlgProgressBar.setGeometry(QtCore.QRect(30, 70, 251, 23))
