@@ -357,7 +357,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
 class UpdatingDlgBox(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
-        loadUi("dlg/UpdatingDlgBox.ui", self)
+        loadUi("ui/UpdatingDlgBox.ui", self)
         icon = QtGui.QIcon("icons/CalculatorLogo(150p)_1.0.0.ico")
         self.setWindowIcon(icon)
 
