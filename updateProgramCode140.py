@@ -1,7 +1,7 @@
 
 def checkForUpdates():
 
-    CurrentProgramVersion = 10402
+    CurrentProgramVersion = 10500
 
     print("Current Version: ",CurrentProgramVersion)
 
@@ -15,8 +15,7 @@ def checkForUpdates():
     decoded_line = decoded_line.replace(".","")
     print(int(decoded_line))
 
-    if CurrentProgramVersion < 99999999:
-    #if CurrentProgramVersion < int(decoded_line):
+    if CurrentProgramVersion < int(decoded_line):
         print("Update Availible")
         return True
     else:
