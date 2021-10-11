@@ -4,7 +4,7 @@ from DesktopCalculatorGUI140 import*
 import UpdatingDlgBox
 from UpdatingDlgBox import*
 from mainBackend140 import*
-from updateProgramCode140 import checkForUpdates, updateCalc, openUpdateInstaller
+from updateProgramCode140 import checkForUpdates, updateCalc
 import atexit, sys, os
 import threads
 from threads import DownloadThread

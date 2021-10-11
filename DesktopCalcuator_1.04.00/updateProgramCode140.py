@@ -67,22 +67,9 @@ def Handle_Progress(dlg, blocknum, blocksize, totalsize):
         if (readed_data * 100 / totalsize) >  99:
             dlg.close()
 
-
-# is this neccesarry???
-def runUpdateInstaller(filename):
-    import os
-    os.startfile(filename)
-    return True
-
 def updateCalc(dlg):
     downloadPath = makeUpdateFolder()
     downloadUpdate(downloadPath, dlg)
     import os
     filename = os.path.join('C:\ProgramData\SasyOwl\SagyCalculator','Updates','SagyCalculatorSetup.exe')
     return True
-
-def openUpdateInstaller():
-    import os,sys, subprocess
-    filename = os.path.join('C:\ProgramData\SasyOwl\SagyCalculator','Updates','SagyCalculatorSetup.exe')
-    subprocess.call(filename)
-    print("Hello, How are you?")
