@@ -17,6 +17,7 @@ def checkForUpdates():
 
     if CurrentProgramVersion < int(decoded_line):
         print("Update Availible")
+        print("New Version: ",int(decoded_line))
         return True
     else:
         print("Program is up to date")
