@@ -867,16 +867,17 @@ color: rgb(190, 190, 190);</string>
      <string notr="true">QPushButton
 {
 border: none;
-background-color: rgb(217, 231, 245);
+background-color: rgb(232, 232, 232);
 font: 8pt &quot;Arial&quot;;
+color: rgb(255,255,255);
 border-radius : 8px; 
 }
 QPushButton:hover{
-background-color: rgb(80, 195, 255);
+background-color: rgb(222, 222, 222);
 }
 QPushButton:pressed
 {
-background-color: rgb(70, 205, 255);
+background-color: rgb(211, 211, 211);
 }
 
 </string>
