@@ -74,32 +74,6 @@ color: rgb(197, 197, 197);</string>
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QRadioButton" name="radioButton">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>70</y>
-      <width>131</width>
-      <height>18</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Enable DP Scaling</string>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="radioButton_2">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>100</y>
-      <width>171</width>
-      <height>18</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Copy answer to clipboard</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
@@ -184,6 +158,32 @@ background-color: rgb(211, 211, 211);
     </property>
     <property name="flat">
      <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="scaling_checkbox">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>70</y>
+      <width>191</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Handle high resolution displays</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="clipboard_checkbox">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>100</y>
+      <width>171</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Copy answer to clipboard</string>
     </property>
    </widget>
   </widget>
