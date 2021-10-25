@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="mainwidget3" name="centralwidget">
-   <widget class="QPushButton" name="button_openPar">
+   <widget class="QPushButton" name="save_button">
     <property name="geometry">
      <rect>
       <x>170</x>
@@ -74,7 +74,7 @@ color: rgb(197, 197, 197);</string>
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="decimalPoints_label">
     <property name="geometry">
      <rect>
       <x>90</x>
@@ -87,7 +87,7 @@ color: rgb(197, 197, 197);</string>
      <string>Decimal points to copy to clipboard</string>
     </property>
    </widget>
-   <widget class="QSlider" name="horizontalSlider">
+   <widget class="QSlider" name="decimalPoints_slider">
     <property name="geometry">
      <rect>
       <x>90</x>
@@ -100,7 +100,7 @@ color: rgb(197, 197, 197);</string>
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="settings_label">
     <property name="geometry">
      <rect>
       <x>130</x>
@@ -123,7 +123,7 @@ color: rgb(180,180,180);
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="button_openPar_2">
+   <widget class="QPushButton" name="discard_button">
     <property name="geometry">
      <rect>
       <x>90</x>
