@@ -557,6 +557,16 @@ class Ui_MainWindow(object):
 "color: rgb(197, 197, 197);")
         self.releaseLabel_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.releaseLabel_2.setObjectName("releaseLabel_2")
+
+        self.decimalResultOutput = QtWidgets.QLabel(self.centralwidget)
+        self.decimalResultOutput.setGeometry(QtCore.QRect(20, 100, 271, 31))
+        self.decimalResultOutput.setStyleSheet("font: 11pt \"calibri\";\n"
+"color: rgb(150, 150, 150);")
+        self.decimalResultOutput.setText("")
+        self.decimalResultOutput.setAlignment(QtCore.Qt.AlignCenter)
+        self.decimalResultOutput.setObjectName("decimalResultOutput")
+
+        
         self.stackedWidget.addWidget(self.settingsPage)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)

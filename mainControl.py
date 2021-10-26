@@ -1,9 +1,7 @@
 import MainWindowGUI
 import mainBackend140
-import SettingsWindowGUI
 from MainWindowGUI import*
 from mainBackend140 import*
-from SettingsWindowGUI import*
 from updateProgramCode140 import checkForUpdates, updateCalc
 import atexit, sys, os
 import threads
