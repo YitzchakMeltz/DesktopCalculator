@@ -483,6 +483,14 @@ class Ui_MainWindow(object):
         self.button_plus.setDefault(False)
         self.button_plus.setFlat(True)
         self.button_plus.setObjectName("button_plus")
+        self.decimalResultOutput = QtWidgets.QLabel(self.calculatorPage)
+        self.decimalResultOutput.setGeometry(QtCore.QRect(20, 110, 271, 31))
+        self.decimalResultOutput.setStyleSheet("border: none; background: transparent;\n"
+"font: 11pt calibri;\n"
+"color: rgb(150, 150, 150);")
+        self.decimalResultOutput.setText("")
+        self.decimalResultOutput.setAlignment(QtCore.Qt.AlignCenter)
+        self.decimalResultOutput.setObjectName("decimalResultOutput")
         self.stackedWidget.addWidget(self.calculatorPage)
         self.settingsPage = QtWidgets.QWidget()
         self.settingsPage.setObjectName("settingsPage")
@@ -561,7 +569,7 @@ class Ui_MainWindow(object):
         MainWindow.setMenuBar(self.menubar)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

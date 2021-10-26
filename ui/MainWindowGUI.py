@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'DesktopCalculatorGUI_1.06.00.ui'
+# Form implementation generated from reading ui file 'DesktopCalculatorGUI_1.06.01.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -9,10 +9,6 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QDialog, QPushButton, QVBoxLayout, QApplication, QMessageBox, QMainWindow
-from PyQt5.QtGui import*
-from PyQt5.QtCore import*
 
 
 class Ui_MainWindow(object):
@@ -609,16 +605,3 @@ class Ui_MainWindow(object):
         self.discard_button.setText(_translate("MainWindow", "Discard"))
         self.save_button.setText(_translate("MainWindow", "Save"))
         self.releaseLabel_2.setText(_translate("MainWindow", "  YitzchakMeltz Release_1.06.01"))
-
-
-
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
