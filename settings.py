@@ -17,3 +17,10 @@ def initializeCalculatorSettings():
         settingsPath = pathname + '\settings.json'
         with open(settingsPath, "w") as settingsFile:
             json.dump(settings, settingsFile)
+
+def retrieveSettings():
+    appDataPath = (str)(os.getenv('LOCALAPPDATA'))
+    settingsPath = appDataPath + '\SassyOwl\SagyCalculator\Settings\settings.json'
+    fstream = open(settingsPath,)
+    settings = json.load(fstream)
+    return settings

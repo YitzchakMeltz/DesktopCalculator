@@ -2,6 +2,7 @@ import MainWindowGUI
 import mainBackend140
 from MainWindowGUI import*
 from mainBackend140 import*
+from settings import*
 from updateProgramCode140 import checkForUpdates, updateCalc
 import atexit, sys, os
 import threads
@@ -358,7 +359,15 @@ class mainControl(QMainWindow, Ui_MainWindow):
             QApplication.processEvents() 
 
     def Open_Settings_Screen(self):
-            self.stackedWidget.setCurrentIndex(1)    
+            self.stackedWidget.setCurrentIndex(1)
+            settings = retrieveSettings() 
+            self.display_saved_settings(settings)
+
+    def display_saved_settings(self, settings):
+            if settings.get("HR-Display"):
+                    self.scaling_checkbox.setChecked(True)  
+            if settings.get("CopyToClipboard"):
+                    self.clipboard_checkbox.setChecked(True)
 
     def save_settings(self):
             self.stackedWidget.setCurrentIndex(0)    

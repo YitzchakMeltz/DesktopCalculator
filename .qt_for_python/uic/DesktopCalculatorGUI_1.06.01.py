@@ -504,8 +504,16 @@ class Ui_MainWindow(object):
         self.settings_label.setAlignment(QtCore.Qt.AlignCenter)
         self.settings_label.setObjectName("settings_label")
         self.decimalPoints_slider = QtWidgets.QSlider(self.settingsPage)
-        self.decimalPoints_slider.setGeometry(QtCore.QRect(90, 160, 171, 16))
+        self.decimalPoints_slider.setGeometry(QtCore.QRect(90, 160, 171, 21))
+        self.decimalPoints_slider.setMinimum(1)
+        self.decimalPoints_slider.setMaximum(13)
+        self.decimalPoints_slider.setPageStep(1)
+        self.decimalPoints_slider.setSliderPosition(6)
         self.decimalPoints_slider.setOrientation(QtCore.Qt.Horizontal)
+        self.decimalPoints_slider.setInvertedAppearance(False)
+        self.decimalPoints_slider.setInvertedControls(False)
+        self.decimalPoints_slider.setTickPosition(QtWidgets.QSlider.TicksBelow)
+        self.decimalPoints_slider.setTickInterval(1)
         self.decimalPoints_slider.setObjectName("decimalPoints_slider")
         self.clipboard_checkbox = QtWidgets.QCheckBox(self.settingsPage)
         self.clipboard_checkbox.setGeometry(QtCore.QRect(70, 110, 171, 18))
@@ -569,7 +577,7 @@ class Ui_MainWindow(object):
         MainWindow.setMenuBar(self.menubar)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
