@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'c:\Users\hmeltz\Documents\GitHub\DesktopCalculator\ui\SettingsWindow.ui'
+# Form implementation generated from reading ui file 'SettingsWindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -9,9 +9,13 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import QDialog, QPushButton, QVBoxLayout, QApplication, QMessageBox, QMainWindow
+from PyQt5.QtGui import*
+from PyQt5.QtCore import*
 
 
-class Ui_MainWindow(object):
+class Ui_SettingsWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(331, 418)
@@ -95,7 +99,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", " Sagy Calculator"))
         self.save_button.setText(_translate("MainWindow", "Save"))
         self.releaseLabel.setText(_translate("MainWindow", "  YitzchakMeltz   Release_1.6.0"))
         self.decimalPoints_label.setText(_translate("MainWindow", "Decimal points to copy to clipboard"))
@@ -103,3 +107,13 @@ class Ui_MainWindow(object):
         self.discard_button.setText(_translate("MainWindow", "Discard"))
         self.scaling_checkbox.setText(_translate("MainWindow", "Handle high resolution displays"))
         self.clipboard_checkbox.setText(_translate("MainWindow", "Copy answer to clipboard"))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())

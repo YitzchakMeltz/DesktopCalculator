@@ -1,7 +1,9 @@
-import DesktopCalculatorGUI140
+import MainWindowGUI
 import mainBackend140
-from DesktopCalculatorGUI140 import*
+import SettingsWindowGUI
+from MainWindowGUI import*
 from mainBackend140 import*
+from SettingsWindowGUI import*
 from updateProgramCode140 import checkForUpdates, updateCalc
 import atexit, sys, os
 import threads
@@ -19,17 +21,18 @@ resultStyleChanged = False
 placeholderThere = True
    
 class mainControl(QMainWindow, Ui_MainWindow):
-    #def __init__(self, Window):
     def __init__(self, Window, parent=None):
         super(mainControl, self).__init__(parent)
 
         self.setupUi(Window)
     
+        self.stackedWidget.setCurrentIndex(0)
+
         icon = QtGui.QIcon("icons/CalculatorLogo(150p)_1.0.0.ico")
         Window.setWindowIcon(icon)
 
         # set fixed size and disable resizing and maximizing window
-        Window.setFixedSize(331, 411)
+        Window.setFixedSize(331, 418)
 
         self.screenOutput.setReadOnly(True)
         self.screenOutput.setContextMenuPolicy(Qt.NoContextMenu)        #disable menu pop up for cut/copy/paste
@@ -56,6 +59,9 @@ class mainControl(QMainWindow, Ui_MainWindow):
         self.button_closePar.clicked.connect(lambda:self.click_and_update(")"))
         self.button_backspace.clicked.connect(self.backspace_click)
         self.button_equals.clicked.connect(self.equal_click)
+        self.settingsButton.clicked.connect(self.Open_Settings_Screen)
+        self.save_button.clicked.connect(self.save_settings)
+        self.discard_button.clicked.connect(self.discard_settings)
 
         # set keyPressEvent to current widgets that we'd like it to be overridden
         self.centralwidget.keyPressEvent = self.keyPressEvent
@@ -351,8 +357,16 @@ class mainControl(QMainWindow, Ui_MainWindow):
         if totalsize > 0:
             download_percentage = readed_data * 100 / totalsize
             dlg.progressBar.setValue(download_percentage)
-            QApplication.processEvents()
+            QApplication.processEvents() 
+
+    def Open_Settings_Screen(self):
+            self.stackedWidget.setCurrentIndex(1)    
+
+    def save_settings(self):
+            self.stackedWidget.setCurrentIndex(0)    
            
+    def discard_settings(self):
+            self.stackedWidget.setCurrentIndex(0) 
 
 class UpdatingDlgBox(QDialog):
     def __init__(self, parent=None):
@@ -360,8 +374,6 @@ class UpdatingDlgBox(QDialog):
         loadUi("ui/UpdatingDlgBox.ui", self)
         icon = QtGui.QIcon("icons/CalculatorLogo(150p)_1.0.0.ico")
         self.setWindowIcon(icon)
-
-
 #--------------------------------------------------------------------------------------
 
 #--------------------------------- Main Program ---------------------------------------
@@ -372,7 +384,7 @@ if __name__ == "__main__":
 
     MainWindow = QtWidgets.QMainWindow()
     ui = mainControl(MainWindow)
-    
+
     MainWindow.show()
 
     ui.check_for_updates()

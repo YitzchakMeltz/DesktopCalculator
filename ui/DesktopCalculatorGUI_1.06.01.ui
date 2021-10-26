@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string> Sagy Calculator</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QStackedWidget" name="stackedWidget">
@@ -774,7 +774,7 @@ background-color: rgb(211, 211, 211);
        <rect>
         <x>20</x>
         <y>390</y>
-        <width>161</width>
+        <width>81</width>
         <height>16</height>
        </rect>
       </property>
@@ -786,7 +786,7 @@ background-color: rgb(211, 211, 211);
 color: rgb(197, 197, 197);</string>
       </property>
       <property name="text">
-       <string>  YitzchakMeltz   Release_1.6.0</string>
+       <string>  YitzchakMeltz Release_1.06.01</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1077,7 +1077,7 @@ background-color: rgb(211, 211, 211);
 color: rgb(197, 197, 197);</string>
       </property>
       <property name="text">
-       <string>  YitzchakMeltz   Release_1.6.0</string>
+       <string>  YitzchakMeltz Release_1.06.01</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>

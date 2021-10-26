@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="mainwidget3" name="centralwidget">
+  <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="save_button">
     <property name="geometry">
      <rect>
@@ -198,14 +198,6 @@ background-color: rgb(211, 211, 211);
    </property>
   </widget>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>mainwidget3</class>
-   <extends>QWidget</extends>
-   <header>QWidget.h</header>
-   <container>1</container>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>
