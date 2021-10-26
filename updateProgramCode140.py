@@ -28,7 +28,7 @@ def checkForUpdates():
 def makeUpdateFolder():
     import os
 
-    pathname = os.path.join('C:\ProgramData\SasyOwl\SagyCalculator','Updates')
+    pathname = os.path.join('C:\ProgramData\SassyOwl\SagyCalculator','Updates')
     print("Pathname for debugging: ",pathname)
 
     if not os.path.isdir(pathname):
