@@ -35,7 +35,7 @@ def makeUpdateFolder():
         os.makedirs(pathname)
 
     else:
-        filename = os.path.join('C:\ProgramData\SasyOwl\SagyCalculator','Updates','SagyCalculatorSetup.exe')
+        filename = os.path.join('C:\ProgramData\SassyOwl\SagyCalculator','Updates','SagyCalculatorSetup.exe')
         if os.path.exists(filename):
             os.remove(filename)
 
@@ -71,5 +71,5 @@ def updateCalc(dlg):
     downloadPath = makeUpdateFolder()
     downloadUpdate(downloadPath, dlg)
     import os
-    filename = os.path.join('C:\ProgramData\SasyOwl\SagyCalculator','Updates','SagyCalculatorSetup.exe')
+    filename = os.path.join('C:\ProgramData\SassyOwl\SagyCalculator','Updates','SagyCalculatorSetup.exe')
     return True
