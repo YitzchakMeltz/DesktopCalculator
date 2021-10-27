@@ -24,3 +24,16 @@ def retrieveSettings():
     fstream = open(settingsPath,)
     settings = json.load(fstream)
     return settings
+
+def saveSettingsToFile(settings):
+    appDataPath = (str)(os.getenv('LOCALAPPDATA'))
+    settingsPath = appDataPath + '\SassyOwl\SagyCalculator\Settings\settings.json'
+    with open(settingsPath, "w") as settingsFile:
+        json.dump(settings, settingsFile)
+
+def HR_Display_Enabled():
+    appDataPath = (str)(os.getenv('LOCALAPPDATA'))
+    settingsPath = appDataPath + '\SassyOwl\SagyCalculator\Settings\settings.json'
+    fstream = open(settingsPath,)
+    settings = json.load(fstream)
+    return settings.get("HR-Display")

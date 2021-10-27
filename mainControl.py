@@ -10,9 +10,9 @@ from threads import DownloadThread
 from PyQt5.uic import loadUi
 
 # Handle high resolution displays:
-if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
+if hasattr(HR_Display_Enabled() and QtCore.Qt, 'AA_EnableHighDpiScaling'):
     QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
-if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
+if hasattr(HR_Display_Enabled() and QtCore.Qt, 'AA_UseHighDpiPixmaps'):
     QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
 
 
@@ -22,6 +22,8 @@ placeholderThere = True
 class mainControl(QMainWindow, Ui_MainWindow):
     def __init__(self, Window, parent=None):
         super(mainControl, self).__init__(parent)
+
+        settings = retrieveSettings()
 
         self.setupUi(Window)
     
@@ -61,6 +63,8 @@ class mainControl(QMainWindow, Ui_MainWindow):
         self.settingsButton.clicked.connect(self.Open_Settings_Screen)
         self.save_button.clicked.connect(self.save_settings)
         self.discard_button.clicked.connect(self.discard_settings)
+        self.decimalPoints_slider.valueChanged.connect(self.update_clipboard_num_display)
+        self.clipboard_checkbox.stateChanged.connect(self.toggle_clipboard_settings)
 
         # set keyPressEvent to current widgets that we'd like it to be overridden
         self.centralwidget.keyPressEvent = self.keyPressEvent
@@ -250,7 +254,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
         return
 
     def equal_click(self):
-        button_equals_click()
+        button_equals_click(self.settings)
         self.update_screen()
         self.update_result_screen()
         return
@@ -359,21 +363,50 @@ class mainControl(QMainWindow, Ui_MainWindow):
             QApplication.processEvents() 
 
     def Open_Settings_Screen(self):
+            self.settings = retrieveSettings() 
+            self.display_saved_settings()
             self.stackedWidget.setCurrentIndex(1)
-            settings = retrieveSettings() 
-            self.display_saved_settings(settings)
 
-    def display_saved_settings(self, settings):
-            if settings.get("HR-Display"):
+    def display_saved_settings(self):
+            if self.settings.get("HR-Display"):
                     self.scaling_checkbox.setChecked(True)  
-            if settings.get("CopyToClipboard"):
+            if self.settings.get("CopyToClipboard"):
                     self.clipboard_checkbox.setChecked(True)
+                    self.decimalPoints_slider.setValue(self.settings.get("decimalsToCopy"))
+        
+    def update_clipboard_num_display(self):
+            num = self.decimalPoints_slider.value()
+            self.clipboardDecimalPointDisplay.setText(str(num))
 
     def save_settings(self):
-            self.stackedWidget.setCurrentIndex(0)    
+            self.stackedWidget.setCurrentIndex(0)  
+            self.copy_settings_from_gui()
+            saveSettingsToFile(self.settings)  
            
     def discard_settings(self):
             self.stackedWidget.setCurrentIndex(0) 
+
+    def copy_settings_from_gui(self):
+            if self.scaling_checkbox.isChecked():
+                    self.settings["HR-Display"] = True
+            else:
+                    self.settings["HR-Display"] = False
+
+            if self.clipboard_checkbox.isChecked():
+                    self.settings["CopyToClipboard"] = True
+            else:
+                    self.settings["CopyToClipboard"] = False
+            self.settings["decimalsToCopy"] = self.decimalPoints_slider.value()
+
+    def toggle_clipboard_settings(self):
+        if self.clipboard_checkbox.isChecked():
+                self.decimalPoints_slider.setEnabled(True)
+                self.clipboardDecimalPointDisplay.setEnabled(True)
+                self.decimalPoints_label.setEnabled(True)
+        else:
+                self.decimalPoints_slider.setEnabled(False)
+                self.clipboardDecimalPointDisplay.setEnabled(False)
+                self.decimalPoints_label.setEnabled(False)
 
 class UpdatingDlgBox(QDialog):
     def __init__(self, parent=None):

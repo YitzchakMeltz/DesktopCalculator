@@ -499,7 +499,7 @@ class Ui_MainWindow(object):
         self.settingsPage = QtWidgets.QWidget()
         self.settingsPage.setObjectName("settingsPage")
         self.settings_label = QtWidgets.QLabel(self.settingsPage)
-        self.settings_label.setGeometry(QtCore.QRect(120, 30, 71, 20))
+        self.settings_label.setGeometry(QtCore.QRect(130, 30, 71, 20))
         self.settings_label.setStyleSheet("QLabel\n"
 "{\n"
 "font-size: 16px;\n"
@@ -508,8 +508,16 @@ class Ui_MainWindow(object):
         self.settings_label.setAlignment(QtCore.Qt.AlignCenter)
         self.settings_label.setObjectName("settings_label")
         self.decimalPoints_slider = QtWidgets.QSlider(self.settingsPage)
-        self.decimalPoints_slider.setGeometry(QtCore.QRect(90, 160, 171, 16))
+        self.decimalPoints_slider.setGeometry(QtCore.QRect(90, 160, 141, 21))
+        self.decimalPoints_slider.setMinimum(1)
+        self.decimalPoints_slider.setMaximum(10)
+        self.decimalPoints_slider.setPageStep(1)
+        self.decimalPoints_slider.setSliderPosition(6)
         self.decimalPoints_slider.setOrientation(QtCore.Qt.Horizontal)
+        self.decimalPoints_slider.setInvertedAppearance(False)
+        self.decimalPoints_slider.setInvertedControls(False)
+        self.decimalPoints_slider.setTickPosition(QtWidgets.QSlider.TicksBelow)
+        self.decimalPoints_slider.setTickInterval(1)
         self.decimalPoints_slider.setObjectName("decimalPoints_slider")
         self.clipboard_checkbox = QtWidgets.QCheckBox(self.settingsPage)
         self.clipboard_checkbox.setGeometry(QtCore.QRect(70, 110, 171, 18))
@@ -565,6 +573,14 @@ class Ui_MainWindow(object):
 "color: rgb(197, 197, 197);")
         self.releaseLabel_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.releaseLabel_2.setObjectName("releaseLabel_2")
+        self.clipboardDecimalPointDisplay = QtWidgets.QLabel(self.settingsPage)
+        self.clipboardDecimalPointDisplay.setGeometry(QtCore.QRect(240, 160, 16, 16))
+        self.clipboardDecimalPointDisplay.setStyleSheet("QLabel\n"
+"{\n"
+"background-color: rgb(255,255,255);\n"
+"}")
+        self.clipboardDecimalPointDisplay.setAlignment(QtCore.Qt.AlignCenter)
+        self.clipboardDecimalPointDisplay.setObjectName("clipboardDecimalPointDisplay")
         self.stackedWidget.addWidget(self.settingsPage)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
@@ -573,7 +589,7 @@ class Ui_MainWindow(object):
         MainWindow.setMenuBar(self.menubar)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -609,16 +625,4 @@ class Ui_MainWindow(object):
         self.discard_button.setText(_translate("MainWindow", "Discard"))
         self.save_button.setText(_translate("MainWindow", "Save"))
         self.releaseLabel_2.setText(_translate("MainWindow", "  YitzchakMeltz Release_1.06.01"))
-
-
-
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
+        self.clipboardDecimalPointDisplay.setText(_translate("MainWindow", "6"))

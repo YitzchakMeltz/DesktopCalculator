@@ -935,7 +935,7 @@ color: rgb(150, 150, 150);</string>
      <widget class="QLabel" name="settings_label">
       <property name="geometry">
        <rect>
-        <x>120</x>
+        <x>130</x>
         <y>30</y>
         <width>71</width>
         <height>20</height>
@@ -960,7 +960,7 @@ color: rgb(180,180,180);
        <rect>
         <x>90</x>
         <y>160</y>
-        <width>171</width>
+        <width>141</width>
         <height>21</height>
        </rect>
       </property>
@@ -968,7 +968,7 @@ color: rgb(180,180,180);
        <number>1</number>
       </property>
       <property name="maximum">
-       <number>13</number>
+       <number>10</number>
       </property>
       <property name="pageStep">
        <number>1</number>
@@ -1126,6 +1126,28 @@ color: rgb(197, 197, 197);</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="clipboardDecimalPointDisplay">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>160</y>
+        <width>16</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel
+{
+background-color: rgb(255,255,255);
+}</string>
+      </property>
+      <property name="text">
+       <string>6</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </widget>

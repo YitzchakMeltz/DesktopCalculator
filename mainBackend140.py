@@ -73,7 +73,7 @@ def button_click(userClick, cursorPos, cursorNotActive):
 #--------------------------------------------------------------------
 # function that is activated when equals button is clicked
 
-def button_equals_click():
+def button_equals_click(settings):
     global mathEq, sum, decimalSum, lastEqual, ans
 
     lastEqual = True
@@ -108,7 +108,8 @@ def button_equals_click():
 
     # store answer for future use and copy to clipboard
     ans = sum
-    QApplication.clipboard().setText(str(round(sum,6)))
+    if settings["CopyToClipboard"]:
+        QApplication.clipboard().setText(str(round(sum,settings["decimalsToCopy"])))
 
     # print the math equation to the console for debugging purposes
     print(mathEq)
