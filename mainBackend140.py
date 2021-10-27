@@ -245,6 +245,9 @@ def removeExtraZeros(str):
         if len(str) == 0:
             return ""
 
+        if str[0] == ".":
+            return str
+
         if str[0]=='0' and str[1].isnumeric() and not afterNumber:
             return  removeExtraZerosInner(str[1:],afterNumber)
 

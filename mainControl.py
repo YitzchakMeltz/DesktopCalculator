@@ -23,7 +23,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
     def __init__(self, Window, parent=None):
         super(mainControl, self).__init__(parent)
 
-        settings = retrieveSettings()
+        self.settings = retrieveSettings()
 
         self.setupUi(Window)
     
