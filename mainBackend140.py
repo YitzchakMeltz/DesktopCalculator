@@ -81,6 +81,11 @@ def button_equals_click(settings):
     # replace user math operator symbols with programing operating operators
     sum=mathEq.replace('×','*')
     sum=sum.replace('÷','/')
+
+    if "()" in sum:
+        sum="    Equation was not entered correctly"
+        decimalSum=""
+        return
     
     # if the string with the equation is empty, the function is finished
     if sum == "":
@@ -92,12 +97,12 @@ def button_equals_click(settings):
     # evaluate the equation
     try:
         sum=eval(sum)
-    except (SyntaxError):
-        sum="    Equation was not entered correctly"
-        decimalSum=""
-        return
     except ZeroDivisionError:
         sum="    Cannot divide a number by zero"
+        decimalSum=""
+        return
+    except (SyntaxError):
+        sum="    Equation was not entered correctly"
         decimalSum=""
         return
 
