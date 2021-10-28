@@ -1,7 +1,7 @@
 
 def checkForUpdates():
 
-    CurrentProgramVersion = 10601
+    CurrentProgramVersion = 10602
 
     print("Current Version: ",CurrentProgramVersion)
 

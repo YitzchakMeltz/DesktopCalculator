@@ -9,6 +9,8 @@ import threads
 from threads import DownloadThread
 from PyQt5.uic import loadUi
 
+initializeCalculatorSettings()
+
 # Handle high resolution displays:
 if hasattr(HR_Display_Enabled() and QtCore.Qt, 'AA_EnableHighDpiScaling'):
     QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
