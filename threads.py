@@ -16,7 +16,7 @@ class DownloadThread(QObject):
     def run(self):
         """Long-running task."""
         updateProgramCode140.updateCalc(self.dlg)
-        installer = os.path.join('C:\ProgramData\SasyOwl\SagyCalculator','Updates',
+        installer = os.path.join('C:\ProgramData\SassyOwl\SagyCalculator','Updates',
                                 'SagyCalculatorSetup.exe')
         atexit.register(os.execl, installer, installer)
         self.finished.emit()

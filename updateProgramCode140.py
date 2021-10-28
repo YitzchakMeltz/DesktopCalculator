@@ -1,7 +1,7 @@
 
 def checkForUpdates():
 
-    CurrentProgramVersion = 10500
+    CurrentProgramVersion = 10602
 
     print("Current Version: ",CurrentProgramVersion)
 
@@ -28,14 +28,14 @@ def checkForUpdates():
 def makeUpdateFolder():
     import os
 
-    pathname = os.path.join('C:\ProgramData\SasyOwl\SagyCalculator','Updates')
+    pathname = os.path.join('C:\ProgramData\SassyOwl\SagyCalculator','Updates')
     print("Pathname for debugging: ",pathname)
 
     if not os.path.isdir(pathname):
         os.makedirs(pathname)
 
     else:
-        filename = os.path.join('C:\ProgramData\SasyOwl\SagyCalculator','Updates','SagyCalculatorSetup.exe')
+        filename = os.path.join('C:\ProgramData\SassyOwl\SagyCalculator','Updates','SagyCalculatorSetup.exe')
         if os.path.exists(filename):
             os.remove(filename)
 
@@ -71,5 +71,5 @@ def updateCalc(dlg):
     downloadPath = makeUpdateFolder()
     downloadUpdate(downloadPath, dlg)
     import os
-    filename = os.path.join('C:\ProgramData\SasyOwl\SagyCalculator','Updates','SagyCalculatorSetup.exe')
+    filename = os.path.join('C:\ProgramData\SassyOwl\SagyCalculator','Updates','SagyCalculatorSetup.exe')
     return True
