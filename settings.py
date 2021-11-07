@@ -9,7 +9,8 @@ def initializeCalculatorSettings():
         os.makedirs(pathname)
 
         settings = {
-            "HR-Display": True,
+            "Version": 10700,
+            "HR-Display": "Auto",
             "CopyToClipboard": True,
             "decimalsToCopy": 6
         }
@@ -17,6 +18,17 @@ def initializeCalculatorSettings():
         settingsPath = pathname + '\settings.json'
         with open(settingsPath, "w") as settingsFile:
             json.dump(settings, settingsFile)
+
+    else:
+        appDataPath = (str)(os.getenv('LOCALAPPDATA'))
+        settingsPath = appDataPath + '\SassyOwl\SagyCalculator\Settings\settings.json'
+        fstream = open(settingsPath,)
+        settings = json.load(fstream)
+        if not "Version" in settings.keys():
+            settings["Version"] = 10700
+            settings["HR-Display"] = "Auto"
+            with open(settingsPath, "w") as settingsFile:
+                json.dump(settings, settingsFile)
 
 def retrieveSettings():
     appDataPath = (str)(os.getenv('LOCALAPPDATA'))
@@ -31,7 +43,7 @@ def saveSettingsToFile(settings):
     with open(settingsPath, "w") as settingsFile:
         json.dump(settings, settingsFile)
 
-def HR_Display_Enabled():
+def get_HR_Display_Value():
     appDataPath = (str)(os.getenv('LOCALAPPDATA'))
     settingsPath = appDataPath + '\SassyOwl\SagyCalculator\Settings\settings.json'
     fstream = open(settingsPath,)

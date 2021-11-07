@@ -932,34 +932,11 @@ color: rgb(150, 150, 150);</string>
      </widget>
     </widget>
     <widget class="QWidget" name="settingsPage">
-     <widget class="QLabel" name="settings_label">
-      <property name="geometry">
-       <rect>
-        <x>130</x>
-        <y>30</y>
-        <width>71</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QLabel
-{
-font-size: 16px;
-color: rgb(180,180,180);
-}</string>
-      </property>
-      <property name="text">
-       <string>Settings</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
      <widget class="QSlider" name="decimalPoints_slider">
       <property name="geometry">
        <rect>
         <x>90</x>
-        <y>160</y>
+        <y>270</y>
         <width>141</width>
         <height>21</height>
        </rect>
@@ -996,7 +973,7 @@ color: rgb(180,180,180);
       <property name="geometry">
        <rect>
         <x>70</x>
-        <y>110</y>
+        <y>220</y>
         <width>171</width>
         <height>18</height>
        </rect>
@@ -1009,26 +986,13 @@ color: rgb(180,180,180);
       <property name="geometry">
        <rect>
         <x>90</x>
-        <y>140</y>
+        <y>250</y>
         <width>181</width>
         <height>16</height>
        </rect>
       </property>
       <property name="text">
        <string>Decimal points to copy to clipboard</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="scaling_checkbox">
-      <property name="geometry">
-       <rect>
-        <x>70</x>
-        <y>80</y>
-        <width>191</width>
-        <height>18</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Handle high resolution displays</string>
       </property>
      </widget>
      <widget class="QPushButton" name="discard_button">
@@ -1132,7 +1096,7 @@ color: rgb(197, 197, 197);</string>
       <property name="geometry">
        <rect>
         <x>240</x>
-        <y>160</y>
+        <y>270</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -1150,7 +1114,7 @@ background-color: rgb(255,255,255);
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="reportLinkLabel">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -1170,6 +1134,195 @@ background-color: rgb(255,255,255);
       </property>
       <property name="openExternalLinks">
        <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="zoom150RadioButton">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>80</y>
+        <width>83</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string> 150%</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="zoom50RadioButton">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>160</y>
+        <width>83</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string> 50%</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="zoom80RadioButton">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>140</y>
+        <width>83</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string> 80%</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="zoom100RadioButton">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>120</y>
+        <width>83</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string> 100%</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="zoom120RadioButton">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>100</y>
+        <width>83</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string> 120%</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="zoomAutoRadioButton">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>60</y>
+        <width>83</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string> Auto</string>
+      </property>
+     </widget>
+     <widget class="Line" name="zoomSettingsLeftLine">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>40</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="zoomSettingsLabel">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>40</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel
+{
+color: Grey;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Zoom Settings</string>
+      </property>
+     </widget>
+     <widget class="Line" name="zoomSettingsRightLine">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>40</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="cilpboardSettingsLabel">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>190</y>
+        <width>91</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel
+{
+color: Grey;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Clipboard Settings</string>
+      </property>
+     </widget>
+     <widget class="Line" name="clipboardSettingsRightLine">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>190</y>
+        <width>81</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="clipboardSettingsLeftLine">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>190</y>
+        <width>81</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="zoomNoteLabel">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>80</y>
+        <width>121</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel
+{
+color: Grey;
+}</string>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Note: Changes made to&lt;br&gt;the  zoom settings will &lt;br&gt;not be noticed until &lt;br&gt;the program is restarted&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </widget>

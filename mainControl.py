@@ -11,12 +11,18 @@ from PyQt5.uic import loadUi
 
 initializeCalculatorSettings()
 
+displayValue = get_HR_Display_Value()
 # Handle high resolution displays:
-if hasattr(HR_Display_Enabled() and QtCore.Qt, 'AA_EnableHighDpiScaling'):
+if hasattr(displayValue == "Auto" and QtCore.Qt, 'AA_EnableHighDpiScaling'):
     QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
-if hasattr(HR_Display_Enabled() and QtCore.Qt, 'AA_UseHighDpiPixmaps'):
+if hasattr(displayValue == "Auto" and QtCore.Qt, 'AA_UseHighDpiPixmaps'):
     QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
 
+# manual settings
+if hasattr(not displayValue == "Auto" and QtCore.Qt, 'AA_EnableHighDpiScaling'):
+        os.environ["QT_AUTO_SCREEN_SCALE_FACTOR"] = "1"
+        os.environ["QT_SCALE_FACTOR"] = displayValue
+        QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
 
 resultStyleChanged = False
 placeholderThere = True
@@ -370,11 +376,22 @@ class mainControl(QMainWindow, Ui_MainWindow):
             self.stackedWidget.setCurrentIndex(1)
 
     def display_saved_settings(self):
-            if self.settings.get("HR-Display"):
-                    self.scaling_checkbox.setChecked(True)  
-            if self.settings.get("CopyToClipboard"):
-                    self.clipboard_checkbox.setChecked(True)
-                    self.decimalPoints_slider.setValue(self.settings.get("decimalsToCopy"))
+        if self.settings.get("HR-Display") == "Auto":
+                self.zoomAutoRadioButton.setChecked(True) 
+        elif self.settings.get("HR-Display") == "1.5":
+                self.zoom150RadioButton.setChecked(True) 
+        elif self.settings.get("HR-Display") == "1.2":
+                self.zoom120RadioButton.setChecked(True) 
+        elif self.settings.get("HR-Display") == "1":
+                self.zoom100RadioButton.setChecked(True) 
+        elif self.settings.get("HR-Display") == "0.8":
+                self.zoom80RadioButton.setChecked(True) 
+        elif self.settings.get("HR-Display") == "0.5":
+                self.zoom50RadioButton.setChecked(True) 
+            
+        if self.settings.get("CopyToClipboard"):
+                self.clipboard_checkbox.setChecked(True)
+                self.decimalPoints_slider.setValue(self.settings.get("decimalsToCopy"))
         
     def update_clipboard_num_display(self):
             num = self.decimalPoints_slider.value()
@@ -389,16 +406,24 @@ class mainControl(QMainWindow, Ui_MainWindow):
             self.stackedWidget.setCurrentIndex(0) 
 
     def copy_settings_from_gui(self):
-            if self.scaling_checkbox.isChecked():
-                    self.settings["HR-Display"] = True
-            else:
-                    self.settings["HR-Display"] = False
+        if self.zoomAutoRadioButton.isChecked():
+                self.settings["HR-Display"] = "Auto" 
+        elif self.zoom150RadioButton.isChecked():
+                self.settings["HR-Display"] = "1.5" 
+        elif self.zoom120RadioButton.isChecked():
+                self.settings["HR-Display"] = "1.2" 
+        elif self.zoom100RadioButton.isChecked():
+                self.settings["HR-Display"] = "1" 
+        elif self.zoom80RadioButton.isChecked():
+                self.settings["HR-Display"] = "0.8" 
+        elif self.zoom50RadioButton.isChecked():
+                self.settings["HR-Display"] = "0.5"
 
-            if self.clipboard_checkbox.isChecked():
-                    self.settings["CopyToClipboard"] = True
-            else:
-                    self.settings["CopyToClipboard"] = False
-            self.settings["decimalsToCopy"] = self.decimalPoints_slider.value()
+        if self.clipboard_checkbox.isChecked():
+                self.settings["CopyToClipboard"] = True
+        else:
+                self.settings["CopyToClipboard"] = False
+        self.settings["decimalsToCopy"] = self.decimalPoints_slider.value()
 
     def toggle_clipboard_settings(self):
         if self.clipboard_checkbox.isChecked():
