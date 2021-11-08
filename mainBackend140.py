@@ -13,7 +13,8 @@ sum=0          # initialize the numerical sum
 decimalSum=""
 lastEqual = False
 ans = 0
-
+historyStack = [""]   # initialize the history stack
+redoStack = []      # initialize the redo stack
 mathOperationSymbols = ["+","-","×","÷"]
 
 #--------------------------------------------------------------------
@@ -74,9 +75,15 @@ def button_click(userClick, cursorPos, cursorNotActive):
 # function that is activated when equals button is clicked
 
 def button_equals_click(settings):
-    global mathEq, sum, decimalSum, lastEqual, ans
+    global mathEq, sum, decimalSum, lastEqual, ans, historyStack
 
     lastEqual = True
+
+    historyStack.append(mathEq)    # add equation to history stack
+    
+    if len(historyStack) > 10:
+        historyStack.pop(0)
+    print("Stack Size: ",len(historyStack))
 
     # replace user math operator symbols with programing operating operators
     sum=mathEq.replace('×','*')
@@ -263,6 +270,20 @@ def removeExtraZeros(str):
 
     return removeExtraZerosInner(str,False)
 
+def handle_history(value):
+    global historyStack, redoStack, mathEq
+    if value == "undo":
+        if mathEq == historyStack[-1]:
+            mathEq = historyStack.pop()
+        redoStack.append(mathEq)
+        mathEq = historyStack.pop()
+        
+    if value == "redo":
+        mathEq = redoStack.pop()
+        historyStack.append(mathEq)
+
+    if not historyStack:
+        historyStack.append("")
 #--------------------------------------------------------------------
 # Function that checks for internet connection
 def have_internet():

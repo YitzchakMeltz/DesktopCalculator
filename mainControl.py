@@ -40,6 +40,13 @@ class mainControl(QMainWindow, Ui_MainWindow):
         icon = QtGui.QIcon("icons/CalculatorLogo(150p)_1.0.0.ico")
         Window.setWindowIcon(icon)
 
+        undoIcon = QtGui.QIcon("icons/undo_icon.png")
+        self.undoButton.setIcon(undoIcon)
+        redoIcon = QtGui.QIcon("icons/redo_icon.png")
+        self.redoButton.setIcon(redoIcon)
+        settingsIcon = QtGui.QIcon("icons/icons8-settings-50.png")
+        self.settingsButton.setIcon(settingsIcon)
+
         # set fixed size and disable resizing and maximizing window
         Window.setFixedSize(331, 418)
 
@@ -47,6 +54,11 @@ class mainControl(QMainWindow, Ui_MainWindow):
         self.screenOutput.setContextMenuPolicy(Qt.NoContextMenu)        #disable menu pop up for cut/copy/paste
         self.screenOutput.selectionChanged.connect(lambda:self.screenOutput.deselect())  # disable selecting text
 
+        # disable undo and redo buttons when opened
+        if len(mainBackend140.historyStack) < 2:
+                self.undoButton.setEnabled(False)
+        if not mainBackend140.redoStack:
+                self.redoButton.setEnabled(False)
     #-------------------------------- Connect Buttons -------------------------------------
         self.button_0.clicked.connect(lambda:self.click_and_update("0"))
         self.button_1.clicked.connect(lambda:self.click_and_update("1"))
@@ -73,6 +85,8 @@ class mainControl(QMainWindow, Ui_MainWindow):
         self.discard_button.clicked.connect(self.discard_settings)
         self.decimalPoints_slider.valueChanged.connect(self.update_clipboard_num_display)
         self.clipboard_checkbox.stateChanged.connect(self.toggle_clipboard_settings)
+        self.undoButton.clicked.connect(lambda: self.history("undo"))
+        self.redoButton.clicked.connect(lambda: self.history("redo"))
 
         # set keyPressEvent to current widgets that we'd like it to be overridden
         self.centralwidget.keyPressEvent = self.keyPressEvent
@@ -196,6 +210,8 @@ class mainControl(QMainWindow, Ui_MainWindow):
         self.decimalResultOutput.setText("")
         return
 
+        # is this function ever used????
+        # another copy paste of the same function?????
     def equal_click(self):
         button_equals_click()
         self.update_screen()
@@ -265,6 +281,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
         button_equals_click(self.settings)
         self.update_screen()
         self.update_result_screen()
+        self.undoButton.setEnabled(True)
         return
 
     def update_result_screen(self):
@@ -434,6 +451,22 @@ class mainControl(QMainWindow, Ui_MainWindow):
                 self.decimalPoints_slider.setEnabled(False)
                 self.clipboardDecimalPointDisplay.setEnabled(False)
                 self.decimalPoints_label.setEnabled(False)
+
+    def history(self, value):
+        handle_history(value)
+        self.update_screen()
+        self.clear_results()
+        if value == "undo":
+                self.redoButton.setEnabled(True)
+        # disable undo and redo buttons when opened
+        if len(mainBackend140.historyStack) < 2:
+                self.undoButton.setEnabled(False)
+        else:
+                self.undoButton.setEnabled(True)
+        if not mainBackend140.redoStack:
+                self.redoButton.setEnabled(False)
+        else:
+                self.redoButton.setEnabled(True) 
 
 class UpdatingDlgBox(QDialog):
     def __init__(self, parent=None):
