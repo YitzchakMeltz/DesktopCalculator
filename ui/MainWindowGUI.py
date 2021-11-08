@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(331, 418)
+        MainWindow.resize(331, 420)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.stackedWidget = QtWidgets.QStackedWidget(self.centralwidget)
@@ -292,7 +292,7 @@ class Ui_MainWindow(object):
 "\n"
 "")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../../../../.designer/icons/icons8-settings-50.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("../icons/icons8-settings-50.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.settingsButton.setIcon(icon)
         self.settingsButton.setIconSize(QtCore.QSize(10, 10))
         self.settingsButton.setObjectName("settingsButton")
@@ -414,7 +414,7 @@ class Ui_MainWindow(object):
         self.button_openPar.setFlat(True)
         self.button_openPar.setObjectName("button_openPar")
         self.releaseLabel = QtWidgets.QLabel(self.calculatorPage)
-        self.releaseLabel.setGeometry(QtCore.QRect(20, 390, 81, 16))
+        self.releaseLabel.setGeometry(QtCore.QRect(2, 415, 81, 16))
         self.releaseLabel.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.releaseLabel.setStyleSheet("font: 4pt \"MS Shell Dlg 2\";\n"
 "color: rgb(197, 197, 197);")
@@ -491,6 +491,56 @@ class Ui_MainWindow(object):
         self.decimalResultOutput.setText("")
         self.decimalResultOutput.setAlignment(QtCore.Qt.AlignCenter)
         self.decimalResultOutput.setObjectName("decimalResultOutput")
+        self.redoButton = QtWidgets.QPushButton(self.calculatorPage)
+        self.redoButton.setGeometry(QtCore.QRect(198, 400, 21, 21))
+        self.redoButton.setStyleSheet("QPushButton\n"
+"{\n"
+"border: none;\n"
+"background-color: rgb(232, 232, 232);\n"
+"font: 8pt \"Arial\";\n"
+"color: rgb(255,255,255);\n"
+"border-radius : 8px; \n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: rgb(222, 222, 222);\n"
+"}\n"
+"QPushButton:pressed\n"
+"{\n"
+"background-color: rgb(211, 211, 211);\n"
+"}\n"
+"\n"
+"")
+        self.redoButton.setText("")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("../icons/redo_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.redoButton.setIcon(icon1)
+        self.redoButton.setIconSize(QtCore.QSize(10, 10))
+        self.redoButton.setObjectName("redoButton")
+        self.undoButton = QtWidgets.QPushButton(self.calculatorPage)
+        self.undoButton.setGeometry(QtCore.QRect(96, 400, 21, 21))
+        self.undoButton.setStyleSheet("QPushButton\n"
+"{\n"
+"border: none;\n"
+"background-color: rgb(232, 232, 232);\n"
+"font: 8pt \"Arial\";\n"
+"color: rgb(255,255,255);\n"
+"border-radius : 8px; \n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: rgb(222, 222, 222);\n"
+"}\n"
+"QPushButton:pressed\n"
+"{\n"
+"background-color: rgb(211, 211, 211);\n"
+"}\n"
+"\n"
+"")
+        self.undoButton.setText("")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("../icons/undo_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.undoButton.setIcon(icon2)
+        self.undoButton.setIconSize(QtCore.QSize(10, 10))
+        self.undoButton.setObjectName("undoButton")
         self.stackedWidget.addWidget(self.calculatorPage)
         self.settingsPage = QtWidgets.QWidget()
         self.settingsPage.setObjectName("settingsPage")
@@ -551,7 +601,7 @@ class Ui_MainWindow(object):
         self.save_button.setFlat(True)
         self.save_button.setObjectName("save_button")
         self.releaseLabel_2 = QtWidgets.QLabel(self.settingsPage)
-        self.releaseLabel_2.setGeometry(QtCore.QRect(10, 410, 161, 16))
+        self.releaseLabel_2.setGeometry(QtCore.QRect(2, 415, 161, 16))
         self.releaseLabel_2.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.releaseLabel_2.setStyleSheet("font: 4pt \"MS Shell Dlg 2\";\n"
 "color: rgb(197, 197, 197);")
@@ -665,7 +715,7 @@ class Ui_MainWindow(object):
         self.button_0.setText(_translate("MainWindow", "0"))
         self.button_2.setText(_translate("MainWindow", "2"))
         self.button_openPar.setText(_translate("MainWindow", "("))
-        self.releaseLabel.setText(_translate("MainWindow", "  YitzchakMeltz Release_1.06.01"))
+        self.releaseLabel.setText(_translate("MainWindow", "  YitzchakMeltz Release_1.07.00"))
         self.button_1.setText(_translate("MainWindow", "1"))
         self.button_div.setText(_translate("MainWindow", "÷"))
         self.button_plus.setText(_translate("MainWindow", "+"))
@@ -673,7 +723,7 @@ class Ui_MainWindow(object):
         self.decimalPoints_label.setText(_translate("MainWindow", "Decimal points to copy to clipboard"))
         self.discard_button.setText(_translate("MainWindow", "Discard"))
         self.save_button.setText(_translate("MainWindow", "Save"))
-        self.releaseLabel_2.setText(_translate("MainWindow", "  YitzchakMeltz Release_1.06.01"))
+        self.releaseLabel_2.setText(_translate("MainWindow", "  YitzchakMeltz Release_1.07.00"))
         self.clipboardDecimalPointDisplay.setText(_translate("MainWindow", "6"))
         self.reportLinkLabel.setText(_translate("MainWindow", "<html><head/><body><p><a href=\"https://yitzchakmeltz.github.io/SassyOwlWebsite/support.html\"><span style=\" color:#0000ff;\">report a problem</span></a></p></body></html>"))
         self.zoom150RadioButton.setText(_translate("MainWindow", " 150%"))
