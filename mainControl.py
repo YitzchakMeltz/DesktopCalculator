@@ -453,9 +453,8 @@ class mainControl(QMainWindow, Ui_MainWindow):
                 self.decimalPoints_label.setEnabled(False)
 
     def history(self, value):
+        global placeholderThere
         handle_history(value)
-        self.update_screen()
-        self.clear_results()
         if value == "undo":
                 self.redoButton.setEnabled(True)
         # disable undo and redo buttons when opened
@@ -463,10 +462,13 @@ class mainControl(QMainWindow, Ui_MainWindow):
                 self.undoButton.setEnabled(False)
         else:
                 self.undoButton.setEnabled(True)
+                placeholderThere = False
         if not mainBackend140.redoStack:
                 self.redoButton.setEnabled(False)
         else:
                 self.redoButton.setEnabled(True) 
+        self.update_screen()
+        self.clear_results()
 
 class UpdatingDlgBox(QDialog):
     def __init__(self, parent=None):

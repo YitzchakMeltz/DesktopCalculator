@@ -21,7 +21,9 @@ mathOperationSymbols = ["+","-","×","÷"]
 # function that is activated when user inputs a char that builds the equation
 
 def button_click(userClick, cursorPos, cursorNotActive):
-    global mathEq, lastEqual, ans
+    global mathEq, lastEqual, ans, redoStack
+
+    redoStack = []
     
     # if cursor is active then disable lastEqual so that enables editing equation
     if(not cursorNotActive):
@@ -149,7 +151,7 @@ def button_equals_click(settings):
 # Resets the decimal sum string to an empty string
 
 def button_clear_click():
-    global mathEq, decimalSum, lastEqual
+    global mathEq, decimalSum, lastEqual, historyStack
     mathEq=""
     decimalSum=""
     lastEqual = False
@@ -171,8 +173,9 @@ def clear():
 # removes the last character that's in the equation (FILO)
 
 def button_backspace_click(cursorPos):
-    global mathEq, lastEqual
+    global mathEq, lastEqual, redoStack
 
+    redoStack = []
     lastEqual = False
 
     # check that string of equation isn't empty and that cursor isn't at beginning of equation
@@ -271,19 +274,29 @@ def removeExtraZeros(str):
     return removeExtraZerosInner(str,False)
 
 def handle_history(value):
-    global historyStack, redoStack, mathEq
+    global historyStack, redoStack, mathEq, lastEqual
     if value == "undo":
-        if mathEq == historyStack[-1]:
+        if lastEqual:
+            redoStack.append(mathEq)
+            historyStack.pop()
+            mathEq = historyStack[-1]
+        else:
+            redoStack.append(mathEq)
             mathEq = historyStack.pop()
-        redoStack.append(mathEq)
-        mathEq = historyStack.pop()
+            if len(historyStack) < 1:
+                mathEq = ""
+        print("undo:", historyStack)
+        print("redo:", redoStack,"\n")
         
     if value == "redo":
-        mathEq = redoStack.pop()
-        historyStack.append(mathEq)
-
-    if not historyStack:
-        historyStack.append("")
+        if lastEqual:
+            mathEq = redoStack.pop()
+            historyStack.append(mathEq)
+        else:
+            historyStack.append(mathEq)
+            mathEq = redoStack.pop()
+        print("undo:", historyStack)
+        print("redo:", redoStack,"\n")
 #--------------------------------------------------------------------
 # Function that checks for internet connection
 def have_internet():
