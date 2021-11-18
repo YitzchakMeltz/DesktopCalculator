@@ -179,6 +179,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
         self.update_screen()
         self.screenOutput.setCursorPosition(newCursorPos)
         self.button_equals.setFocus()
+        self.redoButton.setEnabled(False)
         return
     
     def update_screen(self):
