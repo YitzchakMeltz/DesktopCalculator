@@ -12,6 +12,7 @@ mathEq=""      # initialize the equation string
 sum=0          # initialize the numerical sum
 decimalSum=""
 lastEqual = False
+typingActive = True     # flag for active typing (for history)
 ans = 0
 historyStack = [""]   # initialize the history stack
 redoStack = []      # initialize the redo stack
@@ -21,8 +22,9 @@ mathOperationSymbols = ["+","-","×","÷"]
 # function that is activated when user inputs a char that builds the equation
 
 def button_click(userClick, cursorPos, cursorNotActive):
-    global mathEq, lastEqual, ans, redoStack
+    global mathEq, lastEqual, ans, redoStack, typingActive
 
+    typingActive = True
     redoStack = []
     
     # if cursor is active then disable lastEqual so that enables editing equation
@@ -77,9 +79,10 @@ def button_click(userClick, cursorPos, cursorNotActive):
 # function that is activated when equals button is clicked
 
 def button_equals_click(settings):
-    global mathEq, sum, decimalSum, lastEqual, ans, historyStack
+    global mathEq, sum, decimalSum, lastEqual, ans, historyStack, typingActive
 
     lastEqual = True
+    typingActive = False
 
     historyStack.append(mathEq)    # add equation to history stack
     
@@ -151,10 +154,11 @@ def button_equals_click(settings):
 # Resets the decimal sum string to an empty string
 
 def button_clear_click():
-    global mathEq, decimalSum, lastEqual, historyStack
+    global mathEq, decimalSum, lastEqual, redoStack
     mathEq=""
     decimalSum=""
     lastEqual = False
+    redoStack = []
     return
 
 #--------------------------------------------------------------------
@@ -173,10 +177,11 @@ def clear():
 # removes the last character that's in the equation (FILO)
 
 def button_backspace_click(cursorPos):
-    global mathEq, lastEqual, redoStack
+    global mathEq, lastEqual, redoStack, typingActive
 
     redoStack = []
     lastEqual = False
+    typingActive = True
 
     # check that string of equation isn't empty and that cursor isn't at beginning of equation
     if len(mathEq) == 0 or cursorPos == 0:
@@ -274,25 +279,27 @@ def removeExtraZeros(str):
     return removeExtraZerosInner(str,False)
 
 def handle_history(value):
-    global historyStack, redoStack, mathEq, lastEqual
+    global historyStack, redoStack, mathEq, lastEqual, typingActive
     if value == "undo":
-        if lastEqual:
+        if not typingActive:
             redoStack.append(mathEq)
             historyStack.pop()
             mathEq = historyStack[-1]
         else:
+            typingActive = False
             redoStack.append(mathEq)
-            mathEq = historyStack.pop()
+            mathEq = historyStack[-1]
             if len(historyStack) < 1:
                 mathEq = ""
         print("undo:", historyStack)
         print("redo:", redoStack,"\n")
         
     if value == "redo":
-        if lastEqual:
+        if not typingActive:
             mathEq = redoStack.pop()
             historyStack.append(mathEq)
         else:
+            typingActive = False
             historyStack.append(mathEq)
             mathEq = redoStack.pop()
         print("undo:", historyStack)

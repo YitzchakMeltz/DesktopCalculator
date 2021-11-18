@@ -268,7 +268,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
         self.update_screen()
         self.update_result_screen()
         self.resultOutput.setText("")
-        
+        self.redoButton.setEnabled(False)       # disable redo button
         return
 
         # clear the results screens
