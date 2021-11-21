@@ -306,6 +306,8 @@ def handle_history(value):
             mathEq = redoStack.pop()
         print("undo:", historyStack)
         print("redo:", redoStack,"\n")
+
+    lastEqual = False
 #--------------------------------------------------------------------
 # Function that checks for internet connection
 def have_internet():
