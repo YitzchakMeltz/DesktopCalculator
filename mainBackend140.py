@@ -154,11 +154,14 @@ def button_equals_click(settings):
 # Resets the decimal sum string to an empty string
 
 def button_clear_click():
-    global mathEq, decimalSum, lastEqual, redoStack, typingActive
+    global mathEq, decimalSum, lastEqual, historyStack, redoStack, typingActive
+    if lastEqual:
+        typingActive = True
+    else:
+        historyStack.append(mathEq)
     mathEq=""
     decimalSum=""
     lastEqual = False
-    typingActive = True
     redoStack = []
     return
 
