@@ -166,6 +166,14 @@ class mainControl(QMainWindow, Ui_MainWindow):
 
         if e.key() == Qt.Key_Left:
                 self.arrow_click('L')
+
+        if e.key() == (Qt.Key_Control and Qt.Key_Z):
+                if self.undoButton.isEnabled():
+                        self.history("undo")
+
+        if e.key() == (Qt.Key_Control and Qt.Key_Y):
+                if self.redoButton.isEnabled():
+                        self.history("redo")
 #--------------------------------------------------------------------------------------
 
 #--------------------------------------------------------------------------------------
