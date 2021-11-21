@@ -187,6 +187,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
         self.update_screen()
         self.screenOutput.setCursorPosition(newCursorPos)
         self.button_equals.setFocus()
+        self.undoButton.setEnabled(True)
         self.redoButton.setEnabled(False)
         return
     
@@ -246,6 +247,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
                 self.resultOutput.setText(mainBackend140.sum)
         return
 
+        # is this function extra (there's another function with the same name)???
     def backspace_click(self):
         newCursorPos = button_backspace_click(self.screenOutput.cursorPosition())
         self.update_screen()
@@ -316,6 +318,8 @@ class mainControl(QMainWindow, Ui_MainWindow):
         self.resultOutput.setText("")
         self.decimalResultOutput.setText("")
         self.screenOutput.setCursorPosition(newCursorPos)
+        if mainBackend140.mathEq == "":
+                self.undoButton.setEnabled(False)
 
     def update_msgbox(self):
         from PyQt5.QtWidgets import QLabel, QDialogButtonBox
