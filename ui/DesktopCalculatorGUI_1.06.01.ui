@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="calculatorPage">
      <widget class="QPushButton" name="button_8">
@@ -1104,7 +1104,7 @@ background-color: rgb(211, 211, 211);
 }</string>
       </property>
       <property name="text">
-       <string>Discard</string>
+       <string>Cancel</string>
       </property>
       <property name="autoDefault">
        <bool>true</bool>

@@ -725,7 +725,7 @@ class Ui_MainWindow(object):
         self.button_plus.setText(_translate("MainWindow", "+"))
         self.clipboard_checkbox.setText(_translate("MainWindow", "Copy answer to clipboard"))
         self.decimalPoints_label.setText(_translate("MainWindow", "Decimal points to copy to clipboard"))
-        self.discard_button.setText(_translate("MainWindow", "Discard"))
+        self.discard_button.setText(_translate("MainWindow", "Cancel"))
         self.save_button.setText(_translate("MainWindow", "Save"))
         self.releaseLabel_2.setText(_translate("MainWindow", "  YitzchakMeltz Release_1.07.00"))
         self.clipboardDecimalPointDisplay.setText(_translate("MainWindow", "6"))
