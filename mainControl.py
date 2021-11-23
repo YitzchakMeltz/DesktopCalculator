@@ -8,6 +8,8 @@ import atexit, sys, os
 import threads
 from threads import DownloadThread
 from PyQt5.uic import loadUi
+from PyQt5.QtGui import QKeySequence
+from PyQt5.QtWidgets import QShortcut
 
 initializeCalculatorSettings()
 
@@ -88,6 +90,9 @@ class mainControl(QMainWindow, Ui_MainWindow):
         self.undoButton.clicked.connect(lambda: self.history("undo"))
         self.redoButton.clicked.connect(lambda: self.history("redo"))
 
+        self.undoButton.setShortcut(QKeySequence("Ctrl+Z"))
+        self.redoButton.setShortcut(QKeySequence("Ctrl+Y"))
+
         # set keyPressEvent to current widgets that we'd like it to be overridden
         self.centralwidget.keyPressEvent = self.keyPressEvent
         self.screenOutput.keyPressEvent = self.keyPressEvent
@@ -166,14 +171,6 @@ class mainControl(QMainWindow, Ui_MainWindow):
 
         if e.key() == Qt.Key_Left:
                 self.arrow_click('L')
-
-        if e.key() == (Qt.Key_Control and Qt.Key_Z):
-                if self.undoButton.isEnabled():
-                        self.history("undo")
-
-        if e.key() == (Qt.Key_Control and Qt.Key_Y):
-                if self.redoButton.isEnabled():
-                        self.history("redo")
 #--------------------------------------------------------------------------------------
 
 #--------------------------------------------------------------------------------------
