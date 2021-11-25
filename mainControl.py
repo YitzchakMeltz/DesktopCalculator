@@ -98,6 +98,13 @@ class mainControl(QMainWindow, Ui_MainWindow):
         self.screenOutput.keyPressEvent = self.keyPressEvent
     #--------------------------------------------------------------------------------------    
 
+    #------------------------------ Tool Tips --------------------------------------------- 
+
+        self.redoButton.setToolTip("Redo")
+        self.undoButton.setToolTip("Undo")
+        self.button_clear.setToolTip("Clear")
+        self.button_backspace.setToolTip("Backspace")
+
 #---------------------------------- Key Press -----------------------------------------
 
     # override when key is pressed and treat key like on-screen pushbutton
