@@ -55,6 +55,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
         self.screenOutput.setReadOnly(True)
         self.screenOutput.setContextMenuPolicy(Qt.NoContextMenu)        #disable menu pop up for cut/copy/paste
         self.screenOutput.selectionChanged.connect(lambda:self.screenOutput.deselect())  # disable selecting text
+        self.button_equals.setFocus()   # set focus to equals button so that if you press enter it doesn't press a different button
 
         # disable undo and redo buttons when opened
         if len(mainBackend140.historyStack) < 2:
