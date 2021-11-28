@@ -92,6 +92,28 @@ class mainControl(QMainWindow, Ui_MainWindow):
 
         self.undoButton.setShortcut(QKeySequence("Ctrl+Z"))
         self.redoButton.setShortcut(QKeySequence("Ctrl+Y"))
+        self.button_0.setShortcut(Qt.Key_0)
+        self.button_1.setShortcut(Qt.Key_1)
+        self.button_2.setShortcut(Qt.Key_2)
+        self.button_3.setShortcut(Qt.Key_3)
+        self.button_4.setShortcut(Qt.Key_4)
+        self.button_5.setShortcut(Qt.Key_5)
+        self.button_6.setShortcut(Qt.Key_6)
+        self.button_7.setShortcut(Qt.Key_7)
+        self.button_8.setShortcut(Qt.Key_8)
+        self.button_9.setShortcut(Qt.Key_9)
+        self.button_plus.setShortcut(Qt.Key_Plus)
+        self.button_minus.setShortcut(Qt.Key_Minus)
+        self.button_mult.setShortcut(Qt.Key_Asterisk)
+        self.button_div.setShortcut(Qt.Key_Slash)
+        self.button_dot.setShortcut(Qt.Key_Period)
+        self.button_openPar.setShortcut(Qt.Key_ParenLeft)
+        self.button_closePar.setShortcut(Qt.Key_ParenRight)
+        self.button_equals.setShortcut(Qt.Key_Return)
+        self.button_equals.setShortcut(Qt.Key_Equal)
+        self.button_equals.setShortcut(Qt.Key_Return)
+        self.button_clear.setShortcut(Qt.Key_Delete)
+        self.button_backspace.setShortcut(Qt.Key_Backspace)
 
         # set keyPressEvent to current widgets that we'd like it to be overridden
         self.centralwidget.keyPressEvent = self.keyPressEvent
