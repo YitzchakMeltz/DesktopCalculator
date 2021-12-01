@@ -318,10 +318,10 @@ class mainControl(QMainWindow, Ui_MainWindow):
         return
 
     def equal_click(self):
-        button_equals_click(self.settings)
+        if button_equals_click(self.settings):
+                self.undoButton.setEnabled(True)
         self.update_screen()
         self.update_result_screen()
-        self.undoButton.setEnabled(True)
         return
 
     def update_result_screen(self):
