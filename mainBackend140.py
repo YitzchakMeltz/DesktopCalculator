@@ -137,7 +137,7 @@ def button_equals_click(settings):
         decimalSum=""
     else:
         try:
-            decimalSum="   or   " + str(sum)
+            decimalSum="   or   " + str(round(sum,15))
             sum=Fraction(str(sum)).limit_denominator()
         except (ValueError):
             sum="    Equation was not entered correctly"

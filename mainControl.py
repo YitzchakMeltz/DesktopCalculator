@@ -91,6 +91,9 @@ class mainControl(QMainWindow, Ui_MainWindow):
         self.undoButton.clicked.connect(lambda: self.history("undo"))
         self.redoButton.clicked.connect(lambda: self.history("redo"))
 
+    #-------------------------------- Shortcuts -------------------------------------
+
+
         self.undoButton.setShortcut(QKeySequence("Ctrl+Z"))
         self.redoButton.setShortcut(QKeySequence("Ctrl+Y"))
         self.button_0.setShortcut(Qt.Key_0)
@@ -110,8 +113,6 @@ class mainControl(QMainWindow, Ui_MainWindow):
         self.button_dot.setShortcut(Qt.Key_Period)
         self.button_openPar.setShortcut(Qt.Key_ParenLeft)
         self.button_closePar.setShortcut(Qt.Key_ParenRight)
-        self.button_equals.setShortcut(Qt.Key_Return)
-        self.button_equals.setShortcut(Qt.Key_Equal)
         self.button_equals.setShortcut(Qt.Key_Return)
         self.button_clear.setShortcut(Qt.Key_Delete)
         self.button_backspace.setShortcut(Qt.Key_Backspace)
@@ -188,6 +189,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
                 self.equal_click()
 
         if e.key() == Qt.Key_Equal:
+                self.button_equals.animateClick()
                 self.equal_click()
 
         if e.key() == Qt.Key_Delete:
