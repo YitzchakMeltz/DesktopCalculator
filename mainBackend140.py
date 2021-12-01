@@ -84,11 +84,7 @@ def button_equals_click(settings):
     lastEqual = True
     typingActive = False
 
-    stackChanged = False
-
-    if historyStack[-1] != mathEq:
-        historyStack.append(mathEq)    # add equation to history stack
-        stackChanged = True
+    historyStack.append(mathEq)    # add equation to history stack
     
     if len(historyStack) > 10:
         historyStack.pop(0)
@@ -122,8 +118,6 @@ def button_equals_click(settings):
         decimalSum=""
         return
 
-    sum = (round(sum,15))    # round to help solve floating point aritmetic error
-
     #check if it is a float of type 2.0 etc. if it is - convert to integer
     if isinstance(sum, float):
         if sum.is_integer():
@@ -143,7 +137,7 @@ def button_equals_click(settings):
         decimalSum=""
     else:
         try:
-            decimalSum="   or   " + str(sum)
+            decimalSum="   or   " + str(round(sum,15))
             sum=Fraction(str(sum)).limit_denominator()
         except (ValueError):
             sum="    Equation was not entered correctly"
@@ -152,8 +146,7 @@ def button_equals_click(settings):
 
     # print the solution to the console for debugging purposes
     print('=',sum)
-
-    return stackChanged
+    return
 
 #--------------------------------------------------------------------
 # function that is activated when the AC button is clicked
@@ -165,8 +158,7 @@ def button_clear_click():
     if lastEqual:
         typingActive = True
     else:
-        if historyStack[-1] != mathEq:
-            historyStack.append(mathEq)
+        historyStack.append(mathEq)
     mathEq=""
     decimalSum=""
     lastEqual = False
