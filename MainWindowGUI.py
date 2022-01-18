@@ -729,7 +729,7 @@ class Ui_MainWindow(object):
         self.save_button.setText(_translate("MainWindow", "Save"))
         self.releaseLabel_2.setText(_translate("MainWindow", "  YitzchakMeltz Release_1.07.01"))
         self.clipboardDecimalPointDisplay.setText(_translate("MainWindow", "6"))
-        self.reportLinkLabel.setText(_translate("MainWindow", "<html><head/><body><p><a href=\"https://yitzchakmeltz.github.io/SassyOwlWebsite/support.html\"><span style=\" color:#0000ff;\">report a problem</span></a></p></body></html>"))
+        self.reportLinkLabel.setText(_translate("MainWindow", "<html><head/><body><p><a href=\"https://sassyowl.herokuapp.com/support.html\"><span style=\" color:#0000ff;\">report a problem</span></a></p></body></html>"))
         self.zoom150RadioButton.setText(_translate("MainWindow", " 150%"))
         self.zoom50RadioButton.setText(_translate("MainWindow", " 50%"))
         self.zoom80RadioButton.setText(_translate("MainWindow", " 80%"))

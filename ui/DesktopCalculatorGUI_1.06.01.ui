@@ -1208,7 +1208,7 @@ background-color: rgb(255,255,255);
        </rect>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://yitzchakmeltz.github.io/SassyOwlWebsite/support.html&quot;&gt;&lt;span style=&quot; color:#0000ff;&quot;&gt;report a problem&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://sassyowl.herokuapp.com/support.html&quot;&gt;&lt;span style=&quot; color:#0000ff;&quot;&gt;report a problem&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
