@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="images">
+    <file>../icons/toggle-off.png</file>
+    <file>../icons/toggle-on.png</file>
+  </qresource>
+</RCC>
