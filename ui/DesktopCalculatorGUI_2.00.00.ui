@@ -1179,35 +1179,53 @@ QSlider::handle:horizontal {
      <widget class="QCheckBox" name="clipboard_checkbox">
       <property name="geometry">
        <rect>
-        <x>70</x>
+        <x>200</x>
         <y>230</y>
-        <width>171</width>
-        <height>18</height>
+        <width>91</width>
+        <height>20</height>
        </rect>
       </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
       <property name="styleSheet">
-       <string notr="true">QCheckBox::indicator:unchecked 
+       <string notr="true">QCheckBox 
+{ 
+	font: 9pt &quot;Arial&quot;;
+	font-weight: 400;
+}
+QCheckBox::indicator
 {
-        image: url(:/images/icons/toggle-off.png);
+	width : 40px;
+	height : 40px;
+}
+
+QCheckBox::indicator:unchecked 
+{
+	border-image: url(:/images/icons/toggle-off.png);
 }
 
 QCheckBox::indicator:checked 
 {
-        image: url(:/images/icons/toggle-on.png);
+	border-image: url(:/images/icons/toggle-on.png);
 }</string>
       </property>
       <property name="text">
-       <string>Copy answer to clipboard</string>
+       <string>Enabled</string>
       </property>
      </widget>
      <widget class="QLabel" name="decimalPoints_label">
       <property name="geometry">
        <rect>
-        <x>90</x>
-        <y>260</y>
-        <width>181</width>
-        <height>16</height>
+        <x>80</x>
+        <y>259</y>
+        <width>191</width>
+        <height>21</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;Arial&quot;;
+font-weight: 400;</string>
       </property>
       <property name="text">
        <string>Decimal points to copy to clipboard</string>
@@ -1435,14 +1453,14 @@ border-radius: 3px;
        <rect>
         <x>40</x>
         <y>26</y>
-        <width>131</width>
+        <width>91</width>
         <height>21</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">QLabel
 {
-font: 12pt
+font: 12pt &quot;Arial rounded mt bold&quot;;
 }
 </string>
       </property>
@@ -1537,14 +1555,14 @@ border-radius: 6px;
        <rect>
         <x>40</x>
         <y>196</y>
-        <width>131</width>
+        <width>81</width>
         <height>20</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">QLabel
 {
-font: 12pt
+font: 12pt &quot;Arial rounded mt bold&quot;;
 }
 </string>
       </property>
@@ -1557,14 +1575,14 @@ font: 12pt
        <rect>
         <x>40</x>
         <y>316</y>
-        <width>131</width>
+        <width>61</width>
         <height>20</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">QLabel
 {
-font: 12pt
+font: 12pt &quot;Arial rounded mt bold&quot;;
 }
 </string>
       </property>
@@ -1606,14 +1624,17 @@ border-radius: 6px;
       </property>
       <property name="font">
        <font>
+        <family>Arial</family>
         <pointsize>9</pointsize>
         <weight>50</weight>
+        <italic>false</italic>
         <bold>false</bold>
-        <kerning>true</kerning>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: Gray;</string>
+       <string notr="true">color: Gray;
+font: 9pt &quot;Arial&quot;;
+font-weight: 400;</string>
       </property>
       <property name="text">
        <string>Choose the format your primary result</string>
@@ -1651,6 +1672,36 @@ border-radius: 6px;
        <string notr="true">buttonGroup_2</string>
       </attribute>
      </widget>
+     <widget class="QLabel" name="settinginfo_clipboard">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>230</y>
+        <width>141</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>9</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: Gray;
+font: 9pt &quot;Arial&quot;;
+font-weight: 400;</string>
+      </property>
+      <property name="text">
+       <string>Copy result to clipboard</string>
+      </property>
+     </widget>
      <zorder>backgroundbox_clipboard</zorder>
      <zorder>backgroundbox_zoom</zorder>
      <zorder>decimalPoints_slider</zorder>
@@ -1675,6 +1726,7 @@ border-radius: 6px;
      <zorder>settinginfo_result</zorder>
      <zorder>zoomAutoRadioButton_2</zorder>
      <zorder>zoomAutoRadioButton_3</zorder>
+     <zorder>settinginfo_clipboard</zorder>
     </widget>
    </widget>
   </widget>
@@ -1694,7 +1746,7 @@ border-radius: 6px;
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>
