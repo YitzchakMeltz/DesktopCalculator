@@ -1211,7 +1211,7 @@ QCheckBox::indicator:checked
 }</string>
       </property>
       <property name="text">
-       <string>Enabled</string>
+       <string>Disabled</string>
       </property>
      </widget>
      <widget class="QLabel" name="decimalPoints_label">
@@ -1760,9 +1760,70 @@ font-weight: 400;</string>
        <string>Scale the app to a comfortable size</string>
       </property>
      </widget>
-     <zorder>backgroundbox_result</zorder>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>40</y>
+        <width>41</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel
+{
+background-color: skyblue;
+
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>150</y>
+        <width>41</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel
+{
+background-color: skyblue;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>270</y>
+        <width>41</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel
+{
+background-color: skyblue;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
      <zorder>backgroundbox_clipboard</zorder>
+     <zorder>label_2</zorder>
+     <zorder>backgroundbox_result</zorder>
+     <zorder>label_3</zorder>
      <zorder>backgroundbox_zoom</zorder>
+     <zorder>label</zorder>
      <zorder>decimalPoints_slider</zorder>
      <zorder>clipboard_checkbox</zorder>
      <zorder>decimalPoints_label</zorder>
@@ -1802,7 +1863,6 @@ font-weight: 400;</string>
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>
