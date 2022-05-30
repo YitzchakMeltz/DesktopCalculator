@@ -263,6 +263,9 @@ class SagyLogic:
 
         return True
 
+    def get_previous_answer(self):
+        return str(self.ans)
+
     #--------------------------------------------------------------------
     # Function that takes in a string and removes any zeros that are a 
     # prefix to a number
