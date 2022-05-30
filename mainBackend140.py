@@ -264,6 +264,8 @@ class SagyLogic:
         return True
 
     def get_previous_answer(self):
+        if self.ans == 0:
+            return ""
         return str(self.ans)
 
     #--------------------------------------------------------------------
