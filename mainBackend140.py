@@ -98,6 +98,7 @@ class SagyLogic:
         # replace user math operator symbols with programing operating operators
         self.sum=self.mathEq.replace('×','*')
         self.sum=self.sum.replace('÷','/')
+        self.sum=self.sum.replace('%','/100')
 
         if "()" in self.sum:
             self.sum="    Equation was not entered correctly"

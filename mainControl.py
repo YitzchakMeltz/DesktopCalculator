@@ -81,6 +81,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
         self.button_minus.clicked.connect(lambda:self.click_and_update(" - "))
         self.button_div.clicked.connect(lambda:self.click_and_update(" ÷ "))
         self.button_mult.clicked.connect(lambda:self.click_and_update(" × "))
+        self.button_percent.clicked.connect(lambda:self.click_and_update("% "))
         self.button_openPar.clicked.connect(lambda:self.click_and_update("("))
         self.button_closePar.clicked.connect(lambda:self.click_and_update(")"))
         self.button_backspace.clicked.connect(self.backspace_click)
@@ -118,6 +119,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
         self.button_equals.setShortcut(Qt.Key_Return)
         self.button_clear.setShortcut(Qt.Key_Delete)
         self.button_backspace.setShortcut(Qt.Key_Backspace)
+        self.button_percent.setShortcut(Qt.Key_Percent)
 
         # set keyPressEvent to current widgets that we'd like it to be overridden
         self.centralwidget.keyPressEvent = self.keyPressEvent
