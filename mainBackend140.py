@@ -35,7 +35,7 @@ class SagyLogic:
 
         # clear screen if previous entry was equals operator
         if(self.lastEqual and cursorNotActive):
-            clear()
+            self.clear()
 
         # initialize cursor position if the QLineEdit has the placeholder
         if self.mathEq == "":
@@ -88,7 +88,7 @@ class SagyLogic:
         stackChanged = False
 
         if self.historyStack[-1] != self.mathEq:
-            self.historyStack.append(mathEq)    # add equation to history stack
+            self.historyStack.append(self.mathEq)    # add equation to history stack
             stackChanged = True
         
         if len(self.historyStack) > 10:
@@ -109,7 +109,7 @@ class SagyLogic:
             return
 
         # remove unnecessary zeros: i.e. '05090 + 0004' => '5090 + 4'
-        self.sum = removeExtraZeros(self.sum)
+        self.sum = self.removeExtraZeros(self.sum)
 
         # evaluate the equation
         try:
@@ -166,7 +166,7 @@ class SagyLogic:
             self.typingActive = True
         else:
             if self.historyStack[-1] != self.mathEq:
-                historyStack.append(self.mathEq)
+                self.historyStack.append(self.mathEq)
         self.mathEq=""
         self.decimalSum=""
         self.lastEqual = False
@@ -241,7 +241,7 @@ class SagyLogic:
                 return (cursorPos + 3)
             if self.mathEq[(cursorPos)] in self.mathOperationSymbols:
                 return (cursorPos + 2)
-            if len(self.mathEq) == (cursorPos + 1) or singleSpaceSymbol(self.mathEq[(cursorPos)]):
+            if len(self.mathEq) == (cursorPos + 1) or self.singleSpaceSymbol(self.mathEq[(cursorPos)]):
                 return (cursorPos + 1)
 
         if(direction == 'L'):
@@ -249,7 +249,7 @@ class SagyLogic:
                 return (cursorPos - 3)
             if self.mathEq[(cursorPos - 1)] in self.mathOperationSymbols:
                 return (cursorPos - 2)
-            if singleSpaceSymbol(self.mathEq[(cursorPos - 1)]):
+            if self.singleSpaceSymbol(self.mathEq[(cursorPos - 1)]):
                 return (cursorPos - 1)
 
     # Function that takes in a string and checks if it's a non space symbol that is not a math symbol
@@ -291,7 +291,7 @@ class SagyLogic:
 
     def handle_history(self, value):
         if value == "undo":
-            if not typingActive:
+            if not self.typingActive:
                 self.redoStack.append(self.mathEq)
                 self.historyStack.pop()
                 self.mathEq = self.historyStack[-1]

@@ -33,6 +33,8 @@ class mainControl(QMainWindow, Ui_MainWindow):
     def __init__(self, Window, parent=None):
         super(mainControl, self).__init__(parent)
 
+        self.bl = SagyLogic()
+
         self.settings = retrieveSettings()
 
         self.setupUi(Window)
@@ -58,9 +60,9 @@ class mainControl(QMainWindow, Ui_MainWindow):
         self.button_equals.setFocus()   # set focus to equals button so that if you press enter it doesn't press a different button
 
         # disable undo and redo buttons when opened
-        if len(mainBackend140.historyStack) < 2:
+        if len(self.bl.historyStack) < 2:
                 self.undoButton.setEnabled(False)
-        if not mainBackend140.redoStack:
+        if not self.bl.redoStack:
                 self.redoButton.setEnabled(False)
     #-------------------------------- Connect Buttons -------------------------------------
         self.button_0.clicked.connect(lambda:self.click_and_update("0"))
@@ -209,9 +211,9 @@ class mainControl(QMainWindow, Ui_MainWindow):
 #----------------------------------- Functions ----------------------------------------
     def click_and_update(self,userClick):
         global placeholderThere
-        if(mainBackend140.lastEqual):
+        if(self.bl.lastEqual):
                 self.clear_results()
-        newCursorPos = button_click(userClick,self.screenOutput.cursorPosition(), not self.screenOutput.hasFocus())
+        newCursorPos = self.bl.button_click(userClick,self.screenOutput.cursorPosition(), not self.screenOutput.hasFocus())
         placeholderThere = False
         self.update_screen()
         self.screenOutput.setCursorPosition(newCursorPos)
@@ -222,9 +224,9 @@ class mainControl(QMainWindow, Ui_MainWindow):
     
     def update_screen(self):
         global placeholderThere
-        self.screenOutput.setText(mainBackend140.mathEq)
+        self.screenOutput.setText(self.bl.mathEq)
         
-        if mainBackend140.mathEq == "":
+        if self.bl.mathEq == "":
                 self.screenOutput.setText("Enter Your Equation")
                 placeholderThere = True
 
@@ -237,7 +239,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
         return
 
     def click_and_clear(self):
-        button_clear_click()
+        self.bl.button_clear_click()
         self.update_screen()
         self.update_result_screen()
         self.resultOutput.setText("")
@@ -252,7 +254,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
         # is this function ever used????
         # another copy paste of the same function?????
     def equal_click(self):
-        button_equals_click()
+        self.bl.button_equals_click()
         self.update_screen()
         self.update_result_screen()
         return
@@ -260,38 +262,38 @@ class mainControl(QMainWindow, Ui_MainWindow):
     def update_result_screen(self):
         global resultStyleChanged
    
-        button_equals_click()
+        self.bl.button_equals_click()
 
         if resultStyleChanged:
                self.resultOutput.setStyleSheet("font: 23pt \"calibri\";\n""color: rgb(70, 70, 70);")          # reset the style to large
         
-        if len(str((mainBackend140.sum)))>15:
+        if len(str((self.bl.sum)))>15:
                 self.resultOutput.setStyleSheet("font: 13pt \"calibri\";\n""color: rgb(70, 70, 70);")
                 resultStyleChanged = True
 
-        if isinstance(mainBackend140.sum,int) or isinstance(mainBackend140.sum,Fraction):
-                self.resultOutput.setText("= " + str(mainBackend140.sum))
-                self.decimalResultOutput.setText(mainBackend140.decimalSum)
+        if isinstance(self.bl.sum,int) or isinstance(self.bl.sum,Fraction):
+                self.resultOutput.setText("= " + str(self.bl.sum))
+                self.decimalResultOutput.setText(self.bl.decimalSum)
         else:
-                self.resultOutput.setText(mainBackend140.sum)
+                self.resultOutput.setText(self.bl.sum)
         return
 
         # is this function extra (there's another function with the same name)???
     def backspace_click(self):
-        newCursorPos = button_backspace_click(self.screenOutput.cursorPosition())
+        newCursorPos = self.bl.button_backspace_click(self.screenOutput.cursorPosition())
         self.update_screen()
         self.resultOutput.setText("")
         self.decimalResultOutput.setText("")
         self.screenOutput.setCursorPosition(newCursorPos)
 
     def arrow_click(self,direction):
-        newCursorPos = button_arrow_click(self.screenOutput.cursorPosition(),direction)
+        newCursorPos = self.bl.button_arrow_click(self.screenOutput.cursorPosition(),direction)
         self.screenOutput.setCursorPosition(newCursorPos)    
 
     def update_screen(self):
         global placeholderThere
-        self.screenOutput.setText(mainBackend140.mathEq)
-        if mainBackend140.mathEq == "":
+        self.screenOutput.setText(self.bl.mathEq)
+        if self.bl.mathEq == "":
                 self.screenOutput.setText("Enter Your Equation")
                 placeholderThere = True
 
@@ -304,7 +306,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
         return
 
     def click_and_clear(self):
-        button_clear_click()
+        self.bl.button_clear_click()
         self.update_screen()
         self.update_result_screen()
         self.resultOutput.setText("")
@@ -318,7 +320,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
         return
 
     def equal_click(self):
-        if button_equals_click(self.settings):
+        if self.bl.button_equals_click(self.settings):
                 self.undoButton.setEnabled(True)
         self.update_screen()
         self.update_result_screen()
@@ -330,24 +332,24 @@ class mainControl(QMainWindow, Ui_MainWindow):
         if resultStyleChanged:
                self.resultOutput.setStyleSheet("font: 23pt \"calibri\";\n""color: rgb(70, 70, 70);")          # reset the style to large
         
-        if len(str((mainBackend140.sum)))>15:
+        if len(str((self.bl.sum)))>15:
                 self.resultOutput.setStyleSheet("font: 13pt \"calibri\";\n""color: rgb(70, 70, 70);")
                 resultStyleChanged = True
 
-        if isinstance(mainBackend140.sum,int) or isinstance(mainBackend140.sum,Fraction):
-                self.resultOutput.setText("= " + str(mainBackend140.sum))
-                self.decimalResultOutput.setText(mainBackend140.decimalSum)
+        if isinstance(self.bl.sum,int) or isinstance(self.bl.sum,Fraction):
+                self.resultOutput.setText("= " + str(self.bl.sum))
+                self.decimalResultOutput.setText(self.bl.decimalSum)
         else:
-                self.resultOutput.setText(mainBackend140.sum)
+                self.resultOutput.setText(self.bl.sum)
         return
 
     def backspace_click(self):
-        newCursorPos = button_backspace_click(self.screenOutput.cursorPosition())
+        newCursorPos = self.bl.button_backspace_click(self.screenOutput.cursorPosition())
         self.update_screen()
         self.resultOutput.setText("")
         self.decimalResultOutput.setText("")
         self.screenOutput.setCursorPosition(newCursorPos)
-        if mainBackend140.mathEq == "":
+        if self.bl.mathEq == "":
                 self.undoButton.setEnabled(False)
 
     def update_msgbox(self):
@@ -383,7 +385,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
 
 
     def check_for_updates(self):
-        if have_internet():
+        if self.bl.have_internet():
                 self.initiate_update_proccess()    
 
     def initiate_update_proccess(self):
@@ -496,7 +498,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
 
     def history(self, value):
         global placeholderThere
-        handle_history(value)
+        self.bl.handle_history(value)
         if value == "undo":
                 self.redoButton.setEnabled(True)
         # disable undo and redo buttons when opened
