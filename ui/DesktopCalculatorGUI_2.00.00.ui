@@ -1522,7 +1522,7 @@ font: 9pt &quot;Arial&quot;;
 font-weight: 400;</string>
       </property>
       <property name="text">
-       <string>Choose the format your primary result</string>
+       <string>Choose the format of your primary result</string>
       </property>
      </widget>
      <widget class="QRadioButton" name="zoomAutoRadioButton_2">

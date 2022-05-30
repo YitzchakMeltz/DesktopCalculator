@@ -52,7 +52,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
         self.settingsButton.setIcon(settingsIcon)
 
         # set fixed size and disable resizing and maximizing window
-        Window.setFixedSize(331, 418)
+        Window.setFixedSize(331, 468)
 
         self.screenOutput.setReadOnly(True)
         self.screenOutput.setContextMenuPolicy(Qt.NoContextMenu)        #disable menu pop up for cut/copy/paste
@@ -437,22 +437,13 @@ class mainControl(QMainWindow, Ui_MainWindow):
             self.stackedWidget.setCurrentIndex(1)
 
     def display_saved_settings(self):
-        if self.settings.get("HR-Display") == "Auto":
-                self.zoomAutoRadioButton.setChecked(True) 
-        elif self.settings.get("HR-Display") == "1.5":
-                self.zoom150RadioButton.setChecked(True) 
-        elif self.settings.get("HR-Display") == "1.2":
-                self.zoom120RadioButton.setChecked(True) 
-        elif self.settings.get("HR-Display") == "1":
-                self.zoom100RadioButton.setChecked(True) 
-        elif self.settings.get("HR-Display") == "0.8":
-                self.zoom80RadioButton.setChecked(True) 
-        elif self.settings.get("HR-Display") == "0.5":
-                self.zoom50RadioButton.setChecked(True) 
+        self.zoom_comboBox.setCurrentText(self.settings.get("HR-Display")) 
             
         if self.settings.get("CopyToClipboard"):
                 self.clipboard_checkbox.setChecked(True)
                 self.decimalPoints_slider.setValue(self.settings.get("decimalsToCopy"))
+        else:
+                self.decimalPoints_slider.setEnabled(False)
         
     def update_clipboard_num_display(self):
             num = self.decimalPoints_slider.value()
@@ -467,18 +458,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
             self.stackedWidget.setCurrentIndex(0) 
 
     def copy_settings_from_gui(self):
-        if self.zoomAutoRadioButton.isChecked():
-                self.settings["HR-Display"] = "Auto" 
-        elif self.zoom150RadioButton.isChecked():
-                self.settings["HR-Display"] = "1.5" 
-        elif self.zoom120RadioButton.isChecked():
-                self.settings["HR-Display"] = "1.2" 
-        elif self.zoom100RadioButton.isChecked():
-                self.settings["HR-Display"] = "1" 
-        elif self.zoom80RadioButton.isChecked():
-                self.settings["HR-Display"] = "0.8" 
-        elif self.zoom50RadioButton.isChecked():
-                self.settings["HR-Display"] = "0.5"
+        self.settings["HR-Display"] = self.bl.percentToDecimal(self.zoom_comboBox.currentText())
 
         if self.clipboard_checkbox.isChecked():
                 self.settings["CopyToClipboard"] = True
@@ -491,10 +471,12 @@ class mainControl(QMainWindow, Ui_MainWindow):
                 self.decimalPoints_slider.setEnabled(True)
                 self.clipboardDecimalPointDisplay.setEnabled(True)
                 self.decimalPoints_label.setEnabled(True)
+                self.clipboard_checkbox.setText("Enabled")
         else:
                 self.decimalPoints_slider.setEnabled(False)
                 self.clipboardDecimalPointDisplay.setEnabled(False)
                 self.decimalPoints_label.setEnabled(False)
+                self.clipboard_checkbox.setText("Disabled")
 
     def history(self, value):
         global placeholderThere
@@ -502,12 +484,12 @@ class mainControl(QMainWindow, Ui_MainWindow):
         if value == "undo":
                 self.redoButton.setEnabled(True)
         # disable undo and redo buttons when opened
-        if len(mainBackend140.historyStack) < 2:
+        if len(self.bl.historyStack) < 2:
                 self.undoButton.setEnabled(False)
         else:
                 self.undoButton.setEnabled(True)
                 placeholderThere = False
-        if not mainBackend140.redoStack:
+        if not self.bl.redoStack:
                 self.redoButton.setEnabled(False)
         else:
                 self.redoButton.setEnabled(True) 

@@ -289,6 +289,12 @@ class SagyLogic:
 
         return removeExtraZerosInner(str,False)
 
+    @staticmethod
+    def percentToDecimal(value):
+        if value == "Auto":
+            return "Auto"
+        return str(float(value[:-1])/100)
+
     def handle_history(self, value):
         if value == "undo":
             if not self.typingActive:
