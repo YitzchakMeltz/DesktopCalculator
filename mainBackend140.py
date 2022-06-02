@@ -145,8 +145,12 @@ class SagyLogic:
             self.decimalSum=""
         else:
             try:
-                self.decimalSum="   or   " + str(self.sum)
-                self.sum=Fraction(str(self.sum)).limit_denominator()
+                if settings["display_as_fraction"]:
+                    self.decimalSum="   or   " + str(self.sum)
+                    self.sum=Fraction(str(self.sum)).limit_denominator()
+                else:
+                    self.decimalSum=" or   " + str(Fraction(str(self.sum)).limit_denominator())
+                    self.sum=self.sum
             except (ValueError):
                 self.sum="    Equation was not entered correctly"
                 self.decimalSum=""

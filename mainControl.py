@@ -340,7 +340,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
                 self.resultOutput.setStyleSheet("font: 13pt \"calibri\";\n""color: rgb(70, 70, 70);")
                 resultStyleChanged = True
 
-        if isinstance(self.bl.sum,int) or isinstance(self.bl.sum,Fraction):
+        if isinstance(self.bl.sum,int) or isinstance(self.bl.sum,Fraction) or isinstance(self.bl.sum,float):
                 self.resultOutput.setText("= " + str(self.bl.sum))
                 self.decimalResultOutput.setText(self.bl.decimalSum)
         else:
@@ -448,6 +448,11 @@ class mainControl(QMainWindow, Ui_MainWindow):
                 self.decimalPoints_slider.setValue(self.settings.get("decimalsToCopy"))
         else:
                 self.decimalPoints_slider.setEnabled(False)
+
+        if self.settings.get("display_as_fraction"):
+                self.display_fraction_radio_button.setChecked(True)
+        else:
+                self.display_decimal_radio_button.setChecked(True)  
         
     def update_clipboard_num_display(self):
             num = self.decimalPoints_slider.value()
@@ -469,6 +474,11 @@ class mainControl(QMainWindow, Ui_MainWindow):
         else:
                 self.settings["CopyToClipboard"] = False
         self.settings["decimalsToCopy"] = self.decimalPoints_slider.value()
+
+        if self.display_fraction_radio_button.isChecked():
+                self.settings["display_as_fraction"] = True
+        else:
+                self.settings["display_as_fraction"] = False
 
     def toggle_clipboard_settings(self):
         if self.clipboard_checkbox.isChecked():

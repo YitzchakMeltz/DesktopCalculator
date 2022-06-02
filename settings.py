@@ -9,10 +9,11 @@ def initializeCalculatorSettings():
         os.makedirs(pathname)
 
         settings = {
-            "Version": 10700,
+            "Version": 20000,
             "HR-Display": "Auto",
             "CopyToClipboard": True,
-            "decimalsToCopy": 6
+            "decimalsToCopy": 6,
+            "display_as_fraction": True
         }
 
         settingsPath = pathname + '\settings.json'
@@ -27,8 +28,10 @@ def initializeCalculatorSettings():
         if not "Version" in settings.keys():
             settings["Version"] = 10700
             settings["HR-Display"] = "Auto"
-            with open(settingsPath, "w") as settingsFile:
-                json.dump(settings, settingsFile)
+        if settings["Version"] < 20000:
+            settings["Version"] = 20000
+            settings["display_as_fraction"] = True
+        saveSettingsToFile(settings)
 
 def retrieveSettings():
     appDataPath = (str)(os.getenv('LOCALAPPDATA'))
