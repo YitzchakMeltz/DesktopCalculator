@@ -9,7 +9,7 @@ import threads
 from threads import DownloadThread
 from PyQt5.uic import loadUi
 from PyQt5.QtGui import QKeySequence
-from PyQt5.QtWidgets import QShortcut
+from PyQt5.QtWidgets import QListView
 
 initializeCalculatorSettings()
 
@@ -50,9 +50,12 @@ class mainControl(QMainWindow, Ui_MainWindow):
         self.redoButton.setIcon(redoIcon)
         settingsIcon = QtGui.QIcon("icons/icons8-settings-50.png")
         self.settingsButton.setIcon(settingsIcon)
-
+        
         # set fixed size and disable resizing and maximizing window
         Window.setFixedSize(331, 468)
+
+        # needed to allow extrra spacing in between setting comboBox items
+        self.zoom_comboBox.setView(QListView())
 
         self.screenOutput.setReadOnly(True)
         self.screenOutput.setContextMenuPolicy(Qt.NoContextMenu)        #disable menu pop up for cut/copy/paste

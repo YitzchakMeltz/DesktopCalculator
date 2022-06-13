@@ -878,6 +878,8 @@ class Ui_MainWindow(object):
 "    border-bottom-right-radius: 10px;\n"
 "    border-bottom-left-radius: 10px;\n"
 "    background: white;\n"
+"    font: 10pt \"Arial\";\n"
+"    font-weight: 400;\n"
 "    border: 1px solid gray;\n"
 "    box-shadow: transparent;\n"
 "    padding: 4px 4px 4px 4px;\n"
@@ -890,7 +892,7 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox QAbstractItemView::item {\n"
-"    min-height: 50px;\n"
+"    min-height: 30px;\n"
 "}")
         self.zoom_comboBox.setObjectName("zoom_comboBox")
         self.zoom_comboBox.addItem("")
@@ -917,7 +919,7 @@ class Ui_MainWindow(object):
         self.label.setGeometry(QtCore.QRect(0, 40, 41, 101))
         self.label.setStyleSheet("QLabel\n"
 "{\n"
-"background-color: skyblue;\n"
+"background-color: aliceblue;\n"
 "\n"
 "}")
         self.label.setText("")
@@ -926,7 +928,7 @@ class Ui_MainWindow(object):
         self.label_2.setGeometry(QtCore.QRect(0, 150, 41, 111))
         self.label_2.setStyleSheet("QLabel\n"
 "{\n"
-"background-color: skyblue;\n"
+"background-color: aliceblue;\n"
 "}")
         self.label_2.setText("")
         self.label_2.setObjectName("label_2")
@@ -934,7 +936,7 @@ class Ui_MainWindow(object):
         self.label_3.setGeometry(QtCore.QRect(0, 270, 41, 91))
         self.label_3.setStyleSheet("QLabel\n"
 "{\n"
-"background-color: skyblue;\n"
+"background-color: aliceblue;\n"
 "}")
         self.label_3.setText("")
         self.label_3.setObjectName("label_3")
