@@ -231,9 +231,9 @@ class mainControl(QMainWindow, Ui_MainWindow):
     
     def update_screen(self):
         global placeholderThere
-        self.screenOutput.setText(self.bl.mathEq)
+        self.screenOutput.setText(self.bl.math_equation)
         
-        if self.bl.mathEq == "":
+        if self.bl.math_equation == "":
                 self.screenOutput.setText("Enter Your Equation")
                 placeholderThere = True
 
@@ -299,8 +299,8 @@ class mainControl(QMainWindow, Ui_MainWindow):
 
     def update_screen(self):
         global placeholderThere
-        self.screenOutput.setText(self.bl.mathEq)
-        if self.bl.mathEq == "":
+        self.screenOutput.setText(self.bl.math_equation)
+        if self.bl.math_equation == "":
                 self.screenOutput.setText("Enter Your Equation")
                 placeholderThere = True
 
@@ -356,7 +356,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
         self.resultOutput.setText("")
         self.decimalResultOutput.setText("")
         self.screenOutput.setCursorPosition(newCursorPos)
-        if self.bl.mathEq == "":
+        if self.bl.math_equation == "":
                 self.undoButton.setEnabled(False)
 
     def update_msgbox(self):

@@ -11,9 +11,9 @@ except:
 class SagyLogic:
 
     def __init__(self):
-        self.mathEq=""      # initialize the equation string
-        self.sum=0          # initialize the numerical sum
-        self.decimalSum=""
+        self.math_equation = ""      # initialize the equation string
+        self.sum = 0          # initialize the numerical sum
+        self.decimalSum = ""
         self.lastEqual = False
         self.typingActive = True     # flag for active typing (for history)
         self.ans = 0
@@ -38,43 +38,43 @@ class SagyLogic:
             self.clear()
 
         # initialize cursor position if the QLineEdit has the placeholder
-        if self.mathEq == "":
+        if self.math_equation == "":
             cursorPos = 0
 
         # add what the user clicked to the equation string based on cursor position
 
         # user adds to the equation from the end
-        if len(self.mathEq) == cursorPos:
+        if len(self.math_equation) == cursorPos:
             
             # add previous answer to equation if equal button was just pressed
             if(self.lastEqual and cursorNotActive):
                 if(len(userClick) == 3 and userClick[1] in self.mathOperationSymbols):
-                    self.mathEq = str(self.ans) + userClick
+                    self.math_equation = str(self.ans) + userClick
                     self.lastEqual = False
                     return cursorPos + len(userClick) + len(str(self.ans))
 
-            self.mathEq += userClick
+            self.math_equation += userClick
             # print current equation string for debugging purposes
-            print(self.mathEq)
+            print(self.math_equation)
             self.lastEqual = False
             return cursorPos + len(userClick)
         
         # user adds to equation with cursor before math operation symbol 
         # e.g. " |+ "
         if cursorPos > 1:
-            if self.mathEq[cursorPos - 1] == " " and (self.mathEq[cursorPos - 2] not in self.mathOperationSymbols):
-                self.mathEq = self.mathEq[:cursorPos - 1] + userClick + self.mathEq[cursorPos - 1:]
+            if self.math_equation[cursorPos - 1] == " " and (self.math_equation[cursorPos - 2] not in self.mathOperationSymbols):
+                self.math_equation = self.math_equation[:cursorPos - 1] + userClick + self.math_equation[cursorPos - 1:]
                 return (cursorPos - 1) + len(userClick)
 
-            if self.mathEq[cursorPos - 1] in self.mathOperationSymbols:
-                self.mathEq = self.mathEq[:cursorPos + 1] + userClick + self.mathEq[cursorPos + 1:]
+            if self.math_equation[cursorPos - 1] in self.mathOperationSymbols:
+                self.math_equation = self.math_equation[:cursorPos + 1] + userClick + self.math_equation[cursorPos + 1:]
                 return (cursorPos + 1) + len(userClick)
 
-        if cursorPos == 1 and self.mathEq[cursorPos] in self.mathOperationSymbols:
-            self.mathEq = self.mathEq[:0] + userClick + self.mathEq[0:]
+        if cursorPos == 1 and self.math_equation[cursorPos] in self.mathOperationSymbols:
+            self.math_equation = self.math_equation[:0] + userClick + self.math_equation[0:]
             return len(userClick)
 
-        self.mathEq = self.mathEq[:cursorPos] + userClick + self.mathEq[cursorPos:]
+        self.math_equation = self.math_equation[:cursorPos] + userClick + self.math_equation[cursorPos:]
         return cursorPos + len(userClick)
 
     #--------------------------------------------------------------------
@@ -87,8 +87,8 @@ class SagyLogic:
 
         stackChanged = False
 
-        if self.historyStack[-1] != self.mathEq:
-            self.historyStack.append(self.mathEq)    # add equation to history stack
+        if self.historyStack[-1] != self.math_equation:
+            self.historyStack.append(self.math_equation)    # add equation to history stack
             stackChanged = True
         
         if len(self.historyStack) > 10:
@@ -96,7 +96,7 @@ class SagyLogic:
         print("Stack Size: ",len(self.historyStack))
 
         # replace user math operator symbols with programing operating operators
-        self.sum=self.mathEq.replace('×','*')
+        self.sum=self.math_equation.replace('×','*')
         self.sum=self.sum.replace('÷','/')
         self.sum=self.sum.replace('%','/100')
 
@@ -137,7 +137,7 @@ class SagyLogic:
             QApplication.clipboard().setText(str(round(self.sum,settings["decimalsToCopy"])))
 
         # print the math equation to the console for debugging purposes
-        print(self.mathEq)
+        print(self.math_equation)
 
         # check if result is an integer or a fraction
         if isinstance(self.sum, int):
@@ -170,9 +170,9 @@ class SagyLogic:
         if self.lastEqual:
             self.typingActive = True
         else:
-            if self.historyStack[-1] != self.mathEq:
-                self.historyStack.append(self.mathEq)
-        self.mathEq=""
+            if self.historyStack[-1] != self.math_equation:
+                self.historyStack.append(self.math_equation)
+        self.math_equation=""
         self.decimalSum=""
         self.lastEqual = False
         self.redoStack = []
@@ -184,7 +184,7 @@ class SagyLogic:
     # Resets the decimal sum string to an empty string
 
     def clear(self):
-        self.mathEq=""
+        self.math_equation=""
         self.decimalSum=""
         return
 
@@ -199,62 +199,62 @@ class SagyLogic:
         self.typingActive = True
 
         # check that string of equation isn't empty and that cursor isn't at beginning of equation
-        if len(self.mathEq) == 0 or cursorPos == 0:
+        if len(self.math_equation) == 0 or cursorPos == 0:
             return cursorPos
         
         # remove white space before and after math operators
         # assume that white space can only be entered before and after a math operator
-        if self.mathEq[(cursorPos - 1)] == " ":
+        if self.math_equation[(cursorPos - 1)] == " ":
 
             # invalid space was entered (theres no character before this space)
             if cursorPos < 2:
                 return cursorPos
 
             # if cursor is in front of operator's space (such as " + ") then then remove operator and spaces
-            if self.mathEq[(cursorPos - 2)] in self.mathOperationSymbols:
-                self.mathEq = self.mathEq[:(cursorPos - 3)] + self.mathEq[cursorPos:]
+            if self.math_equation[(cursorPos - 2)] in self.mathOperationSymbols:
+                self.math_equation = self.math_equation[:(cursorPos - 3)] + self.math_equation[cursorPos:]
                 
-                if cursorPos > 3 and self.mathEq[cursorPos - 4] == " ":
+                if cursorPos > 3 and self.math_equation[cursorPos - 4] == " ":
                     return (cursorPos - 4)
                 return (cursorPos - 3)
 
-            self.mathEq = self.mathEq[:(cursorPos - 2)] + self.mathEq[(cursorPos - 1):]
+            self.math_equation = self.math_equation[:(cursorPos - 2)] + self.math_equation[(cursorPos - 1):]
 
-            if self.mathEq[cursorPos - 2] == " ":
+            if self.math_equation[cursorPos - 2] == " ":
                     return (cursorPos - 3)
             return (cursorPos - 2)
 
-        if self.mathEq[(cursorPos - 1)] in self.mathOperationSymbols:
-            self.mathEq = self.mathEq[:(cursorPos - 2)] + self.mathEq[(cursorPos + 1):]
+        if self.math_equation[(cursorPos - 1)] in self.mathOperationSymbols:
+            self.math_equation = self.math_equation[:(cursorPos - 2)] + self.math_equation[(cursorPos + 1):]
             return (cursorPos - 2)
 
         # remove number at Cursor Position
-        self.mathEq = self.mathEq[:(cursorPos - 1)] + self.mathEq[cursorPos:]
+        self.math_equation = self.math_equation[:(cursorPos - 1)] + self.math_equation[cursorPos:]
 
-        if cursorPos > 1 and self.mathEq[cursorPos - 2] == " ":
+        if cursorPos > 1 and self.math_equation[cursorPos - 2] == " ":
                 return (cursorPos - 2)
         return (cursorPos - 1)
 
     #--------------------------------------------------------------------
     # function that is activated when the cursor arrow button is clicked
     def button_arrow_click(self, cursorPos, direction):
-        if (direction == 'R' and cursorPos == len(self.mathEq)) or (direction == 'L' and cursorPos == 0):
+        if (direction == 'R' and cursorPos == len(self.math_equation)) or (direction == 'L' and cursorPos == 0):
             return cursorPos
 
         if(direction == 'R'):
-            if self.mathEq[(cursorPos)] == " ":
+            if self.math_equation[(cursorPos)] == " ":
                 return (cursorPos + 3)
-            if self.mathEq[(cursorPos)] in self.mathOperationSymbols:
+            if self.math_equation[(cursorPos)] in self.mathOperationSymbols:
                 return (cursorPos + 2)
-            if len(self.mathEq) == (cursorPos + 1) or self.singleSpaceSymbol(self.mathEq[(cursorPos)]):
+            if len(self.math_equation) == (cursorPos + 1) or self.singleSpaceSymbol(self.math_equation[(cursorPos)]):
                 return (cursorPos + 1)
 
         if(direction == 'L'):
-            if self.mathEq[(cursorPos - 1)] == " ":
+            if self.math_equation[(cursorPos - 1)] == " ":
                 return (cursorPos - 3)
-            if self.mathEq[(cursorPos - 1)] in self.mathOperationSymbols:
+            if self.math_equation[(cursorPos - 1)] in self.mathOperationSymbols:
                 return (cursorPos - 2)
-            if self.singleSpaceSymbol(self.mathEq[(cursorPos - 1)]):
+            if self.singleSpaceSymbol(self.math_equation[(cursorPos - 1)]):
                 return (cursorPos - 1)
 
     # Function that takes in a string and checks if it's a non space symbol that is not a math symbol
@@ -308,24 +308,24 @@ class SagyLogic:
     def handle_history(self, value):
         if value == "undo":
             if not self.typingActive:
-                self.redoStack.append(self.mathEq)
+                self.redoStack.append(self.math_equation)
                 self.historyStack.pop()
-                self.mathEq = self.historyStack[-1]
+                self.math_equation = self.historyStack[-1]
             else:
                 self.typingActive = False
-                self.redoStack.append(self.mathEq)
-                self.mathEq = self.historyStack[-1]
+                self.redoStack.append(self.math_equation)
+                self.math_equation = self.historyStack[-1]
             print("undo:", self.historyStack)
             print("redo:", self.redoStack,"\n")
             
         if value == "redo":
             if not self.typingActive:
-                self.mathEq = self.redoStack.pop()
-                self.historyStack.append(self.mathEq)
+                self.math_equation = self.redoStack.pop()
+                self.historyStack.append(self.math_equation)
             else:
                 self.typingActive = False
-                self.historyStack.append(self.mathEq)
-                self.mathEq = self.redoStack.pop()
+                self.historyStack.append(self.math_equation)
+                self.math_equation = self.redoStack.pop()
             print("undo:", self.historyStack)
             print("redo:", self.redoStack,"\n")
 
