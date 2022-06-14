@@ -63,9 +63,9 @@ class mainControl(QMainWindow, Ui_MainWindow):
         self.button_equals.setFocus()   # set focus to equals button so that if you press enter it doesn't press a different button
 
         # disable undo and redo buttons when opened
-        if len(self.bl.historyStack) < 2:
+        if len(self.bl.undo_stack) < 2:
                 self.undoButton.setEnabled(False)
-        if not self.bl.redoStack:
+        if not self.bl.redo_stack:
                 self.redoButton.setEnabled(False)
     #-------------------------------- Connect Buttons -------------------------------------
         self.button_0.clicked.connect(lambda:self.click_and_update("0"))
@@ -218,7 +218,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
 #----------------------------------- Functions ----------------------------------------
     def click_and_update(self,userClick):
         global placeholderThere
-        if(self.bl.lastEqual):
+        if(self.bl.last_equal):
                 self.clear_results()
         newCursorPos = self.bl.button_click(userClick,self.screenOutput.cursorPosition(), not self.screenOutput.hasFocus())
         placeholderThere = False
@@ -280,7 +280,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
 
         if isinstance(self.bl.sum,int) or isinstance(self.bl.sum,Fraction):
                 self.resultOutput.setText("= " + str(self.bl.sum))
-                self.decimalResultOutput.setText(self.bl.decimalSum)
+                self.decimalResultOutput.setText(self.bl.decimal_sum)
         else:
                 self.resultOutput.setText(self.bl.sum)
         return
@@ -345,7 +345,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
 
         if isinstance(self.bl.sum,int) or isinstance(self.bl.sum,Fraction) or isinstance(self.bl.sum,float):
                 self.resultOutput.setText("= " + str(self.bl.sum))
-                self.decimalResultOutput.setText(self.bl.decimalSum)
+                self.decimalResultOutput.setText(self.bl.decimal_sum)
         else:
                 self.resultOutput.setText(self.bl.sum)
         return
@@ -501,12 +501,12 @@ class mainControl(QMainWindow, Ui_MainWindow):
         if value == "undo":
                 self.redoButton.setEnabled(True)
         # disable undo and redo buttons when opened
-        if len(self.bl.historyStack) < 2:
+        if len(self.bl.undo_stack) < 2:
                 self.undoButton.setEnabled(False)
         else:
                 self.undoButton.setEnabled(True)
                 placeholderThere = False
-        if not self.bl.redoStack:
+        if not self.bl.redo_stack:
                 self.redoButton.setEnabled(False)
         else:
                 self.redoButton.setEnabled(True) 
