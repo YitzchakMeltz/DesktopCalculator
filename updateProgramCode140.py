@@ -1,7 +1,8 @@
+from settings import get_version
 
 def checkForUpdates():
 
-    CurrentProgramVersion = 10701
+    CurrentProgramVersion = get_version()
 
     print("Current Version: ",CurrentProgramVersion)
 

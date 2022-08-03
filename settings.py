@@ -52,3 +52,10 @@ def get_HR_Display_Value():
     fstream = open(settingsPath,)
     settings = json.load(fstream)
     return settings.get("HR-Display")
+
+def get_version():
+    appDataPath = (str)(os.getenv('LOCALAPPDATA'))
+    settingsPath = appDataPath + '\SassyOwl\SagyCalculator\Settings\settings.json'
+    fstream = open(settingsPath,)
+    settings = json.load(fstream)
+    return settings.get("Version")
