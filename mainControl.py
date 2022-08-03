@@ -133,10 +133,11 @@ class mainControl(QMainWindow, Ui_MainWindow):
 
     #------------------------------ Tool Tips --------------------------------------------- 
 
-        self.redoButton.setToolTip("Redo")
-        self.undoButton.setToolTip("Undo")
-        self.button_clear.setToolTip("Clear")
+        self.redoButton.setToolTip("Redo (Ctrl+Y)")
+        self.undoButton.setToolTip("Undo (Ctrl+Z)")
+        self.button_clear.setToolTip("Clear (Del)")
         self.button_backspace.setToolTip("Backspace")
+        self.button_ans.setToolTip("Previous Answer (A)")
 
 #---------------------------------- Key Press -----------------------------------------
 
@@ -444,7 +445,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
             self.stackedWidget.setCurrentIndex(1)
 
     def display_saved_settings(self):
-        self.zoom_comboBox.setCurrentText(self.settings.get("HR-Display")) 
+        self.zoom_comboBox.setCurrentText(self.bl.decimal_to_percent(self.settings.get("HR-Display")))
             
         if self.settings.get("CopyToClipboard"):
                 self.clipboard_checkbox.setChecked(True)
@@ -470,7 +471,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
             self.stackedWidget.setCurrentIndex(0) 
 
     def copy_settings_from_gui(self):
-        self.settings["HR-Display"] = self.bl.percentToDecimal(self.zoom_comboBox.currentText())
+        self.settings["HR-Display"] = self.bl.percent_to_decimal(self.zoom_comboBox.currentText())
 
         if self.clipboard_checkbox.isChecked():
                 self.settings["CopyToClipboard"] = True

@@ -124,7 +124,7 @@ class SagyLogic:
             self.decimal_sum=""
             return
 
-        self.sum = (round(self.sum,15))    # round to help solve floating point aritmetic error
+        self.sum = (round(self.sum,14))    # round to help solve floating point aritmetic error
 
         #check if it is a float of type 2.0 etc. if it is - convert to integer
         if isinstance(self.sum, float):
@@ -300,10 +300,16 @@ class SagyLogic:
         return removeExtraZerosInner(str,False)
 
     @staticmethod
-    def percentToDecimal(value):
+    def percent_to_decimal(value):
         if value == "Auto":
             return "Auto"
         return str(float(value[:-1])/100)
+
+    @staticmethod
+    def decimal_to_percent(value):
+        if value == "Auto":
+            return "Auto"
+        return str(int(float(value)*100)) + '%'
 
     def handle_history(self, value):
         if value == "undo":
