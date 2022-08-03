@@ -4,12 +4,12 @@ from MainWindowGUI import*
 from mainBackend140 import*
 from settings import*
 from updateProgramCode140 import checkForUpdates, updateCalc
-import atexit, sys, os
-import threads
+import sys, os
 from threads import DownloadThread
 from PyQt5.uic import loadUi
 from PyQt5.QtGui import QKeySequence
 from PyQt5.QtWidgets import QListView
+from PyQt5.QtWidgets import QLabel, QDialogButtonBox
 
 initializeCalculatorSettings()
 
@@ -91,7 +91,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
         self.button_backspace.clicked.connect(self.backspace_click)
         self.button_equals.clicked.connect(self.equal_click)
         self.settingsButton.clicked.connect(self.Open_Settings_Screen)
-        self.save_button.clicked.connect(self.save_settings)
+        self.save_button.clicked.connect(self.initiate_save_settings)
         self.discard_button.clicked.connect(self.discard_settings)
         self.decimalPoints_slider.valueChanged.connect(self.update_clipboard_num_display)
         self.clipboard_checkbox.stateChanged.connect(self.toggle_clipboard_settings)
@@ -360,8 +360,7 @@ class mainControl(QMainWindow, Ui_MainWindow):
         if self.bl.math_equation == "":
                 self.undoButton.setEnabled(False)
 
-    def update_msgbox(self):
-        from PyQt5.QtWidgets import QLabel, QDialogButtonBox
+    def question_msgbox(self, title, msg, width):
         self.msg = QMessageBox()
         self.grid_layout = self.msg.layout()
 
@@ -379,10 +378,10 @@ class mainControl(QMainWindow, Ui_MainWindow):
         self.grid_layout.addWidget(self.qt_msgbox_buttonbox, 1, 0, alignment=Qt.AlignCenter)
 
 
-        self.msg.setWindowTitle("  Software Update")
-        self.msg.setText("A software update is available.<br>Do you want to update now?<br>")
+        self.msg.setWindowTitle(title)
+        self.msg.setText(msg)
         self.msg.setStandardButtons(QMessageBox.Ok|QMessageBox.Cancel)
-        self.msg.setStyleSheet("QLabel{min-width: 200px;}")
+        self.msg.setStyleSheet(width)
         self.msg.setWindowIcon(QtGui.QIcon("icons/CalculatorLogo(150p)_1.0.0.ico"))
 
         if self.msg.exec_() == QMessageBox.Ok:
@@ -402,7 +401,10 @@ class mainControl(QMainWindow, Ui_MainWindow):
                 self.request_update_permission()
 
     def request_update_permission(self):
-        if self.update_msgbox():
+        title = "  Software Update"
+        msg = "A software update is available.<br>Do you want to update now?<br>"
+        width = "QLabel{min-width: 200px;}"
+        if self.question_msgbox(title, msg, width):
                 Dlg = UpdatingDlgBox(self)
                 Dlg.UpdatingDlgProgressBar.setValue(0)
                 self.start_update_proccess(Dlg)
@@ -462,10 +464,16 @@ class mainControl(QMainWindow, Ui_MainWindow):
             num = self.decimalPoints_slider.value()
             self.clipboardDecimalPointDisplay.setText(str(num))
 
-    def save_settings(self):
-            self.stackedWidget.setCurrentIndex(0)  
-            self.copy_settings_from_gui()
-            saveSettingsToFile(self.settings)  
+    def initiate_save_settings(self):
+        if self.restart_needed():
+                self.restart()
+        else:
+                self.stackedWidget.setCurrentIndex(0)  
+                self.save_settings()
+
+    def save_settings(self): 
+        self.copy_settings_from_gui()
+        saveSettingsToFile(self.settings)  
            
     def discard_settings(self):
             self.stackedWidget.setCurrentIndex(0) 
@@ -514,6 +522,20 @@ class mainControl(QMainWindow, Ui_MainWindow):
         self.update_screen()
         self.clear_results()
 
+    def restart(self):
+        title = "  Restart Needed"
+        msg = "Sagy Calculator must be restarted to see changes.<br>Do you want to retart now?<br>"
+        width = "QLabel{min-width: 270px;}"
+        if self.question_msgbox(title, msg, width):
+                self.save_settings()
+                os.execl(sys.executable, f'"{sys.executable}"', *sys.argv)
+        else:
+                self.zoom_comboBox.setCurrentText(self.bl.decimal_to_percent(self.settings.get("HR-Display")))
+                self.save_settings()
+
+    def restart_needed(self):
+        return self.settings["HR-Display"] != self.bl.percent_to_decimal(self.zoom_comboBox.currentText())
+
 class UpdatingDlgBox(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -536,6 +558,4 @@ if __name__ == "__main__":
     ui.check_for_updates()
 
     sys.exit(app.exec_())
-
-    ui.close_program()
 #--------------------------------------------------------------------------------------
